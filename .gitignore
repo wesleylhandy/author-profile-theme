@@ -55,3 +55,7 @@ e2e-tests/gatsby-pnp/
 # lock files
 yarn.lock
 package-lock.json
+
+# env files
+.env
+.env.*

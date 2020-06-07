@@ -49,7 +49,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       path: basePath,
       component: require.resolve("./src/templates/events.js"),
     })
-    const result = await graphql(`
+    const allEventQuery = await graphql(`
         query {
         allEvent(sort: { fields: startDate, order: ASC }) {
             nodes {
@@ -59,11 +59,11 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         }
         }
     `)
-    if (result.errors) {
-        reporter.panic("error loading events", result.errors)
+    if (allEventQuery.errors) {
+        reporter.panic("error loading events", allEventQuery.errors)
         return
     }
-    const events = result.data.allEvent.nodes
+    const events = allEventQuery.data.allEvent.nodes
     events.forEach(event => {
         const slug = event.slug
         actions.createPage({
@@ -73,5 +73,34 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                 eventID: event.id,
             },
         })
+    })
+    actions.createPage({
+      path: `/blog`,
+      component: require.resolve("./src/templates/posts.js"),
+    })
+    const allWPPostQuery = await graphql(`
+      query {
+        allWordpressPost(sort: { fields: date, order: ASC }) {
+            nodes {
+              id
+              slug
+            }
+          }
+        }
+    `)
+    if (allWPPostQuery.errors) {
+        reporter.panic("error loading posts", allWPPostQuery.errors)
+        return
+    }
+    const posts = allWPPostQuery.data.allWordpressPost.nodes
+    posts.forEach(post => {
+      const slug = post.slug
+      actions.createPage({
+          path: `/blog/${slug}`,
+          component: require.resolve("./src/templates/post.js"),
+          context: {
+              postID: post.id,
+          },
+      })
     })
 }

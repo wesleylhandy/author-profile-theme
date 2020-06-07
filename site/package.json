@@ -9,6 +9,7 @@
         "clean": "gatsby clean"
     },
     "dependencies": {
+        "dotenv": "^8.2.0",
         "gatsby": "^2.23.1",
         "gatsby-theme-author-profile-and-blog": "*",
         "react": "^16.13.1",

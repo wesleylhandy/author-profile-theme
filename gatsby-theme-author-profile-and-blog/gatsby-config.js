@@ -1,10 +1,39 @@
-const withDefaults = require("./src/utils/default-options");
+const path = require('path')
 module.exports = options => {
     const {
         identityUrl,
-        contentPath,
-        basePath
-    } = withDefaults(options);
+        contentPath = "data",
+        basePath = "/",
+        imagesName = "images",
+        imagesContentPath = path.join(__dirname, "src", "images"),
+        wpSettings: {
+            auth = {},
+            baseUrl,
+            protocol = `https`,
+            restApiRoutePrefix = `wp-json`,
+            hostingWPCOM = false,
+            useACF = false,
+            acfOptionPageIds = [],
+            verboseOutput = false,
+            searchAndReplaceContentUrls = {},
+            includedRoutes = [],
+            excludedRoutes = [],
+            keepMediaSizes = false,
+            normalizer = function ({ entities }) {
+                return entities
+            },
+            normalizers = normalizers => [
+                ...normalizers,
+                {
+                  name: "nameOfTheFunction",
+                  normalizer: function ({ entities }) {
+                    // manipulate entities here
+                    return entities
+                  },
+                },
+            ],
+        }
+    } = options;
     return {
         siteMetadata: {
         },
@@ -17,11 +46,43 @@ module.exports = options => {
                 },
             },
             {
+                resolve: `gatsby-source-filesystem`,
+                options: {
+                    name: imagesName,
+                    path: imagesContentPath,
+                },
+            },
+            {
                 resolve: `gatsby-transformer-yaml`,
                 options: {
                   typeName: `Event`,
                 },
             },
+            {
+                resolve: `gatsby-source-wordpress`,
+                options: {
+                  // your WordPress source
+                  baseUrl,
+                  protocol,
+                  restApiRoutePrefix,
+                  // is it hosted on wordpress.com, or self-hosted?
+                  hostingWPCOM,
+                  auth,
+                  // does your site use the Advanced Custom Fields Plugin?
+                  useACF,
+                  acfOptionPageIds,
+                  verboseOutput,
+                  searchAndReplaceContentUrls,
+                  includedRoutes,
+                  excludedRoutes,
+                  keepMediaSizes,
+                  normalizer,
+                  normalizers,
+                }
+            },
+            `gatsby-plugin-react-helmet`,
+            `gatsby-transformer-sharp`,
+            `gatsby-plugin-sharp`,
             // {
             //     resolve: `gatsby-theme-netlify-identity`,
             //     options: {

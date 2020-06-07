@@ -21,7 +21,7 @@ const EventsTemplate = () => {
   `)
     const events = data.allEvent.nodes
     return (
-        <Layout heading="Upcoming Events">
+        <Layout>
           <EventList events={events} />
         </Layout>
     )

@@ -8,14 +8,24 @@ export const theme = {
       body: 1.45,
       heading: 1.1,
     },
+    useColorSchemeMediaQuery: true,
     colors: {
       gray: ["#efefef", "#ddd", "#333", "#111"],
       background: "#fff",
-      primary: "rebeccapurple",
+      primary: "#579CA8",
+      secondary: "#E5D591",
+      modes: {
+        dark: {
+          text: "#fff",
+          background: "#000",
+          primary: "#9AC3BF",
+          secondary: "#EEDFB6"
+        }
+      }
     },
     sizes: {
       default: "90vw",
-      max: "540px",
+      max: "1140px",
     },
     text: {
       heading: {
@@ -30,6 +40,11 @@ export const theme = {
           color: "inherit",
         },
       },
+      links: {
+        bold: {
+          fontWeight: 'bold'
+        }
+      }
     },
     layout: {
       container: {
@@ -65,6 +80,13 @@ export const theme = {
           backgroundColor: "gray.0",
         },
       },
+      a: {
+        color: "primary",
+        cursor: "pointer",
+        "&:hover": {
+          color: "secondary"
+        }
+      }
     },
   }
   
