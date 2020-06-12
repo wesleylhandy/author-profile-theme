@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       }
       headerBkg: file(name: {eq: "header-bg"}) {
         childImageSharp {
-          fluid(maxWidth: 1920) {
+          fluid(maxWidth: 980) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
   const title = data.meta.siteMetadata.title;
   return (
     <div>
-      <Img fluid={img} alt="Be yourself, everyone else is already taken - Oscar Wilde." style={{maxWidth: 1920, margin: `0 auto`}}/>
+      <Img fluid={img} alt="A beautiful view of waves crashing on the beach with my pen and paper before me." style={{maxWidth: 980, margin: `0 auto`}}/>
       <Heading>{title}</Heading>
       <Container>{children}</Container>
     </div>

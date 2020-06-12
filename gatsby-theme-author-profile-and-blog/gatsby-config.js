@@ -2,6 +2,7 @@ const path = require('path')
 module.exports = options => {
     const {
         identityUrl,
+        headerMaxWidth = 1920,
         contentPath = "data",
         basePath = "/",
         imagesName = "images",
@@ -36,8 +37,17 @@ module.exports = options => {
     } = options;
     return {
         siteMetadata: {
+            title: `Professional Author Portfolio`
         },
         plugins: [
+            { 
+                resolve: `gatsby-plugin-postcss`,
+                options: {
+                  postCssPlugins: [
+                    require(`tailwindcss`)
+                  ]
+                }
+            },
             `gatsby-plugin-theme-ui`,
             {
                 resolve: `gatsby-source-filesystem`,
@@ -79,6 +89,19 @@ module.exports = options => {
                   normalizer,
                   normalizers,
                 }
+            },
+            {
+                resolve: `gatsby-plugin-tinacms`,
+                options: {
+                  sidebar: {
+                    hidden: process.env.NODE_ENV === "production",
+                    position: `displace`,
+                  },
+                  plugins: [
+                    `gatsby-tinacms-git`,
+                    `gatsby-tinacms-remark`,
+                  ],
+                },
             },
             `gatsby-plugin-react-helmet`,
             `gatsby-transformer-sharp`,

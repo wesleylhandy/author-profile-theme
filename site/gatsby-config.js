@@ -4,7 +4,7 @@ require("dotenv").config({
 })
 module.exports = {
     siteMetadata: {
-      title: `Author Profile Example`
+      title: `Joan C. Benson, Author and Speaker`
     },
     plugins: [
       {
@@ -12,6 +12,7 @@ module.exports = {
         options: {
           contentPath: `events`,
           basePath: `/events`,
+          headerMaxWidth: 980,
           imagesContentPath: path.join(__dirname, `images`),
           wpSettings: {
             baseUrl: process.env.WP_BASE_URL,

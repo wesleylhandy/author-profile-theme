@@ -1,16 +1,23 @@
+import { tailwind } from '@theme-ui/presets'
+
 export const theme = {
-    space: [0, 4, 8, 16, 32],
+    ...tailwind,
+    breakpoints: [
+      ...tailwind.breakpoints,
+      '1520px'
+    ],
+    space: [...tailwind.space],
     fonts: {
       body: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
     },
-    fontSizes: [16, 18, 20, 22, 27, 36],
+    fontSizes: [...tailwind.space],
     lineHeights: {
       body: 1.45,
       heading: 1.1,
     },
     useColorSchemeMediaQuery: true,
     colors: {
-      gray: ["#efefef", "#ddd", "#333", "#111"],
+      ...tailwind.colors,
       background: "#fff",
       primary: "#579CA8",
       secondary: "#E5D591",
@@ -25,7 +32,8 @@ export const theme = {
     },
     sizes: {
       default: "90vw",
-      max: "1140px",
+      full: "100vw",
+      max: "1920px",
     },
     text: {
       heading: {
@@ -33,9 +41,11 @@ export const theme = {
         color: "background",
         fontWeight: "bold",
         margin: "0 auto",
-        maxWidth: "max",
-        padding: 3,
-        width: "default",
+        maxWidth: ["full", "full", "full", "max"],
+        width: ["full", "full", "full", "max"],
+        padding: 4,
+        fontSize: 4,
+        textAlign: ["center", "center", "center", "left"],
         a: {
           color: "inherit",
         },
@@ -49,35 +59,60 @@ export const theme = {
     layout: {
       container: {
         margin: "0 auto",
-        maxWidth: "max",
-        width: "default",
+        maxWidth: ["full", "full", "full", "max"],
+        width: ["full", "full", "full", "default"],
         padding: 3,
-        color: "gray.2",
+        color: "gray.9",
         fontFamily: "body",
-        fontSize: 1,
+        fontSize: 3,
         lineHeight: "body",
+        h2: {
+          color: "secondary",
+          fontSize: 4,
+          fontWeight: "bold",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
+        p: {
+          marginBottom: 3,
+        }
       },
     },
     styles: {
+      ...tailwind.styles,
       h1: {
-        color: "gray.3",
-        fontSize: 5,
+        color: "gray.9",
+        fontSize: "heading",
+        fontWeight: "bold",
+        lineHeight: "heading",
+        margin: "1rem 0 0",
+      },
+      h2: {
+        color: "gray.9",
+        fontSize: 3,
+        fontWeight: "bold",
+        lineHeight: "heading",
+        margin: "1rem 0 0",
+      },
+      h3: {
+        color: "gray.9",
+        fontSize: 2,
         fontWeight: "bold",
         lineHeight: "heading",
         margin: "1rem 0 0",
       },
       ul: {
         borderTop: "1px solid",
-        borderColor: "gray.0",
+        borderColor: "gray.1",
         listStyle: "none",
         padding: 0,
       },
       li: {
         borderBottom: "1px solid",
         borderColor: "gray.1",
-        padding: 2,
+        padding: 3,
         "&:focus-within,&:hover": {
-          backgroundColor: "gray.0",
+          backgroundColor: "gray.1",
         },
       },
       a: {
@@ -86,6 +121,11 @@ export const theme = {
         "&:hover": {
           color: "secondary"
         }
+      },
+      p: {
+        lineHeight: "body",
+        marginBottom: 4,
+        color: "gray.9"
       }
     },
   }
