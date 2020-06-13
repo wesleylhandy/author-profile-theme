@@ -2,14 +2,49 @@ const path = require('path')
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+const siteUrl =
+  process.env.URL || process.env.DEPLOY_URL || "https://www.joancbenson.com"
 module.exports = {
     siteMetadata: {
-      title: `Joan C. Benson, Author and Speaker`
+      title: `Joan C. Benson, Author and Speaker`,
+      description: ``,
+      author: {
+        name: `Joan C. Benson`,
+        email: ``
+      },
+      siteUrl,
+      siteVerification: {
+        google: ``,
+        bing: ``,
+      },
+      social: {
+        twitter: "",
+        linkedin: "",
+      },
+      socialLinks: {
+        // profile URLS for social links, include https://
+        twitter: "",
+        linkedin: "",
+        facebook: "",
+        stackOverflow: "",
+        github: "",
+        instagram: "",
+        youtube: "",
+        email: "", //include mailto:
+        phone: "", //include tel:
+      },
+      keywords: [],
+      organization: {
+        name: "Joan C. Benson",
+        url: "https://www.joancbenson.com",
+        logo: "",
+      },
     },
     plugins: [
       {
         resolve: `gatsby-theme-author-profile-and-blog`,
         options: {
+          gaTrackingId: process.env.GA_TRACKING_ID,
           contentPath: `events`,
           basePath: `/events`,
           headerMaxWidth: 980,

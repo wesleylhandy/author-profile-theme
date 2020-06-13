@@ -2,25 +2,53 @@ const fs = require("fs")
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || "data"
+  const imagesContentPath = options.imagesContentPath || "images"
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`)
     fs.mkdirSync(contentPath)
   }
+  if (!fs.existsSync(imagesContentPath)) {
+    reporter.info(`creating the ${imagesContentPath} directory`)
+    fs.mkdirSync(imagesContentPath)
+  }
 }
 
 // Define the "Event" type
-exports.sourceNodes = ({ actions }) => {
-    actions.createTypes(`
-      type Event implements Node @dontInfer {
-        id: ID!
-        name: String!
-        location: String!
-        startDate: Date! @dateformat @proxy(from: "start_date")
-        endDate: Date! @dateformat @proxy(from: "end_date")
-        url: String!
-        slug: String!
-      }
-    `)
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type Event implements Node @dontInfer {
+      id: ID!
+      name: String!
+      location: String!
+      startDate: Date! @dateformat @proxy(from: "start_date")
+      endDate: Date! @dateformat @proxy(from: "end_date")
+      url: String!
+      slug: String!
+    }
+    type PortfolioConfig implements Node {
+      source: String
+    }
+  `)
+}
+
+exports.sourceNodes = ({actions, createContentDigest}, options) => {
+  const { createNode } = actions
+  const portfolioConfig = {
+    source: options.wpSettings.baseUrl ? "wordpress" : "filesystem"
+  }
+  createNode({
+    ...portfolioConfig,
+    id: `@wesleylhandy/gatsby-theme-author-portfolio-and-blog-config`,
+    parent: null,
+    children: [],
+    internal: {
+      type: `PortfolioConfig`,
+      contentDigest: createContentDigest(portfolioConfig),
+      content: JSON.stringify(portfolioConfig),
+      description: `Options for @wesleylhandy/gatsby-theme-author-portfolio-and-blog`,
+    },
+  })
 }
 
 // Define resolvers for custom fields

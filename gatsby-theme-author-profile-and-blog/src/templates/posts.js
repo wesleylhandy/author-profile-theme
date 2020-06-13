@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import PostList from "../components/post-list"
 
 const PostsTemplate = () => {
-  const data = useStaticQuery(graphql`
+  const { allWordpressPost } = useStaticQuery(graphql`
     query {
         allWordpressPost(sort: { fields: date, order: ASC }) {
             nodes {
@@ -31,11 +31,12 @@ const PostsTemplate = () => {
         }
       }
   `)
-    const posts = data.allWordpressPost.nodes
-    return (
-        <Layout>
-          <PostList posts={posts} />
-        </Layout>
-    )
+  const posts = allWordpressPost.nodes
+  return (
+      <Layout>
+        <PostList posts={posts} />
+      </Layout>
+  )
+
 }
 export default PostsTemplate

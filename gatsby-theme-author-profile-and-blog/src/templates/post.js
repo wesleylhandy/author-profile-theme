@@ -28,10 +28,11 @@ export const query = graphql`
     }
   }
 `
-const PostTemplate = ({ data: { wordpressPost : post } }) => (
-    <Layout>
-      <Post {...post} />
-    </Layout>
+
+const PostTemplate = ({data: { wordpressPost: post}}) => (
+  <Layout>
+    <Post {...post} />
+  </Layout>
 )
 
 export default PostTemplate

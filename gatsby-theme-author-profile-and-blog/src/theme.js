@@ -72,6 +72,7 @@ export const theme = {
           fontWeight: "bold",
           lineHeight: "heading",
           margin: "1rem 0",
+          textShadow: "1px 1px #579CA8",
         },
         p: {
           marginBottom: 3,
