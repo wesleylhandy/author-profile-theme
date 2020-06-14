@@ -45,10 +45,17 @@ module.exports = {
         resolve: `gatsby-theme-author-profile-and-blog`,
         options: {
           gaTrackingId: process.env.GA_TRACKING_ID,
-          contentPath: `events`,
-          basePath: `/events`,
+          contentPath: `blog`,
+          basePath: `/blog`,
           headerMaxWidth: 980,
           imagesContentPath: path.join(__dirname, `images`),
+          sanity: {
+            projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+            dataset: process.env.GATSBY_SANITY_DATASET,
+            token: process.env.SANITY_READ_TOKEN,
+            watchMode: true,
+            overlayDrafts: true,
+          },
           wpSettings: {
             baseUrl: process.env.WP_BASE_URL,
             protocol: `https`,

@@ -1,4 +1,7 @@
 const fs = require("fs")
+const _ = require('lodash');
+const { paginate, groupPostsByCategory } = require('./gatsby-utils/pagination');
+
 // Make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || "data"
@@ -17,15 +20,6 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   createTypes(`
-    type Event implements Node @dontInfer {
-      id: ID!
-      name: String!
-      location: String!
-      startDate: Date! @dateformat @proxy(from: "start_date")
-      endDate: Date! @dateformat @proxy(from: "end_date")
-      url: String!
-      slug: String!
-    }
     type PortfolioConfig implements Node {
       source: String
     }
@@ -62,46 +56,17 @@ exports.createResolvers = ({ createResolvers }, options) => {
         .replace(/(^-|-$)+/g, "")
       return `/${basePath}/${slug}`.replace(/\/\/+/g, "/")
     }
-    createResolvers({
-      Event: {
-        slug: {
-          resolve: source => slugify(source.name),
-        },
-      },
-    })
+    // createResolvers({
+    //   Event: {
+    //     slug: {
+    //       resolve: source => slugify(source.name),
+    //     },
+    //   },
+    // })
 }
 
 exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const basePath = options.basePath || "/"
-    actions.createPage({
-      path: basePath,
-      component: require.resolve("./src/templates/events.js"),
-    })
-    const allEventQuery = await graphql(`
-        query {
-        allEvent(sort: { fields: startDate, order: ASC }) {
-            nodes {
-            id
-            slug
-            }
-        }
-        }
-    `)
-    if (allEventQuery.errors) {
-        reporter.panic("error loading events", allEventQuery.errors)
-        return
-    }
-    const events = allEventQuery.data.allEvent.nodes
-    events.forEach(event => {
-        const slug = event.slug
-        actions.createPage({
-            path: slug,
-            component: require.resolve("./src/templates/event.js"),
-            context: {
-                eventID: event.id,
-            },
-        })
-    })
     actions.createPage({
       path: `/blog`,
       component: require.resolve("./src/templates/posts.js"),
@@ -112,6 +77,11 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
             nodes {
               id
               slug
+              excerpt
+              title
+              categories {
+                name
+              }
             }
           }
         }
@@ -128,7 +98,33 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
           component: require.resolve("./src/templates/post.js"),
           context: {
               postID: post.id,
+              excerpt: post.excerpt,
+              title: post.title,
+              slug: `/blog/${slug}`
           },
       })
     })
+    const paginationDefaults = {
+      createPage: actions.createPage,
+      component: require.resolve('./src/templates/post-previews.js'),
+    };
+  
+    // create pages for all posts
+    paginate(posts, {
+      ...paginationDefaults,
+      pathTemplate: `/blog/<%= pageNumber %>`,
+    });
+  
+    // create category-specific pages
+    const postsByCategory = groupPostsByCategory(posts);
+  
+    Object.entries(postsByCategory).forEach(([category, postGroup]) => {
+      const catSlug = _.kebabCase(category);
+  
+      paginate(postGroup, {
+        ...paginationDefaults,
+        pathTemplate: `/blog/category/${catSlug}/<%= pageNumber %>`,
+        category,
+      });
+    });
 }

@@ -1,4 +1,5 @@
 const path = require('path')
+const isProd = process.env.NODE_ENV === 'production';
 module.exports = options => {
     const {
         identityUrl,
@@ -33,7 +34,8 @@ module.exports = options => {
                   },
                 },
             ],
-        }
+        },
+        sanity = {}
     } = options;
     return {
         siteMetadata: {
@@ -103,12 +105,6 @@ module.exports = options => {
                 },
             },
             {
-                resolve: `gatsby-transformer-yaml`,
-                options: {
-                  typeName: `Event`,
-                },
-            },
-            {
                 resolve: `gatsby-source-wordpress`,
                 options: {
                   // your WordPress source
@@ -129,6 +125,16 @@ module.exports = options => {
                   normalizer: wpSettings.normalizer,
                   normalizers: wpSettings.normalizers,
                 }
+            },
+            {
+              resolve: 'gatsby-source-sanity',
+              options: {
+                projectId: sanity.projectId || process.env.GATSBY_SANITY_PROJECT_ID,
+                dataset: sanity.dataset || process.env.GATSBY_SANITY_DATASET,
+                token: sanity.token || process.env.SANITY_READ_TOKEN,
+                watchMode: sanity.watchMode || !isProd,
+                overlayDrafts: sanity.overlayDrafts || !isProd,
+              },
             },
             {
                 resolve: `gatsby-plugin-tinacms`,
