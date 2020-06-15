@@ -13,15 +13,12 @@ exports.createSchemaCustomization = ({ actions }) => {
         useACF: Boolean,
         acfOptionPageIds: [String],
         verboseOutput: Boolean,
-        cookies: [Cookie],
         perPage: Int,
         searchAndReplaceContentUrls: SearchAndReplaceContentUrls,
         includedRoutes: [String],
         excludedRoutes: [String],
         keepMediaSizes: Boolean,
         concurrentRequests: Int,
-        normalizer: String,
-        normalizers: String
     }
     type WPAuth {
         htaccess_user: String,
@@ -34,10 +31,6 @@ exports.createSchemaCustomization = ({ actions }) => {
         jwt_user: String,
         jwt_pass: String,
         jwt_base_path: String
-    }
-    type Cookie {
-        key: String,
-        value: String
     }
     type SearchAndReplaceContentUrls {
         sourceUrl: String,

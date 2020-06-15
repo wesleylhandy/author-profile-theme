@@ -53,7 +53,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-theme-author-sanity-blog`,
+      resolve: `gatsby-theme-author-sanity-cms`,
       options: {
         sanity: {
           projectId: process.env.GATSBY_SANITY_PROJECT_ID,
@@ -93,5 +93,6 @@ module.exports = {
         }
       },
     },
+    `gatsby-theme-author-tinacms`
   ],
 }

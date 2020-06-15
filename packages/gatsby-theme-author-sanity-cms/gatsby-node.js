@@ -17,14 +17,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     const  { sanity } = options
     createNode({
       ...sanity,
-      id: `@wesleylhandy/gatsby-theme-sanity-blog`,
+      id: `@wesleylhandy/gatsby-theme-sanity-cms`,
       parent: null,
       children: [],
       internal: {
         type: `SanityConfig`,
         contentDigest: createContentDigest(sanity),
         content: JSON.stringify(sanity),
-        description: `Options for @wesleylhandy/gatsby-theme-sanity-blog`,
+        description: `Options for @wesleylhandy/gatsby-theme-sanity-cms`,
       },
     })
   }
