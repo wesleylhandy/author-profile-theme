@@ -1,4 +1,4 @@
-import baseTheme from 'gatsby-theme-author-profile-and-blog/src/gatsby-plugin-theme-ui/index'
+import baseTheme from 'gatsby-theme-author-base/src/gatsby-plugin-theme-ui/index'
 
 const theme = {
     ...baseTheme,

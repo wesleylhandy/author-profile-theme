@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import Layout from "../components/layout"
-import PostList from "../components/post-list"
+import Layout from "gatsby-theme-author-base/src/components/layout"
+import PostList from "gatsby-theme-author-base/src/components/post-list"
 
 const PostsTemplate = () => {
   const { allWordpressPost } = useStaticQuery(graphql`

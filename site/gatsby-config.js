@@ -4,83 +4,94 @@ require("dotenv").config({
 })
 const siteUrl =
   process.env.URL || process.env.DEPLOY_URL || "https://www.joancbenson.com"
+const siteMetadata = {
+  title: `Joan C. Benson, Author and Speaker`,
+  description: ``,
+  author: {
+    name: `Joan C. Benson`,
+    email: ``
+  },
+  siteUrl,
+  siteVerification: {
+    google: ``,
+    bing: ``,
+  },
+  social: {
+    twitter: "",
+    linkedin: "",
+  },
+  socialLinks: {
+    // profile URLS for social links, include https://
+    twitter: "",
+    linkedin: "",
+    facebook: "",
+    stackOverflow: "",
+    github: "",
+    instagram: "",
+    youtube: "",
+    email: "", //include mailto:
+    phone: "", //include tel:
+  },
+  keywords: [],
+  organization: {
+    name: "Joan C. Benson",
+    url: "https://www.joancbenson.com",
+    logo: "",
+  },
+}
 module.exports = {
-    siteMetadata: {
-      title: `Joan C. Benson, Author and Speaker`,
-      description: ``,
-      author: {
-        name: `Joan C. Benson`,
-        email: ``
-      },
-      siteUrl,
-      siteVerification: {
-        google: ``,
-        bing: ``,
-      },
-      social: {
-        twitter: "",
-        linkedin: "",
-      },
-      socialLinks: {
-        // profile URLS for social links, include https://
-        twitter: "",
-        linkedin: "",
-        facebook: "",
-        stackOverflow: "",
-        github: "",
-        instagram: "",
-        youtube: "",
-        email: "", //include mailto:
-        phone: "", //include tel:
-      },
-      keywords: [],
-      organization: {
-        name: "Joan C. Benson",
-        url: "https://www.joancbenson.com",
-        logo: "",
+  siteMetadata,
+  plugins: [
+    {
+      resolve: `gatsby-theme-author-base`,
+      options: {
+        gaTrackingId: process.env.GA_TRACKING_ID,
+        contentPath: `blog`,
+        basePath: `/blog`,
+        headerMaxWidth: 980,
+        imagesContentPath: path.join(__dirname, `images`),
       },
     },
-    plugins: [
-      {
-        resolve: `gatsby-theme-author-profile-and-blog`,
-        options: {
-          gaTrackingId: process.env.GA_TRACKING_ID,
-          contentPath: `blog`,
-          basePath: `/blog`,
-          headerMaxWidth: 980,
-          imagesContentPath: path.join(__dirname, `images`),
-          sanity: {
-            projectId: process.env.GATSBY_SANITY_PROJECT_ID,
-            dataset: process.env.GATSBY_SANITY_DATASET,
-            token: process.env.SANITY_READ_TOKEN,
-            watchMode: true,
-            overlayDrafts: true,
+    {
+      resolve: `gatsby-theme-author-sanity-blog`,
+      options: {
+        sanity: {
+          projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+          dataset: process.env.GATSBY_SANITY_DATASET,
+          token: process.env.SANITY_READ_TOKEN,
+          watchMode: true,
+          overlayDrafts: true,
+        }
+      }
+    },
+    {
+      resolve: `gatsby-theme-author-wordpress-blog`,
+      options: {
+        wpSettings: {
+          baseUrl: process.env.WP_BASE_URL,
+          protocol: `https`,
+          restApiRoutePrefix: `wp-json`,
+          hostingWPCOM: false,
+          useACF: true,
+          auth: {
+            wpcom_app_clientSecret: process.env.WP_CLIENT_SECRET,
+            wpcom_app_clientId: process.env.WP_CLIENT_ID,
+            wpcom_user: process.env.WP_USER,
+            wpcom_pass: process.env.WP_PASS
           },
-          wpSettings: {
-            baseUrl: process.env.WP_BASE_URL,
-            protocol: `https`,
-            restApiRoutePrefix: `wp-json`,
-            hostingWPCOM: false,
-            useACF: true,
-            auth: {
-              wpcom_app_clientSecret: process.env.WP_CLIENT_SECRET,
-              wpcom_app_clientId: process.env.WP_CLIENT_ID,
-              wpcom_user: process.env.WP_USER,
-              wpcom_pass: process.env.WP_PASS
-            },
-            verboseOutput: false,
-            includedRoutes: [
-              `**/posts`,
-              `**/users`,
-              `**/categories`,
-              `**/tags`,
-              `**/media`,
-              `/yoast/**`
-            ],
-            excludedRoutes: [
-            ]
-          }
-        },
+          verboseOutput: false,
+          includedRoutes: [
+            `**/posts`,
+            `**/users`,
+            `**/categories`,
+            `**/tags`,
+            `**/media`,
+            `/yoast/**`
+          ],
+          excludedRoutes: [
+          ]
+        }
       },
-    ],
+    },
+  ],
 }

@@ -1,5 +1,0 @@
-
-    const cmd = require("/Users/wehand/author-profile-theme/node_modules/gatsby/dist/commands/develop-process.js");
-    const args = {"_":["develop"],"verbose":false,"no-color":false,"no-colors":false,"noColors":false,"noColor":false,"json":false,"H":"localhost","host":"localhost","p":"8000","port":63921,"c":"","cert-file":"","certFile":"","k":"","key-file":"","keyFile":"","ca-file":"","caFile":"","graphql-tracing":false,"graphqlTracing":false,"$0":"gatsby","directory":"/Users/wehand/author-profile-theme/site","browserslist":[">0.25%","not dead"],"sitePackageJson":{"private":true,"name":"site","version":"1.0.0","license":"MIT","scripts":{"build":"gatsby build","develop":"gatsby develop","clean":"gatsby clean"},"dependencies":{"dotenv":"^8.2.0","gatsby":"^2.23.1","gatsby-theme-author-profile-and-blog":"*","react":"^16.13.1","react-dom":"^16.13.1"}},"report":{},"useYarn":false,"proxyPort":"8000"};
-    cmd(args);
-  

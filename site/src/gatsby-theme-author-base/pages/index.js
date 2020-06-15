@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "gatsby-theme-author-profile-and-blog/src/components/layout"
+import Layout from "gatsby-theme-author-base/src/components/layout"
 
 const IndexPage = () => (
     <Layout></Layout>
