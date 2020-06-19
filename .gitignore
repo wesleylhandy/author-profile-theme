@@ -65,3 +65,8 @@ yarn-error.log
 
 # Netlify stuff that I don’t think we need
 .netlify
+.gatsby-context.js
+.DS_Store
+public/
+.cache/
+.netlify
