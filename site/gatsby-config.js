@@ -5,7 +5,7 @@ require("dotenv").config({
 const siteUrl =
   process.env.URL || process.env.DEPLOY_URL || "https://www.joancbenson.com"
 const siteMetadata = {
-  title: `Joan C. Benson, Author and Speaker`,
+  title: `Joan C. Benson, Christian Author, Speaker, & Educator`,
   description: ``,
   author: {
     name: `Joan C. Benson`,
@@ -53,43 +53,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-theme-author-sanity-cms`,
+      resolve: `gatsby-theme-author-wpgraphql`,
       options: {
-        sanity: {
-          projectId: process.env.GATSBY_SANITY_PROJECT_ID,
-          dataset: process.env.GATSBY_SANITY_DATASET,
-          token: process.env.SANITY_READ_TOKEN,
-          watchMode: true,
-          overlayDrafts: true,
-        }
-      }
-    },
-    {
-      resolve: `gatsby-theme-author-wordpress-blog`,
-      options: {
-        wpSettings: {
-          baseUrl: process.env.WP_BASE_URL,
-          protocol: `https`,
-          restApiRoutePrefix: `wp-json`,
-          hostingWPCOM: false,
-          useACF: true,
-          auth: {
-            wpcom_app_clientSecret: process.env.WP_CLIENT_SECRET,
-            wpcom_app_clientId: process.env.WP_CLIENT_ID,
-            wpcom_user: process.env.WP_USER,
-            wpcom_pass: process.env.WP_PASS
-          },
-          verboseOutput: false,
-          includedRoutes: [
-            `**/posts`,
-            `**/users`,
-            `**/categories`,
-            `**/tags`,
-            `**/media`,
-            `/yoast/**`
-          ],
-          excludedRoutes: [
-          ]
+        wpGqlSettings: {
+          url: process.env.WP_BASE_URL,
+          fieldName: `wpgraphql`,
+          typeName: `WPGraphQL`,
         }
       },
     },

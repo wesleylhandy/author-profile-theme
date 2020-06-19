@@ -12,9 +12,8 @@
         "dotenv": "^8.2.0",
         "gatsby": "^2.23.1",
         "gatsby-theme-author-base": "*",
-        "gatsby-theme-author-sanity-cms": "*",
         "gatsby-theme-author-tinacms": "*",
-        "gatsby-theme-author-wordpress-blog": "*",
+        "gatsby-theme-author-wpgraphql": "*",
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
     }

@@ -14,9 +14,6 @@ var plugins = [{
       plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-source-sanity/gatsby-ssr'),
-      options: {"plugins":[],"projectId":"yhjc320x","dataset":"blog","token":"skSd1ZZ23l5vrWc4ELJNlka8PMBJACvUi2OWvUDqHIRRJgV4Gmr11dqDqYM5PgQ557qcxBjXQRHBX5G6CxVlaIALBqxpl2LBTjUlfIHVawekmYy6xSvH7PTEu1LkfBSJeBhiExwVpquJgFqDvG34e1hhpXVcbv6R3rO3CtmEAQstpqMmeqqy","watchMode":true,"overlayDrafts":true},
-    },{
       plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-remark-autolink-headers/gatsby-ssr'),
       options: {"plugins":[],"maintainCase":true,"removeAccents":true},
     },{
