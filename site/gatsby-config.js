@@ -59,7 +59,10 @@ module.exports = {
           url: process.env.WP_BASE_URL,
           fieldName: `wpgraphql`,
           typeName: `WPGraphQL`,
-        }
+        },
+        blogBase: `/blog`,
+        eventsBase: `/events`,
+        faqBase: `/faq`,
       },
     },
     `gatsby-theme-author-tinacms`

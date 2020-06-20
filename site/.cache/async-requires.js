@@ -8,6 +8,8 @@ exports.components = {
   "component---packages-gatsby-theme-author-base-src-pages-contact-js": () => import("./../../packages/gatsby-theme-author-base/src/pages/contact.js" /* webpackChunkName: "component---packages-gatsby-theme-author-base-src-pages-contact-js" */),
   "component---packages-gatsby-theme-author-base-src-pages-events-js": () => import("./../../packages/gatsby-theme-author-base/src/pages/events.js" /* webpackChunkName: "component---packages-gatsby-theme-author-base-src-pages-events-js" */),
   "component---packages-gatsby-theme-author-base-src-pages-subscribe-js": () => import("./../../packages/gatsby-theme-author-base/src/pages/subscribe.js" /* webpackChunkName: "component---packages-gatsby-theme-author-base-src-pages-subscribe-js" */),
+  "component---packages-gatsby-theme-author-wpgraphql-src-templates-blog-js": () => import("./../../packages/gatsby-theme-author-wpgraphql/src/templates/blog.js" /* webpackChunkName: "component---packages-gatsby-theme-author-wpgraphql-src-templates-blog-js" */),
+  "component---packages-gatsby-theme-author-wpgraphql-src-templates-post-js": () => import("./../../packages/gatsby-theme-author-wpgraphql/src/templates/post.js" /* webpackChunkName: "component---packages-gatsby-theme-author-wpgraphql-src-templates-post-js" */),
   "component---src-gatsby-theme-author-base-pages-index-js": () => import("./../src/gatsby-theme-author-base/pages/index.js" /* webpackChunkName: "component---src-gatsby-theme-author-base-pages-index-js" */),
   "component---src-pages-speaking-js": () => import("./../src/pages/speaking.js" /* webpackChunkName: "component---src-pages-speaking-js" */)
 }
