@@ -12,7 +12,10 @@ exports.components = {
   "component---packages-gatsby-theme-author-base-src-pages-events-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-base/src/pages/events.js"))),
   "component---packages-gatsby-theme-author-base-src-pages-subscribe-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-base/src/pages/subscribe.js"))),
   "component---packages-gatsby-theme-author-wpgraphql-src-templates-blog-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-wpgraphql/src/templates/blog.js"))),
+  "component---packages-gatsby-theme-author-wpgraphql-src-templates-book-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-wpgraphql/src/templates/book.js"))),
+  "component---packages-gatsby-theme-author-wpgraphql-src-templates-category-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-wpgraphql/src/templates/category.js"))),
   "component---packages-gatsby-theme-author-wpgraphql-src-templates-post-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-wpgraphql/src/templates/post.js"))),
+  "component---packages-gatsby-theme-author-wpgraphql-src-templates-user-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/packages/gatsby-theme-author-wpgraphql/src/templates/user.js"))),
   "component---src-gatsby-theme-author-base-pages-index-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/site/src/gatsby-theme-author-base/pages/index.js"))),
   "component---src-pages-speaking-js": hot(preferDefault(require("/Users/wehand/author-profile-theme/site/src/pages/speaking.js")))
 }

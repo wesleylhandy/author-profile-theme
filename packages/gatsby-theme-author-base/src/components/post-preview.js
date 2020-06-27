@@ -16,7 +16,7 @@ const PostPreview = ({ post, blogBase, ...props }) => (
                 dangerouslySetInnerHTML={{__html:post.title}} 
             />
         </h2>
-      <div dangerouslySetInnerHTML={{__html: post.content.replace(/<div class="sharedaddy.*/i, "")}}/>
+      <div dangerouslySetInnerHTML={{__html: post.excerpt.replace(/<div class="sharedaddy.*/i, "")}}/>
       <Link 
         to={`${blogBase}/${post.slug}`} 
         className="read-link"

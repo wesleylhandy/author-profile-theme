@@ -4,14 +4,24 @@ import Layout from "gatsby-theme-author-base/src/components/layout"
 import PostList from "gatsby-theme-author-base/src/components/post-list"
 
 const PostsTemplate = () => {
-  // const { allWordpressPost } = useStaticQuery(graphql`
-  //   query {
-  //     }
-  // `)
-  // const posts = allWordpressPost.nodes
+  const data = useStaticQuery(graphql`
+    {
+      themeConfig {
+        blogBase
+      }
+      wpgraphql {
+        posts {
+          nodes {
+            ...PostFragment
+          }
+        }
+      }
+    }
+  `)
+  const posts = data.wpgraphql.posts.nodes || []
   return (
       <Layout>
-        <PostList posts={[]} />
+        <PostList posts={posts} />
       </Layout>
   )
 

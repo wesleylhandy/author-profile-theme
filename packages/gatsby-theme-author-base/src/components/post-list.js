@@ -3,9 +3,9 @@ import React from 'react'
 import { Link } from "gatsby"
 import { jsx } from 'theme-ui'
 import ConvertedDate from './convertedDate'
-const PostList = ({ posts }) => (
+const PostList = ({ heading = `Recent Posts`, posts }) => (
   <>
-    <h2>Recent Posts</h2>
+    <h2>{heading}</h2>
     <ul>
       {posts.map(post => (
         <li key={post.id}>

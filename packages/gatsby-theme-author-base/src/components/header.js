@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import React from "react"
 import { Heading, jsx } from "theme-ui"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Navigation from "./navigation"
 

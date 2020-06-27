@@ -49,23 +49,22 @@ class BlogPage extends Component {
   render() {
     const {
       data,
-      location,
       pageContext: { pageNumber },
     } = this.props
-    const BlogPageNumber = pageNumber ? ` Page ${pageNumber}` : ``
     return (
-      <Layout pageNumber={pageNumber} location={{ location }}>
-            {data &&
-              data.wpgraphql &&
-              data.wpgraphql.posts.nodes.map(post => (
-                <div key={post.id}>
-                  <PostPreview post={post} blogBase={data.themeConfig.blogBase}/>
-                </div>
-              ))}
-          
-              {this.renderPreviousLink()}
-           
-              {this.renderNextLink()}
+      <Layout pageNumber={pageNumber} >
+        <h2>Recent Posts</h2>
+        {data &&
+          data.wpgraphql &&
+          data.wpgraphql.posts.nodes.map(post => (
+            <div key={post.id}>
+              <PostPreview post={post} blogBase={data.themeConfig.blogBase}/>
+            </div>
+          ))}
+      
+          {this.renderPreviousLink()}
+        
+          {this.renderNextLink()}
         </Layout>
     )
   }
@@ -81,19 +80,7 @@ export const query = graphql`
     wpgraphql {
       posts(where: { in: $ids }) {
         nodes {
-          id
-          title
-          uri
-          slug
-          date
-          content: excerpt
-          author {
-            name
-            slug
-            avatar(size: 100) {
-              url
-            }
-          }
+          ...PostFragment
         }
       }
     }
