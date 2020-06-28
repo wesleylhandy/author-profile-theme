@@ -3,11 +3,11 @@ import { Container } from "theme-ui"
 import Header from './header'
 import Footer from './footer'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
 
   return (
     <>
-      <Header />
+      <Header location={location} />
       <Container>{children}</Container>
       <Footer />
     </>

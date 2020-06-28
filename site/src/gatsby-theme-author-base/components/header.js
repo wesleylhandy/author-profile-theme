@@ -1,11 +1,10 @@
 /** @jsx jsx */
-import React from "react"
 import { Heading, jsx } from "theme-ui"
 import { useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import Navigation from './navigation'
 
-const Header = () => {
+const Header = ({location}) => {
   const data = useStaticQuery(graphql`
     query {
       meta: site {
@@ -13,7 +12,7 @@ const Header = () => {
               title
           }
       }
-      headerBkg: file(name: {eq: "header-bg"}) {
+      headerBkg: file(name: {eq: "bg-short-trim-bottom"}) {
         childImageSharp {
           fluid(maxWidth: 980) {
             ...GatsbyImageSharpFluid
@@ -88,7 +87,7 @@ const Header = () => {
         </blockquote>
       </div>
       <Heading>{title}</Heading>
-      <Navigation />
+      <Navigation location={location}/>
     </header>
   )
 }

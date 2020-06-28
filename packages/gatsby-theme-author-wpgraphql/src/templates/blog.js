@@ -49,10 +49,11 @@ class BlogPage extends Component {
   render() {
     const {
       data,
+      location,
       pageContext: { pageNumber },
     } = this.props
     return (
-      <Layout pageNumber={pageNumber} >
+      <Layout pageNumber={pageNumber} location={location}>
         <h2>Recent Posts</h2>
         {data &&
           data.wpgraphql &&

@@ -212,6 +212,9 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         },
         ids: nodeIds,
       }
+      if (pageNumber === 0) {
+        blogPages[0].context.navLink = `Blog`
+      }
       nodes.map(post => {
         allPosts.push(post)
       })
@@ -226,12 +229,12 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const postTemplate = require.resolve(`./src/templates/post.js`)
 
     blogPages.map(blogPage => {
-      console.log(`createBlogPage ${blogPage.context.pageNumber}`)
+      console.log(`createBlogPage ${blogPage.path}`)
       createPage(blogPage)
     })
 
     allPosts.map(post => {
-      console.log(`create post: ${post.uri}`)
+      console.log(`create post: ${blogBase}/${post.slug}`)
       createPage({
         path: `${blogBase}/${post.slug}`,
         component: postTemplate,
@@ -267,7 +270,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const categoryTemplate = require.resolve(`./src/templates/category.js`)
 
     allTags.map(category => {
-      console.log(`create category: ${category.slug}`)
+      console.log(`create category: ${blogBase}/category/${category.slug}`)
       createPage({
         path: `${blogBase}/category/${category.slug}`,
         component: categoryTemplate,
@@ -300,7 +303,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const userTemplate = require.resolve(`./src/templates/user.js`)
 
     allUsers.map(user => {
-      console.log(`create user: ${user.slug}`)
+      console.log(`create user: ${blogBase}/author/${user.slug}`)
       createPage({
         path: `${blogBase}/author/${user.slug}`,
         component: userTemplate,
@@ -314,8 +317,6 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         booksAndPublications {
           books {
             books {
-              id
-              bookTitle
               authors {
                 author {
                   email
@@ -323,20 +324,35 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                   shortBio
                   url
                   profileImage {
+                    databaseId
+                    sourceUrl
+                    modified
                     imageFile {
                       childImageSharp {
                         fixed(width: 50) {
                           base64
-                          srcSet
                           src
+                          srcSet
                           width
                           height
                         }
                       }
                     }
-                    databaseId
-                    modified
-                    sourceUrl(size: LARGE)
+                  }
+                }
+              }
+              bookTitle
+              coverImage {
+                databaseId
+                modified
+                sourceUrl
+                imageFile {
+                  childImageSharp {
+                    fluid(maxWidth: 320) {
+                      src
+                      srcSet
+                      base64
+                    }
                   }
                 }
               }
@@ -346,28 +362,14 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                   endorsementText
                   rating
                   reviewUrl
-                  reviewerName
                   reviewerOrganization
                 }
               }
               excerpt
+              id
               isCanonical
               publisher
               slug
-              coverImage {
-                databaseId
-                sourceUrl
-                modified
-                imageFile {
-                  childImageSharp {
-                    fluid(maxWidth: 640) {
-                      base64
-                      src
-                      srcSet
-                    }
-                  }
-                }
-              }
               pricepoints {
                 edition
                 format
@@ -401,7 +403,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   await fetchBooks().then(allBooks => {
     const bookTemplate = require.resolve(`./src/templates/book.js`)
     allBooks.map(book => {
-      console.log(`create book: ${book.slug}`)
+      console.log(`create book: /books/${book.slug}`)
       createPage({
         path: `/books/${book.slug}`,
         component: bookTemplate,
@@ -410,5 +412,27 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         },
       })
     })
+  })
+}
+
+const isTopLevel = (path) => /^\/(?!(404)|(.*404.*))([0-9a-z-_])*\/*$/i.test(path)
+const convertPathToTitle = (path) => {
+  let str = path.replace(/\//g, "")
+  str = str.slice(0,1).toUpperCase() + str.slice(1)
+  return str
+}
+
+exports.onCreatePage = ({ page, actions }) => {
+  if (!isTopLevel(page.path)) {
+    return
+  }
+  const { createPage, deletePage } = actions
+  deletePage(page)
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      navLink: convertPathToTitle(page.path)
+    }
   })
 }

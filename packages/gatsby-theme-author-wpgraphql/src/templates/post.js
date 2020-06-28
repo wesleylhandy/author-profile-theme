@@ -5,6 +5,7 @@ import Post from "gatsby-theme-author-base/src/components/post"
 
 export const query = graphql`
 fragment PostFragment on WPGraphQL_Post {
+  id
   title
   content
   excerpt

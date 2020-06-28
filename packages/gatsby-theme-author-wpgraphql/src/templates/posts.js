@@ -19,9 +19,10 @@ const PostsTemplate = () => {
     }
   `)
   const posts = data.wpgraphql.posts.nodes || []
+  const blogBase = data.themeConfig.blogBase
   return (
       <Layout>
-        <PostList posts={posts} />
+        <PostList posts={posts} blogBase={blogBase}/>
       </Layout>
   )
 
