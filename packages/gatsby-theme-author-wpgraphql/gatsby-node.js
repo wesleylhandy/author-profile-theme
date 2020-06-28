@@ -313,9 +313,67 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       wpgraphql {
         booksAndPublications {
           books {
-            book {
-              customSlug
-              uniqId
+            books {
+              id
+              bookTitle
+              authors {
+                author {
+                  email
+                  name
+                  shortBio
+                  url
+                  profileImage {
+                    imageFile {
+                      childImageSharp {
+                        fixed(width: 50) {
+                          base64
+                          srcSet
+                          src
+                          width
+                          height
+                        }
+                      }
+                    }
+                    databaseId
+                    modified
+                    sourceUrl(size: LARGE)
+                  }
+                }
+              }
+              dateAvailableForPurchase
+              endorsements {
+                endorsement {
+                  endorsementText
+                  rating
+                  reviewUrl
+                  reviewerName
+                  reviewerOrganization
+                }
+              }
+              excerpt
+              isCanonical
+              publisher
+              slug
+              coverImage {
+                databaseId
+                sourceUrl
+                modified
+                imageFile {
+                  childImageSharp {
+                    fluid(maxWidth: 640) {
+                      base64
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+              pricepoints {
+                edition
+                format
+                isbn
+                price
+              }
             }
           }
         }
@@ -327,14 +385,14 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       wpgraphql: {
         booksAndPublications: {
           books: {
-            book
+            books
           },
         },
       },
     } = data
 
-    for (let idx in book) {
-      allBooks.push(book[idx])
+    for (let idx in books) {
+      allBooks.push(books[idx])
     }
 
     return allBooks
@@ -343,13 +401,12 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   await fetchBooks().then(allBooks => {
     const bookTemplate = require.resolve(`./src/templates/book.js`)
     allBooks.map(book => {
-      console.log(`create book: ${book.customSlug}`)
+      console.log(`create book: ${book.slug}`)
       createPage({
-        path: `/books/${book.customSlug}`,
+        path: `/books/${book.slug}`,
         component: bookTemplate,
         context: {
-          slug: book.customSlug,
-          id: book.uniqId
+          book
         },
       })
     })

@@ -1,11 +1,15 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "gatsby-theme-author-base/src/components/layout"
+import Book from "gatsby-theme-author-base/src/components/book"
 
-const BookTemplate = ({data = {}}) => (
+const BookTemplate = ({location, pageContext: {
+    book
+}}) => {
+    return (
     <Layout>
-      {/* <Book {...data} /> */}
+      <Book {...book} />
     </Layout>
   )
+}
   
   export default BookTemplate
