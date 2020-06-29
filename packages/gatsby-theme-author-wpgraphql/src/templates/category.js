@@ -5,13 +5,14 @@ import { graphql } from "gatsby"
 
 const CategoryTemplate = props => {
   const {
+    location,
     data: {
       themeConfig: { blogBase },
       wpgraphql: { category: { name, posts: { nodes } } },
     },
   } = props
   return (
-    <Layout>
+    <Layout location={location}>
       <h2>Category: {name}</h2>
       {nodes.map(post => (
           <div key={post.id}>

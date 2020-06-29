@@ -127,7 +127,7 @@ export const theme = {
         lineHeight: "body",
         marginBottom: 4,
         color: "gray.9"
-      }
+      },
     },
   }
   

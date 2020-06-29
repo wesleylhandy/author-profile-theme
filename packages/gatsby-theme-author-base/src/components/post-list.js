@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Link } from "gatsby"
 import { jsx } from 'theme-ui'
-import ConvertedDate from './convertedDate'
+import ConvertedDate from './converted-date'
 const PostList = ({ heading = `Recent Posts`, posts, titleOnly = false, blogBase }) => (
   <article>
     <h2>{heading}</h2>

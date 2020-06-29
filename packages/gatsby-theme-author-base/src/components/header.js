@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Navigation from "./navigation"
 
-const Header = () => {
+const Header = ({location}) => {
     const data = useStaticQuery(graphql`
         query {
             meta: site {
@@ -26,9 +26,9 @@ const Header = () => {
 
     return (
         <header id="masthead">
-            <Img fluid={img} alt="Be yourself, everyone else is already taken - Oscar Wilde." style={{maxWidth: 1920, margin: `0 auto`}}/>
             <Heading>{title}</Heading>
             <Navigation />
+            { location.pathname === "/" && <Img fluid={img} alt="Be yourself, everyone else is already taken - Oscar Wilde." style={{maxWidth: 1920, margin: `0 auto`}}/> }
         </header>   
     )
 }

@@ -100,6 +100,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       blogBase: String,
       eventsBase: String,
       faqBase: String,
+      booksBase: String,
     }
   `
   createTypes(typeDefs)
@@ -138,6 +139,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   const blogBase = options.blogBase || `/blog`
   const eventsBase = options.eventsBase || `/events`
   const faqBase = options.faqBase || `/faq`
+  const booksBase = options.booksBase || `/books`
   const GET_DATA = `
   query GET_DATA($first:Int $after:String){
     wpgraphql {
@@ -214,6 +216,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       }
       if (pageNumber === 0) {
         blogPages[0].context.navLink = `Blog`
+        blogPages[0].context.sortOrder = 10
       }
       nodes.map(post => {
         allPosts.push(post)
@@ -402,13 +405,171 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
 
   await fetchBooks().then(allBooks => {
     const bookTemplate = require.resolve(`./src/templates/book.js`)
+    const bookPageTemplate = require.resolve(`./src/templates/books.js`)
+    console.log(`createBooksPage ${booksBase}`)
+    createPage({
+      path: booksBase,
+      component: bookPageTemplate,
+      context: {
+        navLink: `Books`,
+        sortOrder: 1,
+      }
+    })
     allBooks.map(book => {
-      console.log(`create book: /books/${book.slug}`)
+      console.log(`create book: ${booksBase}/${book.slug}`)
       createPage({
-        path: `/books/${book.slug}`,
+        path: `${booksBase}/${book.slug}`,
         component: bookTemplate,
         context: {
           book
+        },
+      })
+    })
+  })
+
+  const GET_EVENTS = `
+    query GET_EVENTS {
+      wpgraphql {
+        eventsAndSpeakingEngagements {
+          events {
+            events {
+              endDatetime
+              eventDescription
+              eventAdmission {
+                admissionPrice
+                onSaleDate
+                ticketAvailability
+                ticketPurchaseUrl
+              }
+              eventLocation {
+                url
+                venue
+                address {
+                  city
+                  postalCode
+                  state
+                  streetAddress
+                }
+              }
+              eventType
+              eventName
+              id
+              isCanonical
+              slug
+              startDatetime
+              featuredImage {
+                databaseId
+                modified
+                sourceUrl
+                imageFile {
+                  childImageSharp {
+                    fluid(maxWidth: 640) {
+                      base64
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`
+  const allEvents = []
+  const fetchEvents = async () => await graphql(GET_EVENTS).then(({ data }) => {
+    const {
+      wpgraphql: {
+        eventsAndSpeakingEngagements: {
+          events: {
+            events
+          },
+        },
+      },
+    } = data
+
+    for (let idx in events) {
+      allEvents.push(events[idx])
+    }
+
+    return allEvents
+  })
+  await fetchEvents().then(allEvents => {
+    const eventTemplate = require.resolve(`./src/templates/event.js`)
+    const eventPageTemplate = require.resolve(`./src/templates/events.js`)
+    console.log(`createEventsPage ${eventsBase}`)
+    createPage({
+      path: eventsBase,
+      component: eventPageTemplate,
+      context: {
+        navLink: `Speaking`,
+        sortOrder: 5
+      }
+    })
+    allEvents.map(event => {
+      console.log(`create event: ${eventsBase}/${event.slug}`)
+      createPage({
+        path: `${eventsBase}/${event.slug}`,
+        component: eventTemplate,
+        context: {
+          event
+        },
+      })
+    })
+  })
+  const GET_FAQS = `
+    query GET_FAQS {
+      wpgraphql {
+        frequentlyAskedQuestions {
+          faq {
+            faqs {
+              answer
+              id
+              isCanonical
+              question
+              slug
+            }
+          }
+        }
+      }
+    }`
+    const allFaqs = []
+  const fetchFaqs = async () => await graphql(GET_FAQS).then(({ data }) => {
+    const {
+      wpgraphql: {
+        frequentlyAskedQuestions: {
+          faq: {
+            faqs
+          },
+        },
+      },
+    } = data
+
+    for (let idx in faqs) {
+      allFaqs.push(faqs[idx])
+    }
+
+    return allFaqs
+  })
+  await fetchFaqs().then(allFaqs => {
+    const faqTemplate = require.resolve(`./src/templates/faq.js`)
+    const faqPageTemplate = require.resolve(`./src/templates/faqs.js`)
+    console.log(`createFaqPage ${faqBase}`)
+    createPage({
+      path: faqBase,
+      component: faqPageTemplate,
+      context: {
+        navLink: `Faq`,
+        sortOrder: 9
+      }
+    })
+    allFaqs.map(faq => {
+      console.log(`create faq: ${faqBase}/${faq.slug}`)
+      createPage({
+        path: `${faqBase}/${faq.slug}`,
+        component: faqTemplate,
+        context: {
+          faq
         },
       })
     })
@@ -432,7 +593,8 @@ exports.onCreatePage = ({ page, actions }) => {
     ...page,
     context: {
       ...page.context,
-      navLink: convertPathToTitle(page.path)
+      navLink: convertPathToTitle(page.path),
+      sortOrder: 0
     }
   })
 }

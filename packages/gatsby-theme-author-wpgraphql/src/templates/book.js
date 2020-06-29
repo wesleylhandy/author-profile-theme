@@ -6,7 +6,7 @@ const BookTemplate = ({location, pageContext: {
     book
 }}) => {
     return (
-    <Layout>
+    <Layout location={location}>
       <Book {...book} />
     </Layout>
   )

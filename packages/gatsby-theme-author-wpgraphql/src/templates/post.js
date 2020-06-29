@@ -43,8 +43,8 @@ query GET_POST($id: ID!) {
 }
 `
 
-const PostTemplate = ({data: { wpgraphql: { post }}}) => (
-  <Layout>
+const PostTemplate = ({location, data: { wpgraphql: { post }}}) => (
+  <Layout location={location}>
     <Post {...post} />
   </Layout>
 )

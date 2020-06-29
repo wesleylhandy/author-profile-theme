@@ -61,6 +61,7 @@ module.exports = {
           typeName: `WPGraphQL`,
         },
         blogBase: `/blog`,
+        booksBase: `/books`,
         eventsBase: `/events`,
         faqBase: `/faq`,
       },

@@ -5,13 +5,14 @@ import { graphql } from "gatsby"
 
 const User = props => {
   const {
+    location,
     data: {
      themeConfig: { blogBase },
       wpgraphql: { user: { name, posts: { nodes } } },
     },
   } = props
   return (
-    <Layout>
+    <Layout location={location}>
         <h2>Posts by {name}</h2>
         {nodes.map(post => (
             <div key={post.id}>

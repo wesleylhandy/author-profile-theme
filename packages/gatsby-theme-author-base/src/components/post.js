@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import React from "react"
 import { Link } from 'theme-ui'
-import ConvertedDate from './convertedDate'
+import { jsx } from 'theme-ui'
+import ConvertedDate from './converted-date'
 
 const Post = ({ title, author, content, date, link, modified, slug }) => (
   <div>
@@ -14,7 +16,10 @@ const Post = ({ title, author, content, date, link, modified, slug }) => (
         {`. `}
         { 
             modified !== date && (
-            <span>Last Modified on <ConvertedDate rawDate={modified}/></span>
+              <>
+                <br/>
+                <small sx={{ color: `gray.6`}}><i>Last Modified on <ConvertedDate rawDate={modified}/></i></small>
+              </>
             )
         }
     </p>

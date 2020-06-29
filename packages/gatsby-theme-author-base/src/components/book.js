@@ -1,7 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
 import { Link } from 'theme-ui'
-import ConvertedDate from './convertedDate'
 
 const Author = ({email, name, profileImage, shortBio, url}) => (
     <div className="author-block">
@@ -41,11 +40,15 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
         <div>
             <h2 dangerouslySetInnerHTML={{__html: bookTitle}} />
             {
-                dateAvailableForPurchase && <div className="availability">Available for purchase: {new Date(dateAvailableForPurchase).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}</div>
+                dateAvailableForPurchase ? (
+                    <div className="availability">Available for purchase: {new Date(dateAvailableForPurchase).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                    })}</div>
+                ) : (
+                    <div className="availability">Release Date: COMING SOON!</div>
+                )
             }
             {
                 coverImage && <Img fluid={coverImage.imageFile.childImageSharp.fluid} />
