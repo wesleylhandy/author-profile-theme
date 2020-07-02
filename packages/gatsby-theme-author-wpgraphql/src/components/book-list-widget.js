@@ -35,7 +35,7 @@ const BookListWidget = ({heading}) => {
     }`)
     const { wpgraphql: { booksAndPublications: { bookList: { books } } } } = data
     return (
-        <article className="booklist-widget">
+        <article className="booklist-widget" sx={{ padding: 10, border: `5px solid`, borderColor: `primary`, maxWidth: 280, margin: `30px auto`}}>
           <h2>{heading}</h2>
           <ul>
             {books.map(book => (

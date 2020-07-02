@@ -19,7 +19,9 @@ const PostListWidget = ({heading}) => {
     }`)
     const { themeConfig: { blogBase }, wpgraphql: { postList: { posts } } } = data
     return (
+      <div sx={{ padding: 10, border: `5px solid`, borderColor: `primary`, maxWidth: 280, margin: `30px auto`}}>
         <PostList heading={heading} posts={posts} titleOnly={true} blogBase={blogBase} />
+      </div>
     )
 }
 
