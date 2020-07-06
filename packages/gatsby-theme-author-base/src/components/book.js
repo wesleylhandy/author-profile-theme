@@ -35,7 +35,7 @@ const Endorsement= ({ endorsementText, rating, reviewUrl, reviewerName, reviewer
     </div>
 )
 
-const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], excerpt, isCanonical, publisher, pricepoints = [] }) => {
+const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], excerpt, publisher }) => {
     return (
         <div>
             <h2 dangerouslySetInnerHTML={{__html: bookTitle}} />

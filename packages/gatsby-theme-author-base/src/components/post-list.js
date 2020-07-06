@@ -23,7 +23,7 @@ const PostList = ({ heading = `Recent Posts`, posts, titleOnly = false, blogBase
                 <p>
                   Originally Published by {post.author.name}
                   {` on `}
-                  <ConvertedDate rawDate={post.date}/>
+                  <ConvertedDate rawDate={post.published}/>
                   {`.`}
                 </p>
               </>

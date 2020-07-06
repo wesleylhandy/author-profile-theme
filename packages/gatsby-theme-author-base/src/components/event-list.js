@@ -13,7 +13,6 @@ const EventList = ({ events, heading = "Upcoming Events", eventsBase }) => (
           const timezone = "-05:00"
           const start = convertToTimeZone({datetime: event.startDatetime, timezone})
           const end = convertToTimeZone({datetime: event.endDatetime, timezone})
-          console.log({start, end})
           return (
             <li key={event.id}>
               <h3>

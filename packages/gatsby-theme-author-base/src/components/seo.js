@@ -1,17 +1,41 @@
 /**
- * SEO component that queries for data with
+ * Seo component that queries for data with
  *  Gatsby's useStaticQuery React hook
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import SchemaOrg from "./schema-org"
-import { StaticQuery, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Helmet } from 'react-helmet'
+import SchemaOrg from './schema-org'
+import { StaticQuery, graphql } from 'gatsby'
+import { useThemeUI } from 'theme-ui'
+import {
+  BookType,
+  ArticleType,
+  OGImageType,
+  FacebookType,
+  TwitterType,
+} from '../utils/metadata-types'
 
-function SEO({
+// https://ogp.me/?fbclid=IwAR0XVIuZzMErguCuafN9N107VY66QctP_G_YpnCvMy6u4j7Hyzz9EMGHkR8#types
+const validTypes = [
+  `article`,
+  `book`,
+  `profile`,
+  `website`,
+  `music.song`,
+  `music.album`,
+  `music.playlist`,
+  `music.radio_station`,
+  `video.movie`,
+  `video.episode`,
+  `video.tv_show`,
+  `video.other`,
+]
+
+function Seo({
   description,
   lang,
   meta,
@@ -19,33 +43,74 @@ function SEO({
   image,
   title,
   pathname,
-  isBlogPost,
+  type,
+  schema,
   author,
   datePublished = '',
   dateModified = '',
 }) {
+  const { theme } = useThemeUI()
   return (
     <StaticQuery
       query={detailsQuery}
-      render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
-        const metaImage =
-          image && image.src
-            ? `${data.site.siteMetadata.siteUrl}${image.src}`
-            : null
-        const siteUrl = data.site.siteMetadata.siteUrl
+      render={(data) => {
+        const {
+          site: { siteMetadata },
+          logo,
+          baseSettings: { googleFontsFamily },
+        } = data
+        const metaDescription = description || siteMetadata.description
+        const metaImage = image && image.src ? `${siteMetadata.siteUrl}${image.src}` : null
+        const siteUrl = siteMetadata.siteUrl
         const metaUrl = `${siteUrl}${pathname}`
-        const organization = data.site.siteMetadata.organization
-        organization.logo = {
-          url: `${data.site.siteMetadata.siteUrl}${data.logo.childImageSharp.fixed.src}`,
-          width: data.logo.childImageSharp.fixed.width,
-          height: data.logo.childImageSharp.fixed.height,
+        const logoImg = logo && logo.childImageSharp.fixed
+        const organization = siteMetadata.organization
+        if (logoImg) {
+          organization.logo = {
+            url: `${siteMetadata.siteUrl}${logoImg.src}`,
+            width: logoImg.width,
+            height: logoImg.height,
+          }
         }
-        const theme =
-          typeof window !== "undefined" && window.__theme
-            ? window.__theme
-            : null
+
+        const secureUrl = metaImage && metaImage.indexOf('https') > -1 ? metaImage : null
+        const metaTags = [
+          {
+            name: 'theme-color',
+            content: theme.colors.primary,
+          },
+          {
+            name: `description`,
+            content: metaDescription,
+          },
+          {
+            name: `google-site-verification`,
+            content: siteMetadata.siteVerification.google,
+          },
+          {
+            name: `msvalidate.01`,
+            content: siteMetadata.siteVerification.bing,
+          },
+        ]
+          .concat(
+            metaImage
+              ? [
+                  {
+                    property: 'image',
+                    content: metaImage,
+                  },
+                ]
+              : []
+          )
+          .concat(
+            keywords.length > 0
+              ? {
+                  name: `keywords`,
+                  content: keywords.join(`, `),
+                }
+              : []
+          )
+          .concat(meta)
         return (
           <>
             <Helmet
@@ -53,144 +118,33 @@ function SEO({
                 lang,
               }}
               title={title}
-              titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+              titleTemplate={`%s | ${siteMetadata.title}`}
               link={[
                 {
-                  rel: "canonical",
+                  rel: 'canonical',
                   href: metaUrl,
                 },
                 {
-                  rel: "amphtml",
+                  rel: 'amphtml',
                   href: `${siteUrl}/amp${pathname}`,
                 },
+                {
+                  rel: 'stylesheet',
+                  href: `https://fonts.googleapis.com/css2?family=${googleFontsFamily}&display=swap`,
+                },
               ]}
-              meta={[
-                {
-                  name: "theme-color",
-                  content: theme === "light" ? "#ffd42a" : "#d6bc53",
-                },
-                {
-                  name: `description`,
-                  content: metaDescription,
-                },
-                {
-                  property: `og:title`,
-                  content: title,
-                },
-                {
-                  property: `og:url`,
-                  content: metaUrl,
-                },
-                {
-                  property: `og:description`,
-                  content: metaDescription,
-                },
-                {
-                  property: `og:type`,
-                  content: isBlogPost ? `article` : `website`,
-                },
-                {
-                  name: `twitter:card`,
-                  content: `summary`,
-                },
-                {
-                  name: `twitter:creator`,
-                  content: data.site.siteMetadata.social.twitter,
-                },
-                {
-                  name: `twitter:title`,
-                  content: title,
-                },
-                {
-                  name: `twitter:description`,
-                  content: metaDescription,
-                },
-                {
-                  name: `google-site-verification`,
-                  content: data.site.siteMetadata.siteVerification.google,
-                },
-                {
-                  name: `msvalidate.01`,
-                  content: data.site.siteMetadata.siteVerification.bing,
-                },
-              ]
-                .concat(
-                  metaImage
-                    ? [
-                        {
-                          property: "image",
-                          content: metaImage,
-                        },
-                        {
-                          property: "og:image",
-                          content: metaImage,
-                        },
-                        {
-                          property: "og:image:width",
-                          content: image.width,
-                        },
-                        {
-                          property: "og:image:height",
-                          content: image.height,
-                        },
-                        {
-                          property: "og:image:alt",
-                          content: image.alt,
-                        },
-                        {
-                          property: "twitter:image",
-                          content: metaImage,
-                        },
-                        {
-                          property: "twitter:image:alt",
-                          content: image.alt,
-                        },
-                        {
-                          name: "twitter:card",
-                          content: "summary_large_image",
-                        },
-                      ]
-                    : [
-                        {
-                          name: "twitter:card",
-                          content: "summary",
-                        },
-                      ]
-                )
-                .concat(
-                  metaImage && metaImage.indexOf("https") > -1
-                    ? [
-                        {
-                          property: "twitter:image:secure_url",
-                          content: metaImage,
-                        },
-                        {
-                          property: "og:image:secure_url",
-                          content: metaImage,
-                        },
-                      ]
-                    : []
-                )
-                .concat(
-                  keywords.length > 0
-                    ? {
-                        name: `keywords`,
-                        content: keywords.join(`, `),
-                      }
-                    : []
-                )
-                .concat(meta)}
+              meta={metaTags}
             />
             <SchemaOrg
-              isBlogPost={isBlogPost}
+              type={type}
               url={metaUrl}
               title={title}
               image={metaImage}
               description={metaDescription}
               datePublished={datePublished}
               dateModified={dateModified}
-              canonicalUrl={data.site.siteMetadata.siteUrl}
-              author={isBlogPost ? author : data.site.siteMetadata.author}
+              canonicalUrl={siteMetadata.siteUrl}
+              author={type === `article` ? author : siteMetadata.author}
               organization={organization}
               defaultTitle={title}
             />
@@ -201,15 +155,15 @@ function SEO({
   )
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
   pathname: ``,
-  isBlogPost: false,
+  type: `website`,
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
   description: PropTypes.string,
   image: PropTypes.object,
   lang: PropTypes.string,
@@ -218,15 +172,54 @@ SEO.propTypes = {
   title: PropTypes.string.isRequired,
   pathname: PropTypes.string,
   author: PropTypes.object,
-  isBlogPost: PropTypes.bool,
+  type: PropTypes.string,
   datePublished: PropTypes.string,
   dateModified: PropTypes.string,
+  schema: PropTypes.oneOfType([
+    PropTypes.shape({
+      authors: PropTypes.arrayOf(PropTypes.shape({
+        author: PropTypes.shape({
+          email: PropTypes.string,
+          name: PropTypes.string,
+          url: PropTypes.string,
+        })
+      })),
+      bookTitle: PropTypes.string,
+      dateAvailableForPurchase: PropTypes.string,
+      publisher: PropTypes.string,
+      pricepoints: PropTypes.arrayOf(PropTypes.shape({
+        edition: PropTypes.string,
+        format: PropTypes.string,
+        isbn: PropTypes.string,
+        price: PropTypes.number,
+      })),
+      slug: PropTypes.string,
+    }),
+    PropTypes.shape({
+      date: PropTypes.string,
+      modified: PropTypes.string,
+      link: PropTypes.string,
+      slug: PropTypes.string,
+      author: PropTypes.shape({
+        name: PropTypes.string,
+        slug: PropTypes.string
+      }),
+      categories: PropTypes.shape({
+        nodes: PropTypes.arrayOf(PropTypes.shape({
+          name: PropTypes.string
+        }))
+      })
+    }),
+  ]),
 }
 
-export default SEO
+export default Seo
 
 const detailsQuery = graphql`
-  query DefaultSEOQuery {
+  query DefaultSeoQuery {
+    baseSettings {
+      googleFontsFamily
+    }
     site {
       siteMetadata {
         title
@@ -249,15 +242,16 @@ const detailsQuery = graphql`
         }
       }
     }
-    logo: file(relativePath: { eq: "images/organization-logo.png" }) {
-      childImageSharp {
-        fixed(width: 500) {
-          ...GatsbyImageSharpFixed
-          height
-          width
-          src
-        }
-      }
-    }
   }
 `
+
+// logo: file(relativePath: { eq: "images/organization-logo.png" }) {
+//   childImageSharp {
+//     fixed(width: 500) {
+//       ...GatsbyImageSharpFixed
+//       height
+//       width
+//       src
+//     }
+//   }
+// }

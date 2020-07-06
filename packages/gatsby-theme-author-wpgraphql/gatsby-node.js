@@ -320,6 +320,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         booksAndPublications {
           books {
             books {
+              id
               authors {
                 author {
                   email
@@ -328,8 +329,8 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                   url
                   profileImage {
                     databaseId
-                    sourceUrl
                     modified
+                    sourceUrl
                     imageFile {
                       childImageSharp {
                         fixed(width: 50) {
@@ -341,44 +342,68 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                         }
                       }
                     }
+                    altText
                   }
                 }
               }
               bookTitle
-              coverImage {
-                databaseId
-                modified
-                sourceUrl
-                imageFile {
-                  childImageSharp {
-                    fluid(maxWidth: 320) {
-                      src
-                      srcSet
-                      base64
-                    }
-                  }
-                }
-              }
               dateAvailableForPurchase
-              endorsements {
-                endorsement {
-                  endorsementText
-                  rating
-                  reviewUrl
-                  reviewerOrganization
-                }
-              }
               excerpt
-              id
               isCanonical
               publisher
-              slug
               pricepoints {
                 edition
                 format
                 isbn
                 price
               }
+              endorsements {
+                endorsement {
+                  endorsementText
+                  rating
+                  reviewUrl
+                  reviewerName
+                  reviewerOrganization
+                }
+              }
+              coverImage {
+                altText
+                databaseId
+                modified
+                sourceUrl
+                imageFile {
+                  childImageSharp {
+                    fluid(maxWidth: 320) {
+                      base64
+                      src
+                      srcSet
+                      sizes
+                    }
+                  }
+                }
+              }
+              seo {
+                seoTitle
+                seoDescription
+                socialSharingImage {
+                  altText
+                  databaseId
+                  modified
+                  sourceUrl
+                  imageFile {
+                    childImageSharp {
+                      fixed(width: 1200) {
+                        src
+                        srcSet
+                        width
+                        height
+                        base64
+                      }
+                    }
+                  }
+                }
+              }
+              slug
             }
           }
         }

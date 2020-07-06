@@ -9,7 +9,8 @@ const siteMetadata = {
   description: ``,
   author: {
     name: `Joan C. Benson`,
-    email: ``
+    email: ``,
+    amazonUrl: `https://www.amazon.com/Joan-C-Benson/e/B08C9CFVT8`
   },
   siteUrl,
   siteVerification: {
@@ -50,6 +51,7 @@ module.exports = {
         basePath: `/blog`,
         headerMaxWidth: 980,
         imagesContentPath: path.join(__dirname, `images`),
+        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700`
       },
     },
     {

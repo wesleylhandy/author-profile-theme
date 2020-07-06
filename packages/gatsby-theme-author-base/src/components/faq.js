@@ -1,10 +1,10 @@
 import React from "react"
 
 const Faq = ({ question, answer }) => (
-    <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <h3 itemprop="name">{question}</h3>
-        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <div itemprop="text" dangerouslySetInnerHTML={{__html: answer}} />
+    <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+        <h3 itemProp="name">{question}</h3>
+        <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+            <div itemProp="text" dangerouslySetInnerHTML={{__html: answer}} />
         </div>
     </div>
 )

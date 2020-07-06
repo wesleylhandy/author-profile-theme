@@ -26,7 +26,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       basePath: String,
       imagesName: String,
       imagesContentPath: String,
-      gaTackingId: String
+      gaTackingId: String,
+      googleFontsFamily: String,
     }
   `)
 }

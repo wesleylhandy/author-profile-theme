@@ -11,7 +11,7 @@ const SchemaOrg =
     defaultTitle,
     description,
     imageUrl,
-    isBlogPost,
+    type,
     organization,
     title,
     url,
@@ -26,9 +26,13 @@ const SchemaOrg =
       },
     ];
 
-    const schema = isBlogPost
-      ? [
-          ...baseSchema,
+    let articleSchema = []
+    let bookSchema = []
+    let eventSchema = []
+
+    switch (type) {
+      case `article`:
+        articleSchema = [
           {
             '@context': 'http://schema.org',
             '@type': 'BreadcrumbList',
@@ -80,7 +84,26 @@ const SchemaOrg =
             dateModified
           },
         ]
-      : baseSchema;
+        break;
+      case `book`:
+        bookSchema = [
+
+        ]
+        break;
+      case `event`: 
+        eventSchema = [
+
+        ]
+      default:
+        break;
+    }
+
+    const schema = [
+          ...baseSchema,
+          ...articleSchema,
+          ...bookSchema,
+          ...eventSchema
+        ]
 
     return (
       <Helmet>
@@ -91,7 +114,7 @@ const SchemaOrg =
   }
 
 SchemaOrg.defaultProps = {
-  isBlogPost: false,
+  type: `website`,
 }
 SchemaOrg.propTypes = {
     author: PropTypes.shape({
@@ -104,7 +127,7 @@ SchemaOrg.propTypes = {
     defaultTitle: PropTypes.string.isRequired,
     description: PropTypes.string,
     imageUrl: PropTypes.string,
-    isBlogPost: PropTypes.bool,
+    type: PropTypes.string,
     organization: PropTypes.shape({
       logo: PropTypes.shape({
         url: PropTypes.string,
@@ -117,4 +140,4 @@ SchemaOrg.propTypes = {
     url: PropTypes.string.isRequired,
 }
 
-export default memo(SchemaOrg);
+export default () => null //memo(SchemaOrg);

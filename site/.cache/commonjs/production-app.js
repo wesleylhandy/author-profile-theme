@@ -22,7 +22,7 @@ var _emitter = _interopRequireDefault(require("./emitter"));
 
 var _pageRenderer = _interopRequireDefault(require("./page-renderer"));
 
-var _asyncRequires = _interopRequireDefault(require("./async-requires"));
+var _asyncRequires = _interopRequireDefault(require("$virtual/async-requires"));
 
 var _loader = require("./loader");
 
@@ -30,7 +30,7 @@ var _ensureResources = _interopRequireDefault(require("./ensure-resources"));
 
 var _stripPrefix = _interopRequireDefault(require("./strip-prefix"));
 
-var _matchPaths = _interopRequireDefault(require("./match-paths.json"));
+var _matchPaths = _interopRequireDefault(require("$virtual/match-paths.json"));
 
 // Generated during bootstrap
 const loader = new _loader.ProdLoader(_asyncRequires.default, _matchPaths.default);

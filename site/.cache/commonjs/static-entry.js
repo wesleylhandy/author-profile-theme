@@ -44,7 +44,7 @@ const {
 
 const apiRunner = require(`./api-runner-ssr`);
 
-const syncRequires = require(`./sync-requires`);
+const syncRequires = require(`$virtual/sync-requires`);
 
 const {
   version: gatsbyVersion

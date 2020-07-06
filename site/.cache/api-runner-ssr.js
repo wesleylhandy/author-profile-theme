@@ -18,7 +18,7 @@ var plugins = [{
       options: {"plugins":[],"maintainCase":true,"removeAccents":true},
     },{
       plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-plugin-tinacms/gatsby-ssr'),
-      options: {"plugins":[{"resolve":"/Users/wehand/author-profile-theme/node_modules/gatsby-tinacms-git","id":"ca65af08-4c10-5e6f-8b14-831709d38ab4","name":"gatsby-tinacms-git","version":"0.5.3","pluginOptions":{"plugins":[]},"nodeAPIs":["onCreateDevServer"],"browserAPIs":["onClientEntry"],"ssrAPIs":[]},{"resolve":"/Users/wehand/author-profile-theme/node_modules/gatsby-tinacms-remark","id":"4e049a88-2f70-5135-883f-87a76d01585d","name":"gatsby-tinacms-remark","version":"0.8.2","pluginOptions":{"plugins":[]},"nodeAPIs":["setFieldsOnGraphQLNodeType"],"browserAPIs":["onClientEntry"],"ssrAPIs":[]}],"sidebar":{"hidden":false,"position":"displace"}},
+      options: {"plugins":[{"resolve":"/Users/wehand/author-profile-theme/node_modules/gatsby-tinacms-git","id":"ca65af08-4c10-5e6f-8b14-831709d38ab4","name":"gatsby-tinacms-git","version":"0.5.6","pluginOptions":{"plugins":[]},"nodeAPIs":["onCreateDevServer"],"browserAPIs":["onClientEntry"],"ssrAPIs":[]},{"resolve":"/Users/wehand/author-profile-theme/node_modules/gatsby-tinacms-remark","id":"4e049a88-2f70-5135-883f-87a76d01585d","name":"gatsby-tinacms-remark","version":"0.8.5","pluginOptions":{"plugins":[]},"nodeAPIs":["setFieldsOnGraphQLNodeType"],"browserAPIs":["onClientEntry"],"ssrAPIs":[]}],"sidebar":{"hidden":false,"position":"displace"}},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [

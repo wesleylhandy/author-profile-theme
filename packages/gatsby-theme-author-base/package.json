@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-author-base",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "gatsby-node.js",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",

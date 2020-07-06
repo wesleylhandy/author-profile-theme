@@ -1,10 +1,17 @@
+/** @jsx jsx */
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import Img from "gatsby-image"
+import { jsx } from "theme-ui"
 import Layout from 'gatsby-theme-author-base/src/components/layout'
 import Book from 'gatsby-theme-author-base/src/components/book'
+import Seo from 'gatsby-theme-author-base/src/components/seo'
 
 const BooksPage = ({ location, data }) => {
   const {
+    themeConfig: {
+      booksBase,
+    },
     wpgraphql: {
       booksAndPublications: {
         bookList: { books },
@@ -13,9 +20,32 @@ const BooksPage = ({ location, data }) => {
   } = data
   return (
     <Layout location={location}>
-      {books.map((book, idx) => (
-        <Book key={`book-${idx}`} {...book} />
-      ))}
+      <Seo 
+        type="website" 
+        title="Books Page"
+      />
+      <article>
+        <h2>My Books</h2>
+        <ul>
+        {books.map((book, idx) => (
+          <li key={book.id}>
+            <h3>
+              <b>
+                <Link 
+                  sx={{color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }}} 
+                  to={`${booksBase}/${book.slug}`} 
+                  dangerouslySetInnerHTML={{__html:book.bookTitle}} 
+                />
+              </b>
+            </h3>
+            {
+              book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />
+            }
+            <div className="book-excerpt" dangerouslySetInnerHTML={{__html: book.excerpt }} />
+          </li>
+        ))}
+        </ul>
+      </article>
     </Layout>
   )
 }
