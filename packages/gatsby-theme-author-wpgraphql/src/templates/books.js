@@ -27,23 +27,23 @@ const BooksPage = ({ location, data }) => {
       <article>
         <h2>My Books</h2>
         <ul>
-        {books.map((book, idx) => (
-          <li key={book.id}>
-            <h3>
-              <b>
-                <Link 
-                  sx={{color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }}} 
-                  to={`${booksBase}/${book.slug}`} 
-                  dangerouslySetInnerHTML={{__html:book.bookTitle}} 
-                />
-              </b>
-            </h3>
-            {
-              book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />
-            }
-            <div className="book-excerpt" dangerouslySetInnerHTML={{__html: book.excerpt }} />
-          </li>
-        ))}
+        {books.map((book, idx) => {
+          const title = book.bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '');
+          return (
+            <li key={book.id}>
+              <h3>
+                  <Link 
+                    to={`${booksBase}/${book.slug}`} 
+                  >{title}
+                  </Link>
+              </h3>
+              {
+                book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />
+              }
+              <div className="book-excerpt" dangerouslySetInnerHTML={{__html: book.excerpt }} />
+            </li>
+            )
+          })}
         </ul>
       </article>
     </Layout>

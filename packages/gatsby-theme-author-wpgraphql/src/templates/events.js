@@ -1,10 +1,16 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+/** @jsx jsx */
+import { jsx, Button, Box } from 'theme-ui'
+import { graphql, Link, navigate } from "gatsby"
 import Layout from 'gatsby-theme-author-base/src/components/layout';
-import Event from "gatsby-theme-author-base/src/components/event"
+import Seo from 'gatsby-theme-author-base/src/components/seo'
+import { convertToTimeZone } from "gatsby-theme-author-base/src/utils/time-helpers"
+import EventDate from "gatsby-theme-author-base/src/components/event-date"
 
 const EventsPage = ({location, data}) => {
     const {
+      themeConfig: {
+        eventsBase
+      },
         wpgraphql: {
           eventsAndSpeakingEngagements: {
             events: {
@@ -15,7 +21,36 @@ const EventsPage = ({location, data}) => {
       } = data
     return (
         <Layout location={location}>
-            {events.map((event, idx) => <Event key={`event-${idx}`} {...event} />)}
+          <Seo 
+            type="website" 
+            title="Events Page"
+          />
+          <h2>Recent Events</h2>
+          {events.map((event, idx) => {
+            const timezone = "-05:00"
+            const start = convertToTimeZone({datetime: event.startDatetime, timezone})
+            const end = convertToTimeZone({datetime: event.endDatetime, timezone})
+            const toEvent = `${eventsBase}/${event.slug}`
+            return (
+              <div key={event.id} sx={{ backgroundColor: idx % 2 === 1 ? 'gray.3' : `transparent`, padding: 15}}>
+                <h3>
+                  <Link 
+                    to={toEvent} 
+                    dangerouslySetInnerHTML={{__html:event.eventName}} 
+                  />
+                </h3>
+                <p>
+                  <EventDate startDate={start} endDate={end} />
+                </p>
+                <Box my={3}>
+                  <Button
+                    onClick={() => navigate(toEvent)} 
+                    variant="primary" 
+                  >Learn More</Button>
+                </Box>
+              </div>
+            )
+          })}
         </Layout>
     )
 }
@@ -51,6 +86,7 @@ export const query = graphql`
               }
               eventType
               eventName
+              id
               slug
               startDatetime
               featuredImage {

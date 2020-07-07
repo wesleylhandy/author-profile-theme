@@ -1,4 +1,6 @@
-import React, { Component } from "react"
+/** @jsx jsx */
+import { jsx, Button, Grid } from 'theme-ui'
+import { Component } from "react"
 import { graphql, navigate } from "gatsby"
 import Layout from 'gatsby-theme-author-base/src/components/layout'
 import Seo from 'gatsby-theme-author-base/src/components/seo'
@@ -22,9 +24,15 @@ class BlogPage extends Component {
     }
 
     return (
-      <button onClick={() => navigate(previousLink)}>
+      <Button 
+        onClick={() => navigate(previousLink)} 
+        variant="primary"           
+        sx={{
+          gridColumnStart:1,
+          gridColumnEnd:2
+        }}>
         Previous Posts
-      </button>
+      </Button>
     )
   }
 
@@ -36,11 +44,16 @@ class BlogPage extends Component {
 
     if (hasNextPage) {
       return (
-        <button
+        <Button
           onClick={() => navigate(`${data.themeConfig.blogBase}/page/${pageNumber + 1}`)}
+          variant="primary"
+          sx={{
+            gridColumnStart:2,
+            gridColumnEnd:3
+          }}
         >
           Next Posts
-        </button>
+        </Button>
       )
     } else {
       return null
@@ -62,15 +75,16 @@ class BlogPage extends Component {
         <h2>Recent Posts</h2>
         {data &&
           data.wpgraphql &&
-          data.wpgraphql.posts.nodes.map(post => (
-            <div key={post.id}>
+          data.wpgraphql.posts.nodes.map((post, idx) => (
+            <div key={post.id} sx={{ backgroundColor: idx % 2 === 1 ? 'gray.3' : `transparent`, padding: 15}}>
               <PostPreview post={post} blogBase={data.themeConfig.blogBase}/>
             </div>
           ))}
-      
+          <Grid my={3} gap={2} columns={[2, '1fr 1fr']}>
           {this.renderPreviousLink()}
         
           {this.renderNextLink()}
+          </Grid>
         </Layout>
     )
   }

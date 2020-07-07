@@ -7,7 +7,7 @@ const EventDate = ({ startDate, endDate }) => {
     const isOneDay = start.toDateString() === end.toDateString()
     return (
       <>
-        <time dateTime={start.toISOString()}>
+        <time dateTime={start.toISOString()} key="time-oneday">
           {getDate(start, { year: isOneDay })}
           {`, `}
           {getTime(start) + ( isOneDay ? (` - ` + getTime(end)) : ``)}
@@ -15,7 +15,7 @@ const EventDate = ({ startDate, endDate }) => {
         {!isOneDay && (
           <>
             –
-            <time dateTime={end.toISOString()}>
+            <time dateTime={end.toISOString()} key="time-multiday">
               {getDate(end, { month: start.getMonth() !== end.getMonth() })}
               {`, `}
               {getTime(end)}

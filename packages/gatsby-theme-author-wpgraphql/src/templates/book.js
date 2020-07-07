@@ -7,8 +7,6 @@ const BookTemplate = ({location, pageContext: { book: { seo = {}, endorsements, 
     const title = seo.seoTitle
     const description = seo.seoDescription
     const image = seo.socialSharingImage ? seo.socialSharingImage.imageFile.childImageSharp.fixed : null
-    console.log(book)
-    console.log(endorsements)
     return (
     <Layout location={location}>
       <Seo 

@@ -43,7 +43,7 @@ const BookListWidget = ({heading}) => {
                   <h3>
                       <b>
                           <Link 
-                              sx={{color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }}} 
+
                               to={`/books/${book.slug}`}
                               dangerouslySetInnerHTML={{__html:book.bookTitle}} 
                           >

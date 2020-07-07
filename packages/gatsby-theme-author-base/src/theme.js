@@ -11,7 +11,7 @@ export const theme = {
       body: "Montserrat, serif",
       heading: "'Open Sans', sans-serif",
     },
-    fontSizes: [...tailwind.space],
+    fontSizes: [12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80],
     lineHeights: {
       body: 1.45,
       heading: 1.1,
@@ -34,6 +34,7 @@ export const theme = {
       }
     },
     sizes: {
+      small: "320px",
       default: "90vw",
       full: "100vw",
       max: "1920px",
@@ -47,7 +48,7 @@ export const theme = {
         maxWidth: ["full", "full", "full", "max"],
         width: ["full", "full", "full", "max"],
         padding: 4,
-        fontSize: 4,
+        fontSize: 5,
         textAlign: ["center", "center", "center", "left"],
         a: {
           color: "inherit",
@@ -57,6 +58,42 @@ export const theme = {
       links: {
         bold: {
           fontWeight: 'bold'
+        }
+      },
+      buttons: {
+        backgroundColor: "white",
+        '&:hover': {
+          color: "white",
+        },
+        primary: {
+          color: "primary",
+          backgroundColor: "white",
+          border: "2px solid",
+          borderColor: "primary",
+          '&:hover': {
+            color: "white",
+            backgroundColor: "primary",
+          }
+        },
+        secondary: {
+          color: "secondary",
+          backgroundColor: "white",
+          border: "2px solid",
+          borderColor: "secondary",
+          '&:hover': {
+            color: "white",
+            backgroundColor: "secondary",
+          }
+        },
+        tertiary: {
+          color: "tertiary",
+          backgroundColor: "white",
+          border: "2px solid",
+          borderColor: "tertiary",
+          '&:hover': {
+            color: "white",
+            backgroundColor: "tertiary",
+          }
         }
       }
     },
@@ -68,47 +105,61 @@ export const theme = {
         padding: 3,
         color: "gray.9",
         fontFamily: "body",
-        fontSize: 3,
+        fontSize: 2,
         lineHeight: "body",
         h2: {
-          color: "secondary",
-          fontSize: 4,
+          color: "primary",
+          fontSize: 6,
           fontWeight: "bold",
           fontFamily: "heading",
           lineHeight: "heading",
           margin: "1rem 0",
-          textShadow: "1px 1px #579CA8",
-          textShadowColor: "primary"
         },
         h3: {
-          color: "tertiary",
-          fontSize: 4,
+          color: "gray.9",
+          fontSize: 5,
           fontWeight: "bold",
           fontFamily: "heading",
           lineHeight: "heading",
           margin: "1rem 0",
-          textShadow: "1px 1px #EEDFB6",
         },
         p: {
           marginBottom: 3,
+          fontSize: 2,
+        },
+        'h2 > p': {
+          display: "inline-block",
+          fontSize: "inherit",
+          color: "inherit",
+          fontWeight: "inherit",
+          fontFamily: "inherit",
         },
         dl: {
           borderTop: "1px solid",
           borderColor: "gray.1",
           listStyle: "none",
           margin: `15px 0`,
+          fontSize: 2,
         },
-        'a': {
+        a: {
           color: "tertiary",
           cursor: "pointer",
+          fontSize: 2,
           "&:hover": {
             color: "primary"
           }
         },
+        'h3 > a': {
+          color: "inherit",
+          textDecoration: "underline",
+          fontSize: "inherit",
+          "&:hover": {
+            color: "tertiary"
+          }
+        }
       },
     },
     styles: {
-      ...tailwind.styles,
       h1: {
         color: "gray.9",
         fontFamily: "heading",
@@ -163,7 +214,8 @@ export const theme = {
       p: {
         lineHeight: "body",
         marginBottom: 4,
-        color: "gray.9"
+        color: "gray.9",
+        fontSize: "text",
       },
     },
   }
