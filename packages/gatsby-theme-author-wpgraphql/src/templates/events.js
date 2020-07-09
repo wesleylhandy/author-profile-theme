@@ -32,7 +32,7 @@ const EventsPage = ({location, data}) => {
             const end = convertToTimeZone({datetime: event.endDatetime, timezone})
             const toEvent = `${eventsBase}/${event.slug}`
             return (
-              <div key={event.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 15}}>
+              <div key={event.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3}}>
                 <h3>
                   <Link 
                     to={toEvent} 

@@ -20,7 +20,7 @@ export const theme = {
     colors: {
       ...tailwind.colors,
       background: "#fff",
-      text: "text",
+      text: "gray.9",
       opaqueBackground: "rgba(255,255,255, .8)",
       primary: "#579CA8",
       secondary: "#e7dbba",
@@ -60,45 +60,60 @@ export const theme = {
         },
         textShadow: "",
       },
-      links: {
-        bold: {
-          fontWeight: 'bold'
+    },
+    links: {
+      bold: {
+        fontWeight: 'bold'
+      },
+      footer: {
+        color: "tertiary",
+        transition: "color 250ms ease-in-out",
+        "&:hover": {
+          color: "primary"
+        }
+      }
+    },
+    buttons: {
+      backgroundColor: "transparent",
+      fontWeight: "bold",
+      transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+      '&:hover': {
+        color: "white",
+      },
+      primary: {
+        color: "white",
+        backgroundColor: "primary",
+        border: "3px solid",
+        borderColor: "primary",
+        fontWeight: "bold",
+        transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+        '&:hover': {
+          backgroundColor: "white",
+          color: "primary",
         }
       },
-      buttons: {
-        backgroundColor: "white",
+      secondary: {
+        color: "white",
+        backgroundColor: "secondary",
+        border: "3px solid",
+        borderColor: "secondary",
+        fontWeight: "bold",
+        transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
         '&:hover': {
-          color: "white",
-        },
-        primary: {
-          color: "primary",
           backgroundColor: "white",
-          border: "2px solid",
-          borderColor: "primary",
-          '&:hover': {
-            color: "white",
-            backgroundColor: "primary",
-          }
-        },
-        secondary: {
           color: "secondary",
+        }
+      },
+      tertiary: {
+        color: "white",
+        backgroundColor: "tertiary",
+        border: "2px solid",
+        borderColor: "tertiary",
+        fontWeight: "bold",
+        transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+        '&:hover': {
           backgroundColor: "white",
-          border: "2px solid",
-          borderColor: "secondary",
-          '&:hover': {
-            color: "white",
-            backgroundColor: "secondary",
-          }
-        },
-        tertiary: {
           color: "tertiary",
-          backgroundColor: "white",
-          border: "2px solid",
-          borderColor: "tertiary",
-          '&:hover': {
-            color: "white",
-            backgroundColor: "tertiary",
-          }
         }
       }
     },
@@ -142,6 +157,22 @@ export const theme = {
           fontWeight: "inherit",
           fontFamily: "inherit",
         },
+        h4: {
+          color: "text",
+          fontSize: 3,
+          fontWeight: "bold",
+          fontFamily: "heading",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
+        h5: {
+          color: "text",
+          fontSize: 2,
+          fontStyle: "italic",
+          fontFamily: "heading",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
         dl: {
           borderTop: "1px solid",
           borderColor: "gray.1",
@@ -153,6 +184,7 @@ export const theme = {
           color: "tertiary",
           cursor: "pointer",
           fontSize: 2,
+          fontWeight: "bold",
           "&:hover": {
             color: "primary"
           }
@@ -188,6 +220,14 @@ export const theme = {
         margin: "1rem 0 0",
       },
       h3: {
+        color: "text",
+        fontSize: 2,
+        fontWeight: "bold",
+        fontFamily: "heading",
+        lineHeight: "heading",
+        margin: "1rem 0 0",
+      },
+      h4: {
         color: "text",
         fontSize: 2,
         fontWeight: "bold",

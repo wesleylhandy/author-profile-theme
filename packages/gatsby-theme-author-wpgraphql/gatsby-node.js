@@ -333,7 +333,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                     sourceUrl
                     imageFile {
                       childImageSharp {
-                        fixed(width: 50) {
+                        fixed(width: 100) {
                           base64
                           src
                           srcSet

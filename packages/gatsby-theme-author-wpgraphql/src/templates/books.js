@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, navigate } from 'gatsby'
 import Img from "gatsby-image"
-import { jsx } from "theme-ui"
+import { jsx, Box, Button } from "theme-ui"
 import Layout from 'gatsby-theme-author-base/src/components/layout'
 import Book from 'gatsby-theme-author-base/src/components/book'
 import Seo from 'gatsby-theme-author-base/src/components/seo'
@@ -29,11 +29,12 @@ const BooksPage = ({ location, data }) => {
         <ul>
         {books.map((book, idx) => {
           const title = book.bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '');
+          const toBook = `${booksBase}/${book.slug}`
           return (
-            <li key={book.id}>
+            <li key={book.id} sx={{ border: `5px solid`, borderColor: `primary`, backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3}} >
               <h3>
                   <Link 
-                    to={`${booksBase}/${book.slug}`} 
+                    to={toBook} 
                   >{title}
                   </Link>
               </h3>
@@ -41,6 +42,12 @@ const BooksPage = ({ location, data }) => {
                 book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />
               }
               <div className="book-excerpt" dangerouslySetInnerHTML={{__html: book.excerpt }} />
+              <Box my={3}>
+                  <Button onClick={() => navigate(toBook)} variant="buttons.tertiary" sx={{ display: `block`, mx: `auto`, maxWidth: 300, width: `100%`}}>
+                    Learn More
+                  </Button>
+              </Box>
+              { idx !== books.length - 1 && <hr mx={3} /> }
             </li>
             )
           })}

@@ -1,16 +1,15 @@
 const path = require('path')
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-const siteUrl =
-  process.env.URL || process.env.DEPLOY_URL || "https://www.joancbenson.com"
+const siteUrl = process.env.URL || process.env.DEPLOY_URL || 'https://www.joancbenson.com'
 const siteMetadata = {
   title: `Joan C. Benson, Christian Author, Speaker, & Educator`,
   description: ``,
   author: {
     name: `Joan C. Benson`,
     email: ``,
-    amazonUrl: `https://www.amazon.com/Joan-C-Benson/e/B08C9CFVT8`
+    amazonUrl: `https://www.amazon.com/Joan-C-Benson/e/B08C9CFVT8`,
   },
   siteUrl,
   siteVerification: {
@@ -18,27 +17,34 @@ const siteMetadata = {
     bing: ``,
   },
   social: {
-    twitter: "",
-    linkedin: "",
+    twitter: '',
+    linkedin: '',
   },
   socialLinks: {
     // profile URLS for social links, include https://
-    twitter: "",
-    linkedin: "",
-    facebook: "",
-    stackOverflow: "",
-    github: "",
-    instagram: "",
-    youtube: "",
-    email: "", //include mailto:
-    phone: "", //include tel:
+    twitter: '',
+    linkedin: 'https://www.linkedin.com/in/joan-benson-93166037/',
+    facebook: 'https://www.facebook.com/YIHAVEHOPE',
+    stackOverflow: '',
+    github: '',
+    instagram: 'https://www.instagram.com/joancbenson/',
+    youtube: 'https://www.youtube.com/channel/UCfPfUkoH373c6dRuGArfPeg/',
+    email: { text: 'bensonjj@verizon.net', link: 'mailto:bensonjj@verizon.net' }, //include mailto:
+    phone: { text: '757-567-4637', link: 'tel:7575674637' }, //include tel:
+    goodreads: '',
+    pinterest: '',
+    amazon: 'https://www.amazon.com/Joan-C.-Benson/e/B08C9CFVT8',
   },
   keywords: [],
   organization: {
-    name: "Joan C. Benson",
-    url: "https://www.joancbenson.com",
-    logo: "",
+    name: 'Joan C. Benson',
+    url: 'https://www.joancbenson.com',
+    logo: '',
   },
+  designer: {
+    name: "Creativ, LLC",
+    url: "https://www.wesleylhandy.net",
+  }
 }
 module.exports = {
   siteMetadata,
@@ -51,7 +57,16 @@ module.exports = {
         basePath: `/blog`,
         headerMaxWidth: 980,
         imagesContentPath: path.join(__dirname, `images`),
-        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700`
+        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700`,
+        manifest: {
+          name: siteMetadata.title,
+          short_name: siteMetadata.organization.name,
+          start_url: `/`,
+          background_color: `#fff`,
+          theme_color: `#77aec2`,
+          display: `minimal-ui`,
+          icon: `images/favicon.png`
+        }
       },
     },
     {
@@ -68,6 +83,6 @@ module.exports = {
         faqBase: `/faq`,
       },
     },
-    `gatsby-theme-author-tinacms`
+    `gatsby-theme-author-tinacms`,
   ],
 }

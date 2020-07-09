@@ -6,7 +6,7 @@ import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Global } from '@emotion/core'
 import Header from './header'
-import Footer from './footer'
+import Footer from 'gatsby-theme-author-base/src/components/footer'
 
 const StyledBackground = styled(BackgroundImage)`
   position: fixed;

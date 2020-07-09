@@ -29,7 +29,7 @@ const theme = {
     },
     sizes: {
       ...baseTheme.sizes,
-      max: "980px",
+      max: "1100px",
     },
   }
   

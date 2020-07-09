@@ -5,8 +5,11 @@ module.exports = [{
       plugin: require('../../node_modules/gatsby-plugin-google-analytics/gatsby-browser.js'),
       options: {"plugins":[],"trackingId":""},
     },{
+      plugin: require('../../node_modules/gatsby-plugin-manifest/gatsby-browser.js'),
+      options: {"plugins":[],"name":"Joan C. Benson, Christian Author, Speaker, & Educator","short_name":"Joan C. Benson","start_url":"/","background_color":"#fff","theme_color":"#77aec2","display":"minimal-ui","icon":"images/favicon.png","cache_busting_mode":"query","include_favicon":true,"legacy":true,"theme_color_in_head":true,"cacheDigest":"b998ba3e2cc8b2ca2848dfadaf4b94c8"},
+    },{
       plugin: require('../../packages/gatsby-theme-author-base/gatsby-browser.js'),
-      options: {"plugins":[],"contentPath":"blog","basePath":"/blog","headerMaxWidth":980,"imagesContentPath":"/Users/wehand/author-profile-theme/site/images","googleFontsFamily":"Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700"},
+      options: {"plugins":[],"contentPath":"blog","basePath":"/blog","headerMaxWidth":980,"imagesContentPath":"/Users/wehand/author-profile-theme/site/images","googleFontsFamily":"Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700","manifest":{"name":"Joan C. Benson, Christian Author, Speaker, & Educator","short_name":"Joan C. Benson","start_url":"/","background_color":"#fff","theme_color":"#77aec2","display":"minimal-ui","icon":"images/favicon.png"}},
     },{
       plugin: require('../../node_modules/gatsby-remark-images/gatsby-browser.js'),
       options: {"plugins":[],"maxWidth":1200,"linkImagesToOriginal":true},

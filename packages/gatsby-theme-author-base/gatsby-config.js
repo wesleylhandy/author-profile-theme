@@ -8,6 +8,7 @@ module.exports = options => {
         imagesName = "images",
         imagesContentPath = path.join(__dirname, "src", "images"),
         gaTackingId = "",
+        manifest = {},
         siteMetadata = {}
     } = options;
     return {
@@ -46,6 +47,18 @@ module.exports = options => {
             `gatsby-plugin-react-helmet`,
             `gatsby-transformer-sharp`,
             `gatsby-plugin-sharp`,
+            {
+                resolve: `gatsby-plugin-manifest`,
+                options: {
+                  name: manifest.name,
+                  short_name: manifest.short_name,
+                  start_url: manifest.start_url,
+                  background_color: manifest.background_color,
+                  theme_color: manifest.theme_color,
+                  display: manifest.display,
+                  icon: manifest.icon, // This path is relative to the root of the site.
+                },
+            },
         ],
     }
 }

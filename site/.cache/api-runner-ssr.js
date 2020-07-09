@@ -14,6 +14,9 @@ var plugins = [{
       plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
+      plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
+      options: {"plugins":[],"name":"Joan C. Benson, Christian Author, Speaker, & Educator","short_name":"Joan C. Benson","start_url":"/","background_color":"#fff","theme_color":"#77aec2","display":"minimal-ui","icon":"images/favicon.png","cache_busting_mode":"query","include_favicon":true,"legacy":true,"theme_color_in_head":true,"cacheDigest":"b998ba3e2cc8b2ca2848dfadaf4b94c8"},
+    },{
       plugin: require('/Users/wehand/author-profile-theme/node_modules/gatsby-remark-autolink-headers/gatsby-ssr'),
       options: {"plugins":[],"maintainCase":true,"removeAccents":true},
     },{

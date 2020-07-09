@@ -18,7 +18,7 @@ class BlogPage extends Component {
     if (!pageNumber) {
       return null
     } else if (1 === pageNumber) {
-      previousLink = `${data.themeConfig.blogBase}/`
+      previousLink = `${data.themeConfig.blogBase}`
     } else if (1 < pageNumber) {
       previousLink = `${data.themeConfig.blogBase}/page/${pageNumber - 1}`
     }
@@ -26,7 +26,7 @@ class BlogPage extends Component {
     return (
       <Button
         onClick={() => navigate(previousLink)}
-        variant="primary"
+        variant="tertiary"
         sx={{
           gridColumnStart: 1,
           gridColumnEnd: 2,
@@ -47,7 +47,7 @@ class BlogPage extends Component {
       return (
         <Button
           onClick={() => navigate(`${data.themeConfig.blogBase}/page/${pageNumber + 1}`)}
-          variant="primary"
+          variant="tertiary"
           sx={{
             gridColumnStart: 2,
             gridColumnEnd: 3,
@@ -69,7 +69,7 @@ class BlogPage extends Component {
     } = this.props
     return (
       <Layout pageNumber={pageNumber} location={location}>
-        <Seo type="website" title={`Blog Page${pageNumber && ` ${pageNumber}`}`} />
+        <Seo type="website" title={`Blog Page ${pageNumber + 1}`} />
         <h2>Recent Posts</h2>
         {data &&
           data.wpgraphql &&
