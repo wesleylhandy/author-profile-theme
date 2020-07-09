@@ -6,7 +6,7 @@ module.exports = [{
       options: {"plugins":[],"trackingId":""},
     },{
       plugin: require('../../packages/gatsby-theme-author-base/gatsby-browser.js'),
-      options: {"plugins":[],"contentPath":"blog","basePath":"/blog","headerMaxWidth":980,"imagesContentPath":"/Users/wehand/author-profile-theme/site/images","googleFontsFamily":"Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700"},
+      options: {"plugins":[],"contentPath":"blog","basePath":"/blog","headerMaxWidth":980,"imagesContentPath":"/Users/wehand/author-profile-theme/site/images","googleFontsFamily":"Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700"},
     },{
       plugin: require('../../node_modules/gatsby-remark-images/gatsby-browser.js'),
       options: {"plugins":[],"maxWidth":1200,"linkImagesToOriginal":true},

@@ -11,18 +11,18 @@ const theme = {
       ...baseTheme.colors,
       background: "#fff",
       opaqueBackground: "rgba(255,255,255, .8)",
-      primary: "#579CA8",
+      primary: "#77aec2",
       secondary: "#e7dbba",
-      tertiary: "#FF8D81",
+      tertiary: "#bd263c",
       light: "#dee4ea",
       modes: {
         dark: {
           text: "#fff",
           background: "#000",
           opaqueBackground: "rgba(0,0,0, .4)",
-          primary: "#9AC3BF",
+          primary: "#275E72",
           secondary: "#978B6A",
-          tertiary: "#AF3D31",
+          tertiary: "#A91228",
           light: "#343a40"
         }
       }
