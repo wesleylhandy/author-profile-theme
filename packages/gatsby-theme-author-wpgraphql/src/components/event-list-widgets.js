@@ -24,7 +24,7 @@ const EventListWidget = ({heading}) => {
     }`)
     const { themeConfig: { eventsBase }, wpgraphql: { eventsAndSpeakingEngagements: { eventList: { events } } } } = data
     return (
-      <div sx={{ padding: 10, border: `5px solid`, borderColor: `primary`, maxWidth: 280, margin: `30px auto`}}>
+      <div sx={{ padding: 10, border: `5px solid`, borderColor: `primary`, maxWidth: 280, mx: `auto`, my: 3}}>
         <EventList heading={heading} events={events}  eventsBase={eventsBase} />
       </div>
     )

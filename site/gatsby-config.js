@@ -51,7 +51,7 @@ module.exports = {
         basePath: `/blog`,
         headerMaxWidth: 980,
         imagesContentPath: path.join(__dirname, `images`),
-        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700`
+        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700`
       },
     },
     {

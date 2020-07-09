@@ -25,7 +25,7 @@ const FaqPage = ({location, data}) => {
       />
       <h2>Frequently Asked Questions</h2>
       {faqs.map((faq, idx) => (
-        <div key={faq.id} sx={{ backgroundColor: idx % 2 === 1 ? 'gray.3' : `transparent`, padding: 15}}>
+        <div key={faq.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 15}}>
           <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
             <h3>
               <Link 

@@ -8,8 +8,8 @@ export const theme = {
     ],
     space: [...tailwind.space],
     fonts: {
-      body: "Montserrat, serif",
-      heading: "'Open Sans', sans-serif",
+      body: "Georgia, serif",
+      heading: "Arial, sans-serif",
     },
     fontSizes: [12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80],
     lineHeights: {
@@ -20,16 +20,21 @@ export const theme = {
     colors: {
       ...tailwind.colors,
       background: "#fff",
+      text: "text",
+      opaqueBackground: "rgba(255,255,255, .8)",
       primary: "#579CA8",
-      secondary: "#E5D591",
+      secondary: "#e7dbba",
       tertiary: "#FF8D81",
+      light: "gray.3",
       modes: {
         dark: {
-          text: "#fff",
+          text: "gray.2",
           background: "#000",
+          opaqueBackground: "rgba(255,255,255, .2)",
           primary: "#9AC3BF",
           secondary: "#EEDFB6",
           tertiary: "#AF3D31",
+          light: "gray.7,"
         }
       }
     },
@@ -45,15 +50,15 @@ export const theme = {
         color: "background",
         fontWeight: "bold",
         margin: "0 auto",
-        maxWidth: ["full", "full", "full", "max"],
-        width: ["full", "full", "full", "max"],
+        maxWidth: "full",
+        width: "full",
         padding: 4,
         fontSize: 5,
         textAlign: ["center", "center", "center", "left"],
         a: {
           color: "inherit",
         },
-        textShadow: ""
+        textShadow: "",
       },
       links: {
         bold: {
@@ -99,14 +104,17 @@ export const theme = {
     },
     layout: {
       container: {
+        backgroundColor: "opaqueBackground",
         margin: "0 auto",
         maxWidth: ["full", "full", "full", "max"],
         width: ["full", "full", "full", "default"],
+        flex: 1,
         padding: 3,
-        color: "gray.9",
+        color: "text",
         fontFamily: "body",
         fontSize: 2,
         lineHeight: "body",
+        position: "relative",
         h2: {
           color: "primary",
           fontSize: 6,
@@ -116,7 +124,7 @@ export const theme = {
           margin: "1rem 0",
         },
         h3: {
-          color: "gray.9",
+          color: "text",
           fontSize: 5,
           fontWeight: "bold",
           fontFamily: "heading",
@@ -160,8 +168,11 @@ export const theme = {
       },
     },
     styles: {
+      html: {
+        background: "light",
+      },
       h1: {
-        color: "gray.9",
+        color: "text",
         fontFamily: "heading",
         fontSize: "heading",
         fontWeight: "bold",
@@ -169,7 +180,7 @@ export const theme = {
         margin: "1rem 0 0",
       },
       h2: {
-        color: "gray.9",
+        color: "text",
         fontFamily: "heading",
         fontSize: 3,
         fontWeight: "bold",
@@ -177,7 +188,7 @@ export const theme = {
         margin: "1rem 0 0",
       },
       h3: {
-        color: "gray.9",
+        color: "text",
         fontSize: 2,
         fontWeight: "bold",
         fontFamily: "heading",
@@ -214,9 +225,15 @@ export const theme = {
       p: {
         lineHeight: "body",
         marginBottom: 4,
-        color: "gray.9",
+        color: "text",
         fontSize: "text",
       },
+      blockquote: {
+        fontFamily: "body",
+      },
+      cite: {
+        fontFamily: "body",
+      }
     },
   }
   

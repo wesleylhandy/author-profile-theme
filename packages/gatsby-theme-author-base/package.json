@@ -53,6 +53,7 @@
     "gatsby-transformer-remark": "^2.8.14",
     "gatsby-transformer-sharp": "^2.5.4",
     "gatsby-transformer-yaml": "^2.4.3",
+    "intersection-observer": "^0.11.0",
     "lodash": "^4.17.15",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
