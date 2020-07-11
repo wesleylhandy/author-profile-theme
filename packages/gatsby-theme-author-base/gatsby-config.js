@@ -1,13 +1,9 @@
 const path = require('path')
-const isProd = process.env.NODE_ENV === 'production'
 module.exports = (options) => {
   const {
-    identityUrl,
     contentPath = 'data',
-    basePath = '/',
     imagesName = 'images',
     imagesContentPath = path.join(__dirname, 'src', 'images'),
-    gaTackingId,
     manifest = {},
     siteMetadata = {},
     html2amp = {},
@@ -24,12 +20,6 @@ module.exports = (options) => {
         },
       },
       `gatsby-plugin-theme-ui`,
-      {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-          trackingId: gaTackingId,
-        },
-      },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
