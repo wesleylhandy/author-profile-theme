@@ -13,8 +13,8 @@ const siteMetadata = {
   },
   siteUrl,
   siteVerification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
-    bing: process.env.BING_SITE_VERIFICATION,
+    google: process.env.GOOGLE_SITE_VERIFICATION || ``,
+    bing: process.env.BING_SITE_VERIFICATION || ``,
   },
   social: {
     twitter: '11Ccaj4life',
@@ -50,12 +50,10 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
+    `gatsby-plugin-sitemap`,
     {
       resolve: `@wesleylhandy/gatsby-theme-author-base`,
       options: {
-        siteMetadata: {
-          siteUrl
-        },
         gaTrackingId: process.env.GA_TRACKING_ID,
         contentPath: `blog`,
         basePath: `/blog`,
@@ -76,6 +74,8 @@ module.exports = {
           cssPlugins: []
         },
         robotsTxt: {
+          host: siteMetadata.siteUrl,
+          sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
           policy: [
             { userAgent: "*", allow: "/" },
             { userAgent: "*", disallow: ["/blog/tag/*", "/blog/category/*", "/blog/author/*", "/blog", "/blog/page/*", "/books"] }

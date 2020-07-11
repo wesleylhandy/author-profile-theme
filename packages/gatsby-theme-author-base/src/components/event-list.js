@@ -1,25 +1,28 @@
 /** @jsx jsx */
-import { Link } from "gatsby"
-import { jsx } from 'theme-ui'
+import { Link, navigate } from "gatsby"
+import { jsx, Box, Button } from 'theme-ui'
 import { convertToTimeZone } from "../utils/time-helpers"
 import EventDate from "./event-date"
 
-const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4 }) => (
+const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4, type = "widget" }) => (
   <article>
     <h2>{heading}</h2>
     <ul>
       {
-        events.length > 0 ? events.sort((a, b) => a.startDatetime - b.startDatetime).slice(0, limit).map(event => {
+        events.length > 0 ? events.sort((a, b) => a.startDatetime - b.startDatetime).slice(0, limit).map((event, idx) => {
           const timezone = "-05:00"
           const start = convertToTimeZone({datetime: event.startDatetime, timezone})
           const end = convertToTimeZone({datetime: event.endDatetime, timezone})
+          const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3 } : {}
+          const linkStyle = type === `widget` ? {color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }} : {}
+          const toEvent = `${eventsBase}/${event.slug}`
           return (
-            <li key={event.id}>
+            <li key={event.id} sx={liStyle}>
               <h3>
                 <b>
                   <Link 
-                    sx={{color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }}} 
-                    to={`${eventsBase}/${event.slug}`}
+                    sx={linkStyle} 
+                    to={toEvent}
                     dangerouslySetInnerHTML={{__html: event.eventName}}
                   />
                 </b>
@@ -27,6 +30,16 @@ const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4 
               <p>
                 <EventDate startDate={start} endDate={end} />
               </p>
+              {
+                type !== `widget` && (
+                  <Box my={3}>
+                    <Button
+                      onClick={() => navigate(toEvent)} 
+                      variant="tertiary" 
+                    >Learn More</Button>
+                  </Box>
+                )
+              }
             </li>
           )
         }) : (

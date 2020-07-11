@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { jsx } from 'theme-ui'
 import PostList from "@wesleylhandy/gatsby-theme-author-base/src/components/post-list"
 

@@ -1,20 +1,82 @@
 /** @jsx jsx */
-import { jsx, Button, Flex, Box } from 'theme-ui'
-import { graphql, Link, navigate } from 'gatsby'
+import { jsx, Flex, Box } from 'theme-ui'
+import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
-import { convertToTimeZone } from '@wesleylhandy/gatsby-theme-author-base/src/utils/time-helpers'
-import EventDate from '@wesleylhandy/gatsby-theme-author-base/src/components/event-date'
+import EventList from '@wesleylhandy/gatsby-theme-author-base/src/components/event-list'
 
-const EventsPage = ({ location, data }) => {
+const EventsPage = ({ location }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      meta: site {
+        siteMetadata {
+          socialLinks {
+            phone {
+              link
+              text
+            }
+            email {
+              link
+              text
+            }
+          }
+        }
+      }
+      themeConfig {
+        eventsBase
+      }
+      wpgraphql {
+        eventsAndSpeakingEngagements {
+          events {
+            events {
+              endDatetime
+              eventDescription
+              eventAdmission {
+                admissionPrice
+                onSaleDate
+                ticketAvailability
+                ticketPurchaseUrl
+              }
+              eventLocation {
+                url
+                venue
+                address {
+                  city
+                  postalCode
+                  state
+                  streetAddress
+                }
+              }
+              eventType
+              eventName
+              id
+              slug
+              startDatetime
+              featuredImage {
+                databaseId
+                modified
+                sourceUrl
+                imageFile {
+                  childImageSharp {
+                    fluid(maxWidth: 640) {
+                      base64
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
   const {
     meta: {
       siteMetadata: {
-        socialLinks: {
-          phone,
-          email,
-        }
-      }
+        socialLinks: { phone, email },
+      },
     },
     themeConfig: { eventsBase },
     wpgraphql: {
@@ -33,11 +95,10 @@ const EventsPage = ({ location, data }) => {
           events, parenting workshops, luncheons, retreats, and youth groups. She will also be
           co-hosting a podcast beginning in January 2021 (details to come). If you would like to
           request Joan to speak at your next event, please contact her at{' '}
-          <a href={email.link}>{email.text}</a> or by phone{' '}
-          <a href={phone.link}>{phone.text}</a>.
+          <a href={email.link}>{email.text}</a> or by phone <a href={phone.link}>{phone.text}</a>.
         </p>
       </Box>
-      <Flex sx={{ flexDirection: [`column`, `row`]}}>
+      <Flex sx={{ flexDirection: [`column`, `row`] }}>
         <article
           sx={{
             flex: `1 1 50%`,
@@ -135,7 +196,7 @@ const EventsPage = ({ location, data }) => {
             </li>
           </ul>
         </article>
-        <Box sx={{flex: `1 0 50%`, order: 0}}>
+        <Box sx={{ flex: `1 0 50%`, order: 0 }}>
           <aside
             sx={{
               border: `5px solid`,
@@ -143,36 +204,16 @@ const EventsPage = ({ location, data }) => {
               mx: `auto`,
               my: 3,
               p: 3,
-              mr: [0, 3]
+              mr: [0, 3],
             }}
           >
-            <h2>Recent Events</h2>
-            {events
-              .sort((a, b) => a.startDatetime - b.startDatetime)
-              .map((event, idx) => {
-                const timezone = '-05:00'
-                const start = convertToTimeZone({ datetime: event.startDatetime, timezone })
-                const end = convertToTimeZone({ datetime: event.endDatetime, timezone })
-                const toEvent = `${eventsBase}/${event.slug}`
-                return (
-                  <div
-                    key={event.id}
-                    sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 15 }}
-                  >
-                    <h3>
-                      <Link to={toEvent} dangerouslySetInnerHTML={{ __html: event.eventName }} />
-                    </h3>
-                    <p>
-                      <EventDate startDate={start} endDate={end} />
-                    </p>
-                    <Box my={3}>
-                      <Button onClick={() => navigate(toEvent)} variant="buttons.tertiary">
-                        Learn More
-                      </Button>
-                    </Box>
-                  </div>
-                )
-              })}
+            <EventList
+              heading="Recent Events"
+              events={events}
+              limit={Infinity}
+              eventsBase={eventsBase}
+              type={'full-list'}
+            />
           </aside>
         </Box>
       </Flex>
@@ -181,70 +222,3 @@ const EventsPage = ({ location, data }) => {
 }
 
 export default EventsPage
-
-export const query = graphql`
-  query {
-    meta: site {
-      siteMetadata {
-        socialLinks {
-          email {
-            link
-            text
-          }
-          phone {
-            link
-            text
-          }
-        }
-      }
-    }
-    themeConfig {
-      eventsBase
-    }
-    wpgraphql {
-      eventsAndSpeakingEngagements {
-        events {
-          events {
-            endDatetime
-            eventDescription
-            eventAdmission {
-              admissionPrice
-              onSaleDate
-              ticketAvailability
-              ticketPurchaseUrl
-            }
-            eventLocation {
-              url
-              venue
-              address {
-                city
-                postalCode
-                state
-                streetAddress
-              }
-            }
-            eventType
-            eventName
-            id
-            slug
-            startDatetime
-            featuredImage {
-              databaseId
-              modified
-              sourceUrl
-              imageFile {
-                childImageSharp {
-                  fluid(maxWidth: 640) {
-                    base64
-                    src
-                    srcSet
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`

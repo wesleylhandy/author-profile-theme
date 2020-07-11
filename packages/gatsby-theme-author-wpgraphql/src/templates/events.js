@@ -1,68 +1,31 @@
 /** @jsx jsx */
-import { jsx, Button, Box } from 'theme-ui'
-import { graphql, Link, navigate } from "gatsby"
+import { jsx } from 'theme-ui'
+import { graphql, useStaticQuery } from "gatsby"
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout';
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
-import { convertToTimeZone } from "@wesleylhandy/gatsby-theme-author-base/src/utils/time-helpers"
-import EventDate from "@wesleylhandy/gatsby-theme-author-base/src/components/event-date"
+import EventList from "@wesleylhandy/gatsby-theme-author-base/src/components/event-date"
 
-const EventsPage = ({location, data}) => {
-    const {
-      themeConfig: {
+const EventsPage = ({location}) => {
+  const data = useStaticQuery(graphql`
+    query {
+      meta: site {
+        siteMetadata {
+          socialLinks {
+            phone {
+              link
+              text
+            }
+            email {
+              link
+              text
+            }
+          }
+        }
+      }
+      themeConfig {
         eventsBase
-      },
-        wpgraphql: {
-          eventsAndSpeakingEngagements: {
-            events: {
-              events
-            },
-          },
-        },
-      } = data
-    return (
-        <Layout location={location}>
-          <Seo 
-            type="website" 
-            title="Events Page"
-          />
-          <h2>Recent Events</h2>
-          {events.map((event, idx) => {
-            const timezone = "-05:00"
-            const start = convertToTimeZone({datetime: event.startDatetime, timezone})
-            const end = convertToTimeZone({datetime: event.endDatetime, timezone})
-            const toEvent = `${eventsBase}/${event.slug}`
-            return (
-              <div key={event.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3}}>
-                <h3>
-                  <Link 
-                    to={toEvent} 
-                    dangerouslySetInnerHTML={{__html:event.eventName}} 
-                  />
-                </h3>
-                <p>
-                  <EventDate startDate={start} endDate={end} />
-                </p>
-                <Box my={3}>
-                  <Button
-                    onClick={() => navigate(toEvent)} 
-                    variant="primary" 
-                  >Learn More</Button>
-                </Box>
-              </div>
-            )
-          })}
-        </Layout>
-    )
-}
-
-export default EventsPage
-
-export const query = graphql`
-  query GET_EVENTS {
-    themeConfig {
-      eventsBase
-    }
-    wpgraphql {
+      }
+      wpgraphql {
         eventsAndSpeakingEngagements {
           events {
             events {
@@ -107,5 +70,29 @@ export const query = graphql`
           }
         }
       }
+    }
+  `)
+    const {
+      themeConfig: {
+        eventsBase
+      },
+        wpgraphql: {
+          eventsAndSpeakingEngagements: {
+            events: {
+              events
+            },
+          },
+        },
+      } = data
+    return (
+        <Layout location={location}>
+          <Seo 
+            type="website" 
+            title="Events Page"
+          />
+          <EventList heading="Recent Events" events={events} limit={Infinity} eventsBase={eventsBase} type={"full-list"} />
+        </Layout>
+    )
 }
-`
+
+export default EventsPage
