@@ -8,7 +8,7 @@ const siteMetadata = {
   description: ``,
   author: {
     name: `Joan C. Benson`,
-    email: ``,
+    email: `bensonjj@verizon.net`,
     amazonUrl: `https://www.amazon.com/Joan-C-Benson/e/B08C9CFVT8`,
   },
   siteUrl,
@@ -17,12 +17,12 @@ const siteMetadata = {
     bing: ``,
   },
   social: {
-    twitter: '',
-    linkedin: '',
+    twitter: '11Ccaj4life',
+    linkedin: 'joan-benson-93166037',
   },
   socialLinks: {
     // profile URLS for social links, include https://
-    twitter: '',
+    twitter: 'https://twitter.com/11Ccaj4life',
     linkedin: 'https://www.linkedin.com/in/joan-benson-93166037/',
     facebook: 'https://www.facebook.com/YIHAVEHOPE',
     stackOverflow: '',
@@ -34,6 +34,7 @@ const siteMetadata = {
     goodreads: '',
     pinterest: '',
     amazon: 'https://www.amazon.com/Joan-C.-Benson/e/B08C9CFVT8',
+    wordpress: 'https://bensonjj.blog/',
   },
   keywords: [],
   organization: {

@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet'
 import SchemaOrg from './schema-org'
 import { StaticQuery, graphql } from 'gatsby'
 import { useThemeUI } from 'theme-ui'
+import { useLocation } from '@reach/router'
 import {
   BookType,
   ArticleType,
@@ -18,9 +19,13 @@ import {
   FacebookType,
   TwitterType,
 } from '../utils/metadata-types'
+import schemaObject from "../utils/schema-proptypes"
+import { convertToTimeZone } from "../utils/time-helpers"
 
 // https://ogp.me/?fbclid=IwAR0XVIuZzMErguCuafN9N107VY66QctP_G_YpnCvMy6u4j7Hyzz9EMGHkR8#types
 const validTypes = [
+  `faq`,
+  `event`,
   `article`,
   `book`,
   `profile`,
@@ -35,20 +40,13 @@ const validTypes = [
   `video.other`,
 ]
 
-function Seo({
-  description,
-  lang,
-  meta,
-  keywords,
-  image,
-  title,
-  pathname,
-  type,
-  schema,
-  author,
-  datePublished = '',
-  dateModified = '',
-}) {
+const timezone = "-05:00" // eventually get this from store or from server
+
+function Seo({ description, lang, meta, keywords, image, title, type, schema, canonical }) {
+  if ( !validTypes.includes(type) ) {
+    throw new Error('invalid seo type')
+  }
+  const location = useLocation()
   const { theme } = useThemeUI()
   return (
     <StaticQuery
@@ -57,13 +55,15 @@ function Seo({
         const {
           site: { siteMetadata },
           logo,
+          og,
           baseSettings: { googleFontsFamily },
         } = data
         const metaDescription = description || siteMetadata.description
         const metaImage = image && image.src ? `${siteMetadata.siteUrl}${image.src}` : null
+        const metaUrl = `${siteMetadata.siteUrl}${location.pathname}`
         const siteUrl = siteMetadata.siteUrl
-        const metaUrl = `${siteUrl}${pathname}`
         const logoImg = logo && logo.childImageSharp.fixed
+        const ogImg = og && `${siteMetadata.siteUrl}${og.childImageSharp.fixed.src}`
         const organization = siteMetadata.organization
         if (logoImg) {
           organization.logo = {
@@ -72,8 +72,77 @@ function Seo({
             height: logoImg.height,
           }
         }
-
-        const secureUrl = metaImage && metaImage.indexOf('https') > -1 ? metaImage : null
+        const seoImg = metaImage || ogImg
+        const secure_url = seoImg && seoImg.indexOf('https') > -1 ? seoImg : null
+        const ogImageType = new OGImageType(
+          seoImg,
+          secure_url,
+          'image/jpeg',
+          seoImg.width,
+          seoImg.height,
+          `${title} | ${siteMetadata.title}`
+        )
+        const faceBookType = new FacebookType({
+          title: `${title} | ${siteMetadata.title}`,
+          description: metaDescription,
+          type,
+        })
+        const twitterType = new TwitterType({
+          title: `${title} | ${siteMetadata.title}`,
+          description: metaDescription,
+          image: seoImg,
+          image_alt: `${title} | ${siteMetadata.title}`,
+          secure_url,
+        })
+        const bookType = new BookType()
+        if (type === `book`) {
+          schema.authors.forEach((el) => {
+            bookType.addProfile({
+              type: `author`,
+              profile: {
+                first_name: el.author.givenName,
+                last_name: el.author.familyName,
+                username: el.author.name,
+              }
+            })
+          })
+          if (schema.pricepoints) {
+            bookType.setProperties([
+              {
+                property: `book:isbn`,
+                value: schema.pricepoints[0].isbn,
+              }
+            ])
+          }
+          
+          const releaseDate = convertToTimeZone({datetime: schema.dateAvailableForPurchase, timezone})
+          bookType.setProperties([
+            {
+              property: `book:release_date`,
+              value: releaseDate,
+            }
+          ])
+        }
+        const articleType = new ArticleType()
+        if (type === `article`) {
+          articleType.addProfile({
+            type: `author`,
+              profile: {
+                first_name: schema.author.firstName,
+                last_name: schema.author.lastName,
+                username: schema.author.name,
+              }
+          })
+          articleType.setProperties([
+            {
+              property: `article:published_time`,
+              value: schema.published,
+            }, {
+              property: `article:modified_time`,
+              value: schema.modified,
+            }
+          ])
+        }
         const metaTags = [
           {
             name: 'theme-color',
@@ -93,15 +162,20 @@ function Seo({
           },
         ]
           .concat(
-            metaImage
+            seoImg
               ? [
                   {
                     property: 'image',
-                    content: metaImage,
+                    content: seoImg,
                   },
                 ]
               : []
           )
+          .concat(ogImageType.getProperties())
+          .concat(faceBookType.getProperties())
+          .concat(twitterType.getNameAttributes())
+          .concat( type === `book` ? bookType.getProperties() : [])
+          .concat(type === `article` ? articleType.getProperties() : [])
           .concat(
             keywords.length > 0
               ? {
@@ -111,42 +185,52 @@ function Seo({
               : []
           )
           .concat(meta)
+        const htmlAttributes = {
+          lang         
+        }
+        if ( type === `faq` ) {
+          htmlAttributes.itemscope = true
+          htmlAttributes.itemType = "https://schema.org/FAQPage"
+        }
         return (
           <>
             <Helmet
-              htmlAttributes={{
-                lang,
-              }}
+              htmlAttributes={htmlAttributes}
               title={title}
               titleTemplate={`%s | ${siteMetadata.title}`}
               link={[
                 {
                   rel: 'canonical',
-                  href: metaUrl,
+                  href: canonical || metaUrl,
                 },
                 {
                   rel: 'amphtml',
-                  href: `${siteUrl}/amp${pathname}`,
+                  href: `${siteUrl}/amp${location.pathname}`,
                 },
                 {
                   rel: 'stylesheet',
                   href: `https://fonts.googleapis.com/css2?family=${googleFontsFamily}&display=swap`,
                 },
-              ]}
+              ].concat(
+                siteMetadata.socialLinks.twitter
+                  ? {
+                      rel: 'me',
+                      href: siteMetadata.socialLinks.twitter,
+                    }
+                  : []
+              )}
               meta={metaTags}
             />
             <SchemaOrg
               type={type}
               url={metaUrl}
               title={title}
-              image={metaImage}
+              image={seoImg}
               description={metaDescription}
-              datePublished={datePublished}
-              dateModified={dateModified}
-              canonicalUrl={siteMetadata.siteUrl}
-              author={type === `article` ? author : siteMetadata.author}
+              canonicalUrl={canonical}
               organization={organization}
               defaultTitle={title}
+              schema={schema}
             />
           </>
         )
@@ -159,58 +243,19 @@ Seo.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
-  pathname: ``,
   type: `website`,
 }
 
 Seo.propTypes = {
+  title: PropTypes.string.isRequired,
   description: PropTypes.string,
+  keywords: PropTypes.arrayOf(PropTypes.string),
   image: PropTypes.object,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-  pathname: PropTypes.string,
-  author: PropTypes.object,
+  canonical: PropTypes.string,
   type: PropTypes.string,
-  datePublished: PropTypes.string,
-  dateModified: PropTypes.string,
-  schema: PropTypes.oneOfType([
-    PropTypes.shape({
-      authors: PropTypes.arrayOf(PropTypes.shape({
-        author: PropTypes.shape({
-          email: PropTypes.string,
-          name: PropTypes.string,
-          url: PropTypes.string,
-        })
-      })),
-      bookTitle: PropTypes.string,
-      dateAvailableForPurchase: PropTypes.string,
-      publisher: PropTypes.string,
-      pricepoints: PropTypes.arrayOf(PropTypes.shape({
-        edition: PropTypes.string,
-        format: PropTypes.string,
-        isbn: PropTypes.string,
-        price: PropTypes.number,
-      })),
-      slug: PropTypes.string,
-    }),
-    PropTypes.shape({
-      date: PropTypes.string,
-      modified: PropTypes.string,
-      link: PropTypes.string,
-      slug: PropTypes.string,
-      author: PropTypes.shape({
-        name: PropTypes.string,
-        slug: PropTypes.string
-      }),
-      categories: PropTypes.shape({
-        nodes: PropTypes.arrayOf(PropTypes.shape({
-          name: PropTypes.string
-        }))
-      })
-    }),
-  ]),
+  schema: schemaObject,
 }
 
 export default Seo
@@ -219,6 +264,26 @@ const detailsQuery = graphql`
   query DefaultSeoQuery {
     baseSettings {
       googleFontsFamily
+    }
+    og: file(name: { eq: "og" }, extension: { eq: "jpg" }) {
+      childImageSharp {
+        fixed(width: 1200) {
+          ...GatsbyImageSharpFixed
+          height
+          width
+          src
+        }
+      }
+    }
+    logo: file(name: { eq: "organization-logo" }, extension: { eq: "png" }) {
+      childImageSharp {
+        fixed(width: 500) {
+          ...GatsbyImageSharpFixed
+          height
+          width
+          src
+        }
+      }
     }
     site {
       siteMetadata {
@@ -233,7 +298,7 @@ const detailsQuery = graphql`
           name
           email
         }
-        social {
+        socialLinks {
           twitter
         }
         organization {
@@ -244,14 +309,3 @@ const detailsQuery = graphql`
     }
   }
 `
-
-// logo: file(relativePath: { eq: "images/organization-logo.png" }) {
-//   childImageSharp {
-//     fixed(width: 500) {
-//       ...GatsbyImageSharpFixed
-//       height
-//       width
-//       src
-//     }
-//   }
-// }

@@ -30,6 +30,9 @@ fragment PostFragment on WPGraphQL_Post {
   modified
   author {
     name
+    email
+    firstName
+    lastName
     slug
     avatar {
       url
@@ -69,6 +72,7 @@ const PostTemplate = ({location, data: { wpgraphql: { post }}}) => {
         description={description}
         image={image}
         schema={post}
+        canonical={post.link}
       />
       <Post {...post} />
     </Layout>

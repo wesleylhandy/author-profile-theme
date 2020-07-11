@@ -12,6 +12,7 @@ import {
   FaYoutube,
   FaAt,
   FaAmazon,
+  FaWordpressSimple,
 } from 'react-icons/fa'
 
 const Footer = () => {
@@ -45,6 +46,7 @@ const Footer = () => {
             goodreads
             pinterest
             amazon
+            wordpress
           }
         }
       }
@@ -78,6 +80,7 @@ const Footer = () => {
           goodreads,
           pinterest,
           amazon,
+          wordpress,
         },
       },
     },
@@ -96,6 +99,30 @@ const Footer = () => {
     >
       <Flex
         sx={{
+          justifyContent: `center`,
+          alignItems: `center`,
+          my: 3,
+          mx: `auto`,
+          textAlign: `center`,
+        }}
+      >
+        <Link
+          to="/"
+          sx={{
+            color: 'tertiary',
+            fontWeight: `bold`,
+            transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
+            '&:hover': {
+              color: 'primary',
+              cursor: 'pointer',
+            },
+          }}
+        >
+          {title}
+        </Link>
+      </Flex>
+      <Flex
+        sx={{
           justifyContent: `space-around`,
           alignItems: `center`,
           my: 3,
@@ -104,27 +131,28 @@ const Footer = () => {
         }}
       >
         {links.map(
-        ({ path, context: { navLink } }, idx) =>
-          navLink && (
-            <Link
-            key={`footer-${path}-${idx}`}
-            sx={{
-              color: 'tertiary',
-              fontWeight: `bold`,
-              display: `flex`,
-              justifyContent: `center`,
-              alignItems: `center`,
-              transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
-              '&:hover': {
-                color: 'primary',
-                cursor: 'pointer',
-              },
-            }}
-            to={path}
-          >
-            {navLink}
-          </Link>
-          ))}
+          ({ path, context: { navLink } }, idx) =>
+            navLink && (
+              <Link
+                key={`footer-${path}-${idx}`}
+                sx={{
+                  color: 'tertiary',
+                  fontWeight: `bold`,
+                  display: `flex`,
+                  justifyContent: `center`,
+                  alignItems: `center`,
+                  transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
+                  '&:hover': {
+                    color: 'primary',
+                    cursor: 'pointer',
+                  },
+                }}
+                to={path}
+              >
+                {navLink}
+              </Link>
+            )
+        )}
       </Flex>
       <Flex
         sx={{
@@ -169,6 +197,11 @@ const Footer = () => {
         {goodreads && (
           <ExternalLink variant="footer" href={goodreads}>
             <FaGoodreadsG />
+          </ExternalLink>
+        )}
+        {wordpress && (
+          <ExternalLink variant="footer" href={wordpress}>
+            <FaWordpressSimple />
           </ExternalLink>
         )}
         {email && (

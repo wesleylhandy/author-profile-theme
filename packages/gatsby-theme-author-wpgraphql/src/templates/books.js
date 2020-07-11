@@ -1,10 +1,8 @@
 /** @jsx jsx */
-import React from 'react'
 import { graphql, Link, navigate } from 'gatsby'
 import Img from "gatsby-image"
 import { jsx, Box, Button } from "theme-ui"
 import Layout from 'gatsby-theme-author-base/src/components/layout'
-import Book from 'gatsby-theme-author-base/src/components/book'
 import Seo from 'gatsby-theme-author-base/src/components/seo'
 
 const BooksPage = ({ location, data }) => {
@@ -85,6 +83,7 @@ export const query = graphql`
             }
             dateAvailableForPurchase
             excerpt
+            id
             slug
           }
         }

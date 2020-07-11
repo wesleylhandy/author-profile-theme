@@ -4,12 +4,12 @@ import { jsx } from 'theme-ui'
 import { convertToTimeZone } from "../utils/time-helpers"
 import EventDate from "./event-date"
 
-const EventList = ({ events, heading = "Upcoming Events", eventsBase }) => (
+const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4 }) => (
   <article>
     <h2>{heading}</h2>
     <ul>
       {
-        events.length > 0 ? events.map(event => {
+        events.length > 0 ? events.sort((a, b) => a.startDatetime - b.startDatetime).slice(0, limit).map(event => {
           const timezone = "-05:00"
           const start = convertToTimeZone({datetime: event.startDatetime, timezone})
           const end = convertToTimeZone({datetime: event.endDatetime, timezone})

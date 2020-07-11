@@ -57,7 +57,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             {
                 excerpt && (
                     <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
-                        <h3>Excerpt</h3>
+                        <h3>Synopsis</h3>
                         <div className="book-excerpt" dangerouslySetInnerHTML={{__html: excerpt }} />
                     </Box>
                 )

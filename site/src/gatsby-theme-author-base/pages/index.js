@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import Layout from 'gatsby-theme-author-base/src/components/layout'
+import Seo from "gatsby-theme-author-base/src/components/seo"
 import BookListWidget from 'gatsby-theme-author-wpgraphql/src/components/book-list-widget'
 import PostListWidget from 'gatsby-theme-author-wpgraphql/src/components/post-list-widget'
 import EventListWidget from 'gatsby-theme-author-wpgraphql/src/components/event-list-widgets'
-import { Flex, Box, jsx } from 'theme-ui'
+import { Flex, Box, jsx, Link as ExternalLink } from 'theme-ui'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
@@ -22,6 +23,7 @@ const IndexPage = ({ location }) => {
   const headshot = data.headshot.childImageSharp.fixed
   return (
     <Layout location={location}>
+      <Seo type="website" title="Home Page" />
       <Flex
         sx={{
           flexDirection: [`column`, `row`]
@@ -67,7 +69,7 @@ const IndexPage = ({ location }) => {
             </Box>
             <hr sx={{mb: 4, height: 4, backgroundColor: `primary`, border: 0}} />
             <h2 id="about">About Joan C. Benson</h2>
-            <p>Joan C. Benson is a free-lance writer published in multiple magazines including LifeWay&rsquo;s &ldquo;ParentLife,&rdquo;  Regent University&rsquo;s &ldquo;The Christian Leader,&rdquo; Royal Rangers &ldquo;High Adventure,&rdquo; and multiple others. Several of her devotional writings have been published on CBN.com. Joan also has many years of experience writing children&rsquo;s ministry publications for LifeWay Publishing for use in both Sunday School and home settings. She is a blogger, and is recently publishing her first historical fiction novel, His Gift through Elk Lake Publishing.</p>
+            <p>Joan C. Benson is a free-lance writer published in multiple magazines including LifeWay&rsquo;s &ldquo;ParentLife,&rdquo;  Regent University&rsquo;s &ldquo;The Christian Leader,&rdquo; Royal Rangers &ldquo;High Adventure,&rdquo; and multiple others. Several of her devotional writings have been published on <ExternalLink href="https://www1.cbn.com/profiles/benson-joan">CBN.com</ExternalLink>. Joan also has many years of experience writing children&rsquo;s ministry publications for LifeWay Publishing for use in both Sunday School and home settings. She is a blogger, and is recently publishing her first historical fiction novel, <Link to={`/books/his-gift`}><i>His Gift</i></Link> through Elk Lake Publishing.</p>
             <h3>Fiction Author Applying Biblical Principles</h3>
             <p>Combining her passion for people and her faith in God, she has a desire to write stories for young adults and adults alike. While teaching young adult fiction in the schools, she saw a dearth of literature containing Scriptural truths. She desires to create stories that are not only interesting and entertaining, but which contain Biblical principles lacking in today&rsquo;s culture. Joan instills the hope of Christ for the suffering, the disappointed, and the hopeless. She points those who have had their dreams dashed to the One who offers wisdom beyond the world&rsquo;s.</p>
             <h3>Debut Historical Fiction</h3>
@@ -75,7 +77,7 @@ const IndexPage = ({ location }) => {
             <h3>Educator</h3>
             <p>Joan lives in Chesapeake, VA, with her husband and their two Bichon Frisé dogs. She is the mother of four married adult children, and a very proud grandmother of eight amazing grandchildren. Joan is a former Christian and public school educator, having taught grades from primary through middle school. She served as a reading specialist, teacher trainer, and has been writing for educational publishing companies for over twenty-five years.</p>
             <h3>Speaker</h3>
-            <p>Joan is a part of a small group of women from Chesapeake, VA, called &ldquo;Women Victorious—Ordinary Women, Extraordinary God.&rdquo; The women formed the group to encourage, empower, and inspire women to find victory and hope through Jesus Christ during trials. They pray to help women through their testimonies and worship experiences while addressing relevant issues facing today&rsquo;s women from a biblical perspective. See Facebook under their title name. Joan also speaks independently, and has spoken at women&rsquo;s ministry events, retreats, and youth groups.</p>
+            <p>Joan is a part of a small group of women from Chesapeake, VA, called <ExternalLink href="https://www.facebook.com/groups/womenvictorious">&ldquo;Women Victorious—Ordinary Women, Extraordinary God.&rdquo;</ExternalLink> The women formed the group to encourage, empower, and inspire women to find victory and hope through Jesus Christ during trials. They pray to help women through their testimonies and worship experiences while addressing relevant issues facing today&rsquo;s women from a biblical perspective. Joan also speaks independently, and has spoken at women&rsquo;s ministry events, retreats, and youth groups.</p>
           </article>
           
         </Flex>
@@ -85,7 +87,7 @@ const IndexPage = ({ location }) => {
           }}
         >
           <BookListWidget heading="My Books" />
-          <EventListWidget heading="Upcoming Events" />
+          <EventListWidget heading="Upcoming Events" limit={4} />
           <PostListWidget heading="Recent Posts" limit={4} />
         </aside>
       </Flex>

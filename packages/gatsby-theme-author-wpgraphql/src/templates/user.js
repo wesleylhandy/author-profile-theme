@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "gatsby-theme-author-base/src/components/layout"
+import Seo from 'gatsby-theme-author-base/src/components/seo'
 import PostPreview from 'gatsby-theme-author-base/src/components/post-preview';
 import { graphql } from "gatsby"
 
@@ -13,6 +14,10 @@ const User = props => {
   } = props
   return (
     <Layout location={location}>
+      <Seo 
+        type="website" 
+        title={`${name} | Posts By User Page`}
+      />
         <h2>Posts by {name}</h2>
         {nodes.map(post => (
             <div key={post.id}>

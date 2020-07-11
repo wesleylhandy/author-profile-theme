@@ -6,11 +6,11 @@ import Seo from 'gatsby-theme-author-base/src/components/seo'
 const EventTemplate = ({location, pageContext: {
     event
 }}) => {
-    console.log(event)
     return (
     <Layout location={location}>
       <Seo
         type="event"
+        title={`${event.eventName} | Event`}
         schema={event}
       />
       <Event {...event} />

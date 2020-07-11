@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { jsx } from 'theme-ui'
 import EventList from "gatsby-theme-author-base/src/components/event-list"
 
-const EventListWidget = ({heading}) => {
+const EventListWidget = ({heading, limit = 4}) => {
     const data = useStaticQuery(graphql`
     {
         themeConfig {
@@ -16,6 +16,7 @@ const EventListWidget = ({heading}) => {
                         endDatetime
                         eventName
                         slug
+                        id
                         startDatetime
                     }
                 }
@@ -25,7 +26,7 @@ const EventListWidget = ({heading}) => {
     const { themeConfig: { eventsBase }, wpgraphql: { eventsAndSpeakingEngagements: { eventList: { events } } } } = data
     return (
       <div sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3}}>
-        <EventList heading={heading} events={events}  eventsBase={eventsBase} />
+        <EventList heading={heading} events={events}  eventsBase={eventsBase} limit={limit}/>
       </div>
     )
 }

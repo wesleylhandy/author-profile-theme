@@ -63,6 +63,7 @@
     "react-social-sharing": "^3.0.1",
     "styled-components": "^5.1.1",
     "tailwindcss": "^1.4.6",
-    "theme-ui": "^0.3.1"
+    "theme-ui": "^0.3.1",
+    "uuid": "^8.2.0"
   }
 }

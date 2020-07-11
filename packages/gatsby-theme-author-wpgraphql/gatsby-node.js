@@ -324,6 +324,8 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
               authors {
                 author {
                   email
+                  familyName
+                  givenName
                   name
                   shortBio
                   url
@@ -356,6 +358,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                 format
                 isbn
                 price
+                url
               }
               endorsements {
                 endorsement {
@@ -588,16 +591,16 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         sortOrder: 9
       }
     })
-    allFaqs.map(faq => {
-      console.log(`create faq: ${faqBase}/${faq.slug}`)
-      createPage({
-        path: `${faqBase}/${faq.slug}`,
-        component: faqTemplate,
-        context: {
-          faq
-        },
-      })
-    })
+    // allFaqs.map(faq => {
+    //   console.log(`create faq: ${faqBase}/${faq.slug}`)
+    //   createPage({
+    //     path: `${faqBase}/${faq.slug}`,
+    //     component: faqTemplate,
+    //     context: {
+    //       faq
+    //     },
+    //   })
+    // })
   })
 }
 
