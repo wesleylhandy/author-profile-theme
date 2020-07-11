@@ -9,20 +9,22 @@ const Author = ({email, name, profileImage, shortBio, url, idx}) => (
         {
             name && <h4 className="author-name">{name}</h4>
         }
-        <Flex>
+        <Flex sx={{ flexDirection: [`column`, `row`], }}>
         {
-            profileImage && <Img fixed={profileImage.imageFile.childImageSharp.fixed} sx={{ flex: `1 0 auto`, mr: 3 }}/>
+            profileImage && <Img fixed={profileImage.imageFile.childImageSharp.fixed} sx={{ flex: `1 0 auto`, mr: [0, 3], mb: [3, 0] }}/>
         }
         {
             shortBio && <div className="author-bio" dangerouslySetInnerHTML={{__html: shortBio}}></div>
         }
         </Flex>
+        <Flex sx={{ flexDirection: [`column`, `row`], justifyContent: `center`, alignItems: `center`}}>
         {
-            email && <Link href={`mailto:${email}`}>{email}</Link>
+            email && <Link sx={{mr: [0, 3], mb: [3, 0]}} href={`mailto:${email}`}>{email}</Link>
         }
         {
             url && <Link href={url}>{url}</Link>
         }
+        </Flex>
     </Box>
 )
 
