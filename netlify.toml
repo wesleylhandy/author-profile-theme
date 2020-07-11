@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  base = "site"
+  base = "joancbenson"
   publish = "dist"
 
 [[plugins]]
