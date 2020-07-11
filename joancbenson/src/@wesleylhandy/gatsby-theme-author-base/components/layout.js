@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import React from 'react'
-import { Container, useThemeUI, useColorMode, Flex, jsx } from 'theme-ui'
+import { Container, useThemeUI, useColorMode, Flex, Button, jsx } from 'theme-ui'
 import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Global } from '@emotion/core'
 import Header from './header'
 import Footer from '@wesleylhandy/gatsby-theme-author-base/src/components/footer'
+import { FaSun, FaMoon } from 'react-icons/fa'
 
 const StyledBackground = styled(BackgroundImage)`
   position: fixed;
@@ -54,10 +55,13 @@ const Layout = ({ children, location }) => {
   const { theme } = useThemeUI()
   const [colorMode, setColorMode] = useColorMode()
   return (
-    <Flex sx={{
+    <Flex
+      sx={{
+        position: `relative`,
         flexDirection: `column`,
         minHeight: '100vh',
-    }}>
+      }}
+    >
       <Global
         styles={(theme) => ({
           '.embed-youtube': {
@@ -91,6 +95,9 @@ const Layout = ({ children, location }) => {
         <Container>{children}</Container>
       </StyledBackground>
       <Footer />
+      <Button onClick={() => setColorMode(colorMode === `dark` ? `default` : `dark`)}>
+        {colorMode === `dark` ? <FaSun /> : <FaMoon />}
+      </Button>
     </Flex>
   )
 }
