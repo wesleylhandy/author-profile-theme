@@ -51,7 +51,7 @@ const Footer = () => {
         }
       }
       allSitePage(
-        filter: { path: { regex: "/^/(?!(404)|(.*404.*))([0-9a-z-_])*/*$/i" } }
+        filter: { path: { regex: "/^/(?!(404)|(.*404.*)|(offline-plugin-app-shell-fallback))([0-9a-z-_])*/*$/i" } }
         sort: { fields: context___sortOrder }
       ) {
         links: nodes {

@@ -7,7 +7,7 @@ module.exports = (options) => {
     basePath = '/',
     imagesName = 'images',
     imagesContentPath = path.join(__dirname, 'src', 'images'),
-    gaTackingId = '',
+    gaTackingId,
     manifest = {},
     siteMetadata = {},
     html2amp = {},
