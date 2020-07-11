@@ -69,7 +69,7 @@ class BlogPage extends Component {
     } = this.props
     return (
       <Layout pageNumber={pageNumber} location={location}>
-        <Seo type="website" title={`Blog Page ${pageNumber + 1}`} />
+        <Seo type="website" title={`Blog Page ${pageNumber + 1}`} meta={[{ name: "robots", content: "noindex" }]}/>
         <h2>Recent Posts</h2>
         {data &&
           data.wpgraphql &&

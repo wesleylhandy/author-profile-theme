@@ -21,6 +21,7 @@ const BooksPage = ({ location, data }) => {
       <Seo 
         type="website" 
         title="Books Page"
+        meta={[{ name: "robots", content: "noindex" }]}
       />
       <article>
         <h2>My Books</h2>

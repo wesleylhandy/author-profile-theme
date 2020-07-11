@@ -83,7 +83,7 @@ module.exports = {
           sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
           policy: [
             { userAgent: "*", allow: "/" },
-            { userAgent: "*", disallow: ["/blog/tag/*", "/blog/category/*", "/blog/author/*", "/blog", "/blog/page/*", "/books"] }
+            { userAgent: "*", disallow: ["/blog/tag/*", "/blog/category/*", "/blog/author/*", "/blog/page/*"] }
           ]
         }
       },
