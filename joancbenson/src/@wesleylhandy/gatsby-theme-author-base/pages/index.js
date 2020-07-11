@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import Layout from 'gatsby-theme-author-base/src/components/layout'
-import Seo from "gatsby-theme-author-base/src/components/seo"
-import BookListWidget from 'gatsby-theme-author-wpgraphql/src/components/book-list-widget'
-import PostListWidget from 'gatsby-theme-author-wpgraphql/src/components/post-list-widget'
-import EventListWidget from 'gatsby-theme-author-wpgraphql/src/components/event-list-widgets'
+import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
+import Seo from "@wesleylhandy/gatsby-theme-author-base/src/components/seo"
+import BookListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/book-list-widget'
+import PostListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/post-list-widget'
+import EventListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/event-list-widgets'
 import { Flex, Box, jsx, Link as ExternalLink } from 'theme-ui'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql, Link } from 'gatsby'

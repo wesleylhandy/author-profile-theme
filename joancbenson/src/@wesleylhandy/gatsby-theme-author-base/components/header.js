@@ -2,7 +2,7 @@
 import { Heading, jsx } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Navigation from './navigation'
-import Blockquote from "gatsby-theme-author-base/src/components/blockquote"
+import Blockquote from "@wesleylhandy/gatsby-theme-author-base/src/components/blockquote"
 
 const Header = ({ location, setColorMode }) => {
   const data = useStaticQuery(graphql`

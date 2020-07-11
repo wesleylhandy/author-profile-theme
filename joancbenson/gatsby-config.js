@@ -51,7 +51,7 @@ module.exports = {
   siteMetadata,
   plugins: [
     {
-      resolve: `gatsby-theme-author-base`,
+      resolve: `@wesleylhandy/gatsby-theme-author-base`,
       options: {
         gaTrackingId: process.env.GA_TRACKING_ID,
         contentPath: `blog`,
@@ -81,7 +81,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-theme-author-wpgraphql`,
+      resolve: `@wesleylhandy/gatsby-theme-author-wpgraphql`,
       options: {
         wpGqlSettings: {
           url: process.env.WP_BASE_URL,
@@ -94,6 +94,5 @@ module.exports = {
         faqBase: `/faq`,
       },
     },
-    `gatsby-theme-author-tinacms`,
   ],
 }

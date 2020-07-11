@@ -36,7 +36,6 @@
     "gatsby-remark-emojis": "^0.4.3",
     "gatsby-remark-images": "^3.3.10",
     "gatsby-remark-responsive-iframe": "^2.4.5",
-    "gatsby-theme-author-base": "*",
     "gatsby-tinacms-git": "^0.5.3",
     "gatsby-tinacms-remark": "^0.8.2",
     "gatsby-transformer-remark": "^2.8.14",
