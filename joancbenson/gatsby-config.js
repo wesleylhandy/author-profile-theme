@@ -13,8 +13,8 @@ const siteMetadata = {
   },
   siteUrl,
   siteVerification: {
-    google: ``,
-    bing: ``,
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    bing: process.env.BING_SITE_VERIFICATION,
   },
   social: {
     twitter: '11Ccaj4life',
@@ -53,6 +53,9 @@ module.exports = {
     {
       resolve: `@wesleylhandy/gatsby-theme-author-base`,
       options: {
+        siteMetadata: {
+          siteUrl
+        },
         gaTrackingId: process.env.GA_TRACKING_ID,
         contentPath: `blog`,
         basePath: `/blog`,
