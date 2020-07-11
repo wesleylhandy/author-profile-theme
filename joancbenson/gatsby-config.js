@@ -52,9 +52,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sitemap`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID,
+      },
+    },
+    {
       resolve: `@wesleylhandy/gatsby-theme-author-base`,
       options: {
-        gaTrackingId: process.env.GA_TRACKING_ID,
         contentPath: `blog`,
         basePath: `/blog`,
         headerMaxWidth: 980,
