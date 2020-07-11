@@ -9,7 +9,9 @@ module.exports = options => {
         imagesContentPath = path.join(__dirname, "src", "images"),
         gaTackingId = "",
         manifest = {},
-        siteMetadata = {}
+        siteMetadata = {},
+        html2amp = {},
+        robotsTxt = {}
     } = options;
     return {
         siteMetadata,
@@ -59,6 +61,30 @@ module.exports = options => {
                   icon: manifest.icon, // This path is relative to the root of the site.
                 },
             },
+            {
+                resolve: "gatsby-plugin-robots-txt",
+                options: {
+                  host: siteMetadata.siteUrl,
+                  sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
+                  policy: robotsTxt.policy
+                },
+            },
+            {
+                resolve: 'gatsby-plugin-html2amp',
+                options: {
+                  files: html2amp.files,
+                  gaConfigPath: 'gaConfig.json',
+                  dist: 'public/amp',
+                  serviceWorker: {
+                    src: `${siteMetadata.siteUrl}/sw.js`,
+                    'data-iframe-src': `${siteMetadata.siteUrl}/amp-install-serviceworker.html`,
+                    layout: 'nodisplay'
+                  },
+                  cssPlugins: html2amp.cssPlugins
+                }
+            },
+            "gatsby-plugin-offline",
+            "gatsby-plugin-meta-redirect"
         ],
     }
 }
