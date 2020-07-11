@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx, Button, Box } from 'theme-ui'
 import { graphql, Link, navigate } from "gatsby"
-import Layout from 'gatsby-theme-author-base/src/components/layout';
-import Seo from 'gatsby-theme-author-base/src/components/seo'
-import { convertToTimeZone } from "gatsby-theme-author-base/src/utils/time-helpers"
-import EventDate from "gatsby-theme-author-base/src/components/event-date"
+import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout';
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
+import { convertToTimeZone } from "@wesleylhandy/gatsby-theme-author-base/src/utils/time-helpers"
+import EventDate from "@wesleylhandy/gatsby-theme-author-base/src/components/event-date"
 
 const EventsPage = ({location, data}) => {
     const {

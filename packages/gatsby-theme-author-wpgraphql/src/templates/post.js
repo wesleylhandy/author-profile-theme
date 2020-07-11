@@ -1,8 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "gatsby-theme-author-base/src/components/layout"
-import Post from "gatsby-theme-author-base/src/components/post"
-import Seo from 'gatsby-theme-author-base/src/components/seo'
+import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout"
+import Post from "@wesleylhandy/gatsby-theme-author-base/src/components/post"
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
 export const query = graphql`
 fragment PostFragment on WPGraphQL_Post {

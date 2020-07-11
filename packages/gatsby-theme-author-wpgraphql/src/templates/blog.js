@@ -2,9 +2,9 @@
 import { jsx, Button, Grid } from 'theme-ui'
 import { Component } from 'react'
 import { graphql, navigate } from 'gatsby'
-import Layout from 'gatsby-theme-author-base/src/components/layout'
-import Seo from 'gatsby-theme-author-base/src/components/seo'
-import PostPreview from 'gatsby-theme-author-base/src/components/post-preview'
+import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
+import PostPreview from '@wesleylhandy/gatsby-theme-author-base/src/components/post-preview'
 
 class BlogPage extends Component {
   renderPreviousLink = () => {

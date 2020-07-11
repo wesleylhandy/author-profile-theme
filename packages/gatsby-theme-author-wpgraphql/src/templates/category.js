@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "gatsby-theme-author-base/src/components/layout"
-import PostPreview from 'gatsby-theme-author-base/src/components/post-preview';
-import Seo from 'gatsby-theme-author-base/src/components/seo'
+import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout"
+import PostPreview from '@wesleylhandy/gatsby-theme-author-base/src/components/post-preview';
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 import { graphql } from "gatsby"
 
 const CategoryTemplate = props => {

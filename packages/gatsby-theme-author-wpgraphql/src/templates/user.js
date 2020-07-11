@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "gatsby-theme-author-base/src/components/layout"
-import Seo from 'gatsby-theme-author-base/src/components/seo'
-import PostPreview from 'gatsby-theme-author-base/src/components/post-preview';
+import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout"
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
+import PostPreview from '@wesleylhandy/gatsby-theme-author-base/src/components/post-preview';
 import { graphql } from "gatsby"
 
 const User = props => {

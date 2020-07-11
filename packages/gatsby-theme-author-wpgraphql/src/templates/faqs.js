@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql } from "gatsby"
-import Layout from 'gatsby-theme-author-base/src/components/layout';
-import Seo from 'gatsby-theme-author-base/src/components/seo'
+import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout';
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
 const FaqPage = ({location, data}) => {
   const {

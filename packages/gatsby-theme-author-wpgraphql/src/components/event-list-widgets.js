@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { graphql, useStaticQuery } from "gatsby"
 import { jsx } from 'theme-ui'
-import EventList from "gatsby-theme-author-base/src/components/event-list"
+import EventList from "@wesleylhandy/gatsby-theme-author-base/src/components/event-list"
 
 const EventListWidget = ({heading, limit = 4}) => {
     const data = useStaticQuery(graphql`

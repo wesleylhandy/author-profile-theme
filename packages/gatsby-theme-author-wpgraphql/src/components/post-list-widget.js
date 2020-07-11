@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { jsx } from 'theme-ui'
-import PostList from "gatsby-theme-author-base/src/components/post-list"
+import PostList from "@wesleylhandy/gatsby-theme-author-base/src/components/post-list"
 
 const PostListWidget = ({heading}) => {
     const data = useStaticQuery(graphql`

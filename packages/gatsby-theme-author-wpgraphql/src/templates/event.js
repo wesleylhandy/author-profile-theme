@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "gatsby-theme-author-base/src/components/layout"
-import Event from "gatsby-theme-author-base/src/components/event"
-import Seo from 'gatsby-theme-author-base/src/components/seo'
+import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout"
+import Event from "@wesleylhandy/gatsby-theme-author-base/src/components/event"
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
 const EventTemplate = ({location, pageContext: {
     event

@@ -232,12 +232,12 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const postTemplate = require.resolve(`./src/templates/post.js`)
 
     blogPages.map(blogPage => {
-      console.log(`createBlogPage ${blogPage.path}`)
+      // console.log(`createBlogPage ${blogPage.path}`)
       createPage(blogPage)
     })
 
     allPosts.map(post => {
-      console.log(`create post: ${blogBase}/${post.slug}`)
+      // console.log(`create post: ${blogBase}/${post.slug}`)
       createPage({
         path: `${blogBase}/${post.slug}`,
         component: postTemplate,
@@ -273,7 +273,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const categoryTemplate = require.resolve(`./src/templates/category.js`)
 
     allTags.map(category => {
-      console.log(`create category: ${blogBase}/category/${category.slug}`)
+      // console.log(`create category: ${blogBase}/category/${category.slug}`)
       createPage({
         path: `${blogBase}/category/${category.slug}`,
         component: categoryTemplate,
@@ -306,7 +306,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     const userTemplate = require.resolve(`./src/templates/user.js`)
 
     allUsers.map(user => {
-      console.log(`create user: ${blogBase}/author/${user.slug}`)
+      // console.log(`create user: ${blogBase}/author/${user.slug}`)
       createPage({
         path: `${blogBase}/author/${user.slug}`,
         component: userTemplate,
@@ -434,7 +434,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   await fetchBooks().then(allBooks => {
     const bookTemplate = require.resolve(`./src/templates/book.js`)
     const bookPageTemplate = require.resolve(`./src/templates/books.js`)
-    console.log(`createBooksPage ${booksBase}`)
+    // console.log(`createBooksPage ${booksBase}`)
     createPage({
       path: booksBase,
       component: bookPageTemplate,
@@ -444,7 +444,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       }
     })
     allBooks.map(book => {
-      console.log(`create book: ${booksBase}/${book.slug}`)
+      // console.log(`create book: ${booksBase}/${book.slug}`)
       createPage({
         path: `${booksBase}/${book.slug}`,
         component: bookTemplate,
@@ -525,7 +525,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   await fetchEvents().then(allEvents => {
     const eventTemplate = require.resolve(`./src/templates/event.js`)
     const eventPageTemplate = require.resolve(`./src/templates/events.js`)
-    console.log(`createEventsPage ${eventsBase}`)
+    // console.log(`createEventsPage ${eventsBase}`)
     createPage({
       path: eventsBase,
       component: eventPageTemplate,
@@ -535,7 +535,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       }
     })
     allEvents.map(event => {
-      console.log(`create event: ${eventsBase}/${event.slug}`)
+      // console.log(`create event: ${eventsBase}/${event.slug}`)
       createPage({
         path: `${eventsBase}/${event.slug}`,
         component: eventTemplate,
@@ -582,7 +582,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   await fetchFaqs().then(allFaqs => {
     const faqTemplate = require.resolve(`./src/templates/faq.js`)
     const faqPageTemplate = require.resolve(`./src/templates/faqs.js`)
-    console.log(`createFaqPage ${faqBase}`)
+    // console.log(`createFaqPage ${faqBase}`)
     createPage({
       path: faqBase,
       component: faqPageTemplate,
