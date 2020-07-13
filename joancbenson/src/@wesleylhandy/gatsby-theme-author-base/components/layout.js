@@ -6,6 +6,8 @@ import BackgroundImage from 'gatsby-background-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Global } from '@emotion/core'
 import Header from './header'
+import Sidebar from '../../../components/sidebar'
+import AffiliationsBlock from '../../../components/affiliations'
 import Footer from '@wesleylhandy/gatsby-theme-author-base/src/components/footer'
 import { FaSun, FaMoon } from 'react-icons/fa'
 
@@ -32,9 +34,14 @@ const StyledBackground = styled(BackgroundImage)`
   }
 `
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location, hideSidebar }) => {
   const data = useStaticQuery(graphql`
     query {
+      themeConfig {
+        blogBase
+        eventsBase
+        booksBase
+      }
       bkg: file(name: { eq: "header-bg" }) {
         childImageSharp {
           fluid(maxWidth: 1920) {
@@ -42,18 +49,13 @@ const Layout = ({ children, location }) => {
           }
         }
       }
-      headshot: file(name: { eq: "headshot" }, extension: { eq: "png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
     }
   `)
   const bkg = data.bkg.childImageSharp.fluid
+  const { themeConfig: { blogBase, eventsBase, booksBase } } = data
   const { theme } = useThemeUI()
   const [colorMode, setColorMode] = useColorMode()
+  const hideBooksWidget = location.pathname.includes(booksBase), hideEventsWidget = location.pathname.includes(eventsBase), hidePostsWidget = location.pathname.includes(blogBase);
   return (
     <Flex
       sx={{
@@ -92,11 +94,49 @@ const Layout = ({ children, location }) => {
         backgroundColor={theme.colors.primary}
         isDarken={colorMode === `dark`}
       >
-        <Container>{children}</Container>
+        <Container>
+          <Flex
+            sx={{
+              flexDirection: [`column`, `row`],
+            }}
+          >
+            <Flex
+              sx={{
+                flex: `1 1 auto`,
+                position: `relative`,
+                border: `5px solid`,
+                borderColor: `primary`,
+                my: 3,
+                mr: [0, 3],
+                p: 3,
+                alignItems: `center`,
+                justifyContent: `center`,
+              }}
+            >
+              {children}
+            </Flex>
+            { !hideSidebar && <Sidebar hideBooksWidget={hideBooksWidget} hideEventsWidget={hideEventsWidget} hidePostsWidget={hidePostsWidget} /> }
+          </Flex>
+          <AffiliationsBlock />
+        </Container>
       </StyledBackground>
       <Footer />
-      <Button onClick={() => setColorMode(colorMode === `dark` ? `default` : `dark`)}>
-        {colorMode === `dark` ? <FaSun /> : <FaMoon />}
+      <Button
+        sx={{
+          display: `flex`,
+          flexDirection: `row`,
+          justifyContent: `center`,
+          alignItems: `center`,
+          borderRadius: 0,
+          cursor: `pointer`,
+        }}
+        onClick={() => setColorMode(colorMode === `dark` ? `default` : `dark`)}
+        aria-label={
+          colorMode === `dark` ? `Click for Light Color Theme` : `Click for Dark Color Theme`
+        }
+      >
+        {colorMode === `dark` ? <FaSun sx={{ mr: 2 }} /> : <FaMoon sx={{ mr: 2 }} />}
+        {colorMode === `dark` ? ` Change to Light Color Theme ` : ` Change to Dark Color Theme `}
       </Button>
     </Flex>
   )

@@ -14,7 +14,7 @@ const Post = ({ title, author, content, published, link, modified, slug, feature
       <div dangerouslySetInnerHTML={{__html: content.replace(/<div class="sharedaddy.*/i, "")}}>
       </div>
       <p>
-          Originally Published at <Link href={link}>{link}</Link>
+          Originally Published at <Link href={link} aria-label={`Link to ${link}`}>{link}</Link>
           {` on `}
           <ConvertedDate rawDate={published}/>
           {`. `}

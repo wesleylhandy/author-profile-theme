@@ -1,15 +1,13 @@
 /** @jsx jsx */
 import { graphql, Link, navigate } from 'gatsby'
-import Img from "gatsby-image"
-import { jsx, Box, Button } from "theme-ui"
+import Img from 'gatsby-image'
+import { jsx, Box, Button } from 'theme-ui'
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
 const BooksPage = ({ location, data }) => {
   const {
-    themeConfig: {
-      booksBase,
-    },
+    themeConfig: { booksBase },
     wpgraphql: {
       booksAndPublications: {
         bookList: { books },
@@ -18,36 +16,34 @@ const BooksPage = ({ location, data }) => {
   } = data
   return (
     <Layout location={location}>
-      <Seo 
-        type="website" 
-        title="Books Page"
-        meta={[{ name: "robots", content: "noindex" }]}
-      />
+      <Seo type="website" title="Books Page" meta={[{ name: 'robots', content: 'noindex' }]} />
       <article>
         <h2>My Books</h2>
-        <ul>
-        {books.map((book, idx) => {
-          const title = book.bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '');
-          const toBook = `${booksBase}/${book.slug}`
-          return (
-            <li key={book.id} sx={{ border: `5px solid`, borderColor: `primary`, backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3}} >
-              <h3>
-                  <Link 
-                    to={toBook} 
-                  >{title}
+        <ul sx={{ listStyleType: 'none', paddingInlineStart: 0 }}>
+          {books.map((book, idx) => {
+            const title = book.bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '')
+            const toBook = `${booksBase}/${book.slug}`
+            return (
+              <li key={book.id}>
+                <h3>
+                  <Link to={toBook} aria-label={`Link to ${title}`}>
+                    {title}
                   </Link>
-              </h3>
-              {
-                book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />
-              }
-              <div className="book-excerpt" dangerouslySetInnerHTML={{__html: book.excerpt }} />
-              <Box my={3}>
-                  <Button onClick={() => navigate(toBook)} variant="buttons.tertiary" sx={{ display: `block`, mx: `auto`, maxWidth: 300, width: `100%`}}>
+                </h3>
+                {book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />}
+                <div className="book-excerpt" dangerouslySetInnerHTML={{ __html: book.excerpt }} />
+                <Box my={3}>
+                  <Button
+                    onClick={() => navigate(toBook)}
+                    variant="buttons.tertiary"
+                    sx={{ display: `block`, mx: `auto`, maxWidth: 300, width: `100%` }}
+                    aria-label={`Link to ${title}`}
+                  >
                     Learn More
                   </Button>
-              </Box>
-              { idx !== books.length - 1 && <hr mx={3} /> }
-            </li>
+                </Box>
+                {idx !== books.length - 1 && <hr mx={3} />}
+              </li>
             )
           })}
         </ul>

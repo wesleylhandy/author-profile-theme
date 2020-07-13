@@ -19,10 +19,11 @@ const Blockquote = ({quote, citation}) => (
     >
     <blockquote
       sx={{
-        width: `100%`,
+        display: `block`,
         padding: 2,
         color: `text`,
         fontFamily: `body`,
+        fontWeight: 500,
         letterSpacing: `2px`,
         '@media screen and (max-width: 640px)': {
           position: `relative`,
@@ -30,6 +31,7 @@ const Blockquote = ({quote, citation}) => (
           left: `unset`,
         },
       }}
+      style={{ marginBlockEnd: 0, marginBlockStart: 0, marginInlineEnd: 0, marginInlineStart: 0 }}
     >
       {quote}
       <footer>

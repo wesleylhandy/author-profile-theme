@@ -20,6 +20,7 @@ const PostPreview = ({ post, blogBase, ...props }) => (
         to={`${blogBase}/${post.slug}`} 
         className="read-link"
         sx={{color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }}}
+        aria-label={`Link to ${post.title}`}
     >
         Read this post &rsaquo;
       </Link>

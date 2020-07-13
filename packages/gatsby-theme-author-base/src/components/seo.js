@@ -60,6 +60,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
         } = data
         const metaDescription = description || siteMetadata.description
         const metaImage = image && image.src ? `${siteMetadata.siteUrl}${image.src}` : null
+        const metaKeywords = keywords ? [...keywords] : [...siteMetadata.keywords] 
         const metaUrl = `${siteMetadata.siteUrl}${location.pathname}`
         const siteUrl = siteMetadata.siteUrl
         const logoImg = logo && logo.childImageSharp.fixed
@@ -177,10 +178,10 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           .concat( type === `book` ? bookType.getProperties() : [])
           .concat(type === `article` ? articleType.getProperties() : [])
           .concat(
-            keywords.length > 0
+            metaKeywords.length > 0
               ? {
                   name: `keywords`,
-                  content: keywords.join(`, `),
+                  content: metaKeywords.join(`, `),
                 }
               : []
           )
@@ -294,6 +295,7 @@ const detailsQuery = graphql`
           bing
         }
         description
+        keywords
         author {
           name
           email

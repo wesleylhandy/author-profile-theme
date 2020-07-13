@@ -16,6 +16,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
           backgroundColor: location && location.pathname === '/' ? `light` : `transparent`,
           display: `flex`,
           justifyContent: `center`,
+          textDecoration: `none`,
           alignItems: `center`,
           width: small ? `100%` : `initial`,
           height: 44,
@@ -27,6 +28,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
           },
         }}
         to="/"
+        aria-label="Link to Home Page"
       >
         <FaHome />
       </Link>
@@ -46,6 +48,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
                 width: small ? `100%` : `initial`,
                 height: 44,
                 transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
+                textDecoration: `none`,
                 '&:hover': {
                   color: 'white',
                   cursor: 'pointer',
@@ -53,6 +56,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
                 },
               }}
               to={path}
+              aria-label={`Link to ${navLink}`}
             >
               {navLink}
             </Link>

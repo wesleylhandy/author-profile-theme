@@ -1,12 +1,31 @@
-import { tailwind } from '@theme-ui/presets'
-
 export const theme = {
-    ...tailwind,
     breakpoints: [
-      ...tailwind.breakpoints,
+      '640px',
+      '768px',
+      '980px',
+      '1280px',
       '1520px'
     ],
-    space: [...tailwind.space],
+    space: [
+      '0',
+      '0.25rem',
+      '0.5rem',
+      '0.75rem',
+      '1rem',
+      '1.25rem',
+      '1.5rem',
+      '2rem',
+      '2.5rem',
+      '3rem',
+      '4rem',
+      '5rem',
+      '6rem',
+      '8rem',
+      '10rem',
+      '12rem',
+      '14rem',
+      '16rem',
+    ],
     fonts: {
       body: "Georgia, serif",
       heading: "Arial, sans-serif",
@@ -18,23 +37,51 @@ export const theme = {
     },
     useColorSchemeMediaQuery: true,
     colors: {
-      ...tailwind.colors,
+      gray: [
+        '#f8f9fa',
+        '#ededed',
+        '#D3D3D3',
+        '#ced4da',
+        '#9F9F9F',
+        '#6c757d',
+        '#5B5B5B',
+        '#343a40',
+        '#25282A',
+      ],
+      lightblue: '#579CA8',
+      blue:    '#007bff',
+      indigo:  '#6610f2',
+      purple:  '#6f42c1',
+      lightred: '#F24A39',
+      pink:    '#E26657',
+      red:     '#EF4C40',
+      darkred: '#AC302B',
+      orange:  '#fd7e14',
+      yellow:  '#ffc107',
+      green:   '#28a745',
+      teal:    '#20c997',
+      cyan:    '#17a2b8',
+      transparent: 'transparent',
+      black: '#000',
+      white: '#fff',
       background: "#fff",
       text: "gray.9",
-      opaqueBackground: "rgba(255,255,255, .8)",
+      opaqueBackground: "rgba(255,255,255,.8)",
       primary: "#579CA8",
       secondary: "#e7dbba",
       tertiary: "#FF8D81",
       light: "gray.3",
+      affiliations: "transparent",
       modes: {
         dark: {
           text: "gray.2",
           background: "#000",
-          opaqueBackground: "rgba(255,255,255, .2)",
+          opaqueBackground: "rgba(0,0,0,.6)",
           primary: "#9AC3BF",
           secondary: "#EEDFB6",
           tertiary: "#AF3D31",
-          light: "gray.7,"
+          light: "gray.7",
+          affiliations: "#919191",
         }
       }
     },
@@ -66,10 +113,17 @@ export const theme = {
         fontWeight: 'bold'
       },
       footer: {
-        color: "tertiary",
+        color: "text",
         transition: "color 250ms ease-in-out",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        textAlign: "center",
+        fontSize: 4,
+        cursor: "pointer",
         "&:hover": {
-          color: "primary"
+          color: "tertiary"
         }
       }
     },
@@ -186,7 +240,7 @@ export const theme = {
           fontSize: 2,
           fontWeight: "bold",
           "&:hover": {
-            color: "primary"
+            color: "gray.4"
           }
         },
         'h3 > a': {
@@ -244,13 +298,14 @@ export const theme = {
       ul: {
         borderTop: "1px solid",
         borderColor: "gray.1",
-        listStyle: "none",
+        listStyleType: "none",
         padding: 0,
       },
       li: {
         borderBottom: "1px solid",
         borderColor: "gray.1",
         padding: 3,
+        listStyle: "none",
         "&:focus-within,&:hover": {
           backgroundColor: "gray.1",
         },
@@ -259,7 +314,7 @@ export const theme = {
         color: "primary",
         cursor: "pointer",
         "&:hover": {
-          color: "secondary"
+          color: "gray.4"
         }
       },
       p: {
@@ -270,6 +325,8 @@ export const theme = {
       },
       blockquote: {
         fontFamily: "body",
+        marginBlockStart: 0,
+        marginBlockEnd: 0,
       },
       cite: {
         fontFamily: "body",

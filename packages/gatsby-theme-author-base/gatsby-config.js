@@ -13,12 +13,6 @@ module.exports = (options) => {
     siteMetadata,
     plugins: [
       `gatsby-plugin-dark-mode`,
-      {
-        resolve: `gatsby-plugin-postcss`,
-        options: {
-          postCssPlugins: [require(`tailwindcss`)],
-        },
-      },
       `gatsby-plugin-theme-ui`,
       {
         resolve: `gatsby-source-filesystem`,
@@ -59,15 +53,11 @@ module.exports = (options) => {
       {
         resolve: 'gatsby-plugin-html2amp',
         options: {
-          files: html2amp.files,
-          gaConfigPath: 'gaConfig.json',
+          files: html2amp.files || [],
+          gaConfigPath: html2amp.gaConfigPath,
           dist: 'public/amp',
-          serviceWorker: {
-            src: `${siteMetadata.siteUrl}/sw.js`,
-            'data-iframe-src': `${siteMetadata.siteUrl}/amp-install-serviceworker.html`,
-            layout: 'nodisplay',
-          },
-          cssPlugins: html2amp.cssPlugins,
+          serviceWorker: html2amp.serviceWorker || {},
+          cssPlugins: html2amp.cssPlugins || [],
         },
       },
       'gatsby-plugin-offline',

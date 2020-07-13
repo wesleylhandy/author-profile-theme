@@ -19,11 +19,12 @@ const theme = {
         dark: {
           text: "#fff",
           background: "#000",
-          opaqueBackground: "rgba(0,0,0, .4)",
-          primary: "#275E72",
-          secondary: "#978B6A",
-          tertiary: "#A91228",
-          light: "#343a40"
+          opaqueBackground: "rgba(0,0,0,.6)",
+          primary: "#8FC6DA",
+          secondary: "#ab9f7e",
+          tertiary: "#cc4b4b",
+          light: "#343a40",
+          affiliations: "#919191",
         }
       }
     },
@@ -31,6 +32,12 @@ const theme = {
       ...baseTheme.sizes,
       max: "1100px",
     },
+    borders: {
+      box: {
+        border: `5px solid`,
+        borderColor: `primary`,
+      }
+    }
   }
   
   export default theme

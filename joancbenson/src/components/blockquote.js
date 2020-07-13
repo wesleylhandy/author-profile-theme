@@ -22,6 +22,10 @@ const Blockquote = ({quote, author}) => (
         width: `100%`,
         padding: 2,
         color: `black`,
+        marginBlockStart: 0,
+        marginBlockEnd: 0,
+        marginInlineStart: 0,
+        marginInlineEnd: 0,
         '@media screen and (max-width: 640px)': {
           position: `relative`,
           bottom: `unset`,
@@ -29,7 +33,7 @@ const Blockquote = ({quote, author}) => (
         },
       }}
     >
-      &ldquo;Therefore encourage one another build each other up&hellip;&rdquo;
+      &ldquo;Therefore encourage one another and build each other up&hellip;&rdquo;
       <footer>
         <cite>1 Thessalonians 5:11</cite>
       </footer>

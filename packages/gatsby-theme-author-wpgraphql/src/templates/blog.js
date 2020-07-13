@@ -31,6 +31,7 @@ class BlogPage extends Component {
           gridColumnStart: 1,
           gridColumnEnd: 2,
         }}
+        aria-label={`Link to Previous Posts`}
       >
         Previous Posts
       </Button>
@@ -52,6 +53,7 @@ class BlogPage extends Component {
             gridColumnStart: 2,
             gridColumnEnd: 3,
           }}
+          aria-label={`Link to Next Posts`}
         >
           Next Posts
         </Button>
@@ -69,23 +71,29 @@ class BlogPage extends Component {
     } = this.props
     return (
       <Layout pageNumber={pageNumber} location={location}>
-        <Seo type="website" title={`Blog Page ${pageNumber + 1}`} meta={[{ name: "robots", content: "noindex" }]}/>
-        <h2>Recent Posts</h2>
-        {data &&
-          data.wpgraphql &&
-          data.wpgraphql.posts.nodes.map((post, idx) => (
-            <div
-              key={post.id}
-              sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 15 }}
-            >
-              <PostPreview post={post} blogBase={data.themeConfig.blogBase} />
-            </div>
-          ))}
-        <Grid my={3} gap={2} columns={[2, '1fr 1fr']}>
-          {this.renderPreviousLink()}
+        <Seo
+          type="website"
+          title={`Blog Page ${pageNumber + 1}`}
+          meta={[{ name: 'robots', content: 'noindex' }]}
+        />
+        <section>
+          <h2>Recent Posts</h2>
+          {data &&
+            data.wpgraphql &&
+            data.wpgraphql.posts.nodes.map((post, idx) => (
+              <div
+                key={post.id}
+                sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 3 }}
+              >
+                <PostPreview post={post} blogBase={data.themeConfig.blogBase} />
+              </div>
+            ))}
+          <Grid my={3} gap={2} columns={[2, '1fr 1fr']}>
+            {this.renderPreviousLink()}
 
-          {this.renderNextLink()}
-        </Grid>
+            {this.renderNextLink()}
+          </Grid>
+        </section>
       </Layout>
     )
   }

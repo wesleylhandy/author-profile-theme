@@ -7,7 +7,7 @@ import EventDate from "./event-date"
 const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4, type = "widget" }) => (
   <article>
     <h2>{heading}</h2>
-    <ul>
+    <ul sx={{listStyleType: "none", paddingInlineStart: 0}} >
       {
         events.length > 0 ? events.sort((a, b) => a.startDatetime - b.startDatetime).slice(0, limit).map((event, idx) => {
           const timezone = "-05:00"
@@ -24,6 +24,7 @@ const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4,
                     sx={linkStyle} 
                     to={toEvent}
                     dangerouslySetInnerHTML={{__html: event.eventName}}
+                    aria-label={`Link to ${event.eventName}`}
                   />
                 </b>
               </h3>
@@ -36,6 +37,7 @@ const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4,
                     <Button
                       onClick={() => navigate(toEvent)} 
                       variant="tertiary" 
+                      aria-label={`Navigate to ${event.eventName}`}
                     >Learn More</Button>
                   </Box>
                 )

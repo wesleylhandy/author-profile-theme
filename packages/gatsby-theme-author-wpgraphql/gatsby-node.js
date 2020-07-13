@@ -587,7 +587,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       path: faqBase,
       component: faqPageTemplate,
       context: {
-        navLink: `Faq`,
+        navLink: `FAQ`,
         sortOrder: 9
       }
     })

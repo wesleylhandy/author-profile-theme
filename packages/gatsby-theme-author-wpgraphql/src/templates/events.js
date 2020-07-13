@@ -90,7 +90,9 @@ const EventsPage = ({location}) => {
             type="website" 
             title="Events Page"
           />
-          <EventList heading="Recent Events" events={events} limit={Infinity} eventsBase={eventsBase} type={"full-list"} />
+          <section>
+            <EventList heading="Recent Events" events={events} limit={Infinity} eventsBase={eventsBase} type={"full-list"} />
+          </section>
         </Layout>
     )
 }

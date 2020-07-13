@@ -18,16 +18,49 @@ exports.onPreBootstrap = ({ reporter }, options) => {
 
 // Define the "Event" type
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+  const { createTypes, createFieldExtension } = actions
+
   createTypes(`
     type BaseSettings implements Node {
-      identityUrl: String,
       contentPath: String,
       basePath: String,
       imagesName: String,
       imagesContentPath: String,
       gaTackingId: String,
       googleFontsFamily: String,
+      manifest: ManifestSettings,
+      html2amp: Html2ampSettings,
+      robotsTxt: RobotsTxtSettings
+    }
+    type ManifestSettings {
+      name: String,
+      short_name: String,
+      start_url: String,
+      background_color: String,
+      theme_color: String,
+      display: String,
+      icon: String
+    }
+    type Html2ampSettings {
+      files: [String],
+      gaConfigPath: String,
+      dist: String,
+      serviceWorker: Html2ampServiceWorkerSettings,
+    }
+    type Html2ampServiceWorkerSettings {
+      src: String,
+      dataIframeSrc: String,
+      layout: String,
+    }
+    type RobotsTxtSettings {
+      host: String,
+      sitemap: String,
+      policy: [ RobotsTxtPolicySettings ]
+    }
+    type RobotsTxtPolicySettings {
+      userAgent: String,
+      allow: String,
+      disallow: [ String ]
     }
   `)
 }

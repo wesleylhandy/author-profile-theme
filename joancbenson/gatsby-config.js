@@ -5,7 +5,7 @@ require('dotenv').config({
 const siteUrl = process.env.URL || process.env.DEPLOY_URL || 'https://www.joancbenson.com'
 const siteMetadata = {
   title: `Joan C. Benson, Christian Author, Speaker, & Educator`,
-  description: ``,
+  description: `Joan C. Benson (Joan Benson), Christian author of Young Adult and New Adult historical & pro-life fiction, speaker, blogger, educator, educational publishing writer & editor.`,
   author: {
     name: `Joan C. Benson`,
     email: `bensonjj@verizon.net`,
@@ -36,7 +36,7 @@ const siteMetadata = {
     amazon: 'https://www.amazon.com/Joan-C.-Benson/e/B08C9CFVT8',
     wordpress: 'https://bensonjj.blog/',
   },
-  keywords: [],
+  keywords: [`Young Adult`, `New Adult`, `Joan C. Benson`, `author`, `His Gift`, `historical fiction`, `fiction`, `pro-life`, `educator`, `women's leadership` ],
   organization: {
     name: 'Joan C. Benson',
     url: 'https://www.joancbenson.com',
@@ -64,7 +64,7 @@ module.exports = {
         basePath: `/blog`,
         headerMaxWidth: 980,
         imagesContentPath: path.join(__dirname, `images`),
-        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700`,
+        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700&family=Rubik:wght@500`,
         manifest: {
           name: siteMetadata.title,
           short_name: siteMetadata.organization.name,
@@ -75,8 +75,14 @@ module.exports = {
           icon: `images/favicon.png`
         },
         html2amp: {
-          files: ['blog/*.html', 'index.html', 'faq/index.html', 'books/*.html', 'speaking/*.html'],
-          cssPlugins: []
+          files: ['*.html', 'about/*.html', 'blog/*.html', 'blog/**/*.html', 'blog/page/**/*.html', 'index.html', 'faq/*.html', 'books/*.html', 'books/**/*.html', 'events/*.html', 'events/**/*.html'],
+          gaConfigPath: 'gaConfig.json',
+          cssPlugins: [],
+          serviceWorker: {
+            src: `${siteUrl}/sw.js`,
+            'data-iframe-src': `${siteUrl}/amp-install-serviceworker.html`,
+            layout: 'nodisplay'
+          },
         },
         robotsTxt: {
           host: siteMetadata.siteUrl,

@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Flex, Link as ExternalLink } from 'theme-ui'
+import React from 'react'
+import { jsx, Flex, Box, Link as ExternalLink } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import {
   FaTwitter,
@@ -51,7 +52,11 @@ const Footer = () => {
         }
       }
       allSitePage(
-        filter: { path: { regex: "/^/(?!(404)|(.*404.*)|(offline-plugin-app-shell-fallback))([0-9a-z-_])*/*$/i" } }
+        filter: {
+          path: {
+            regex: "/^/(?!(404)|(.*404.*)|(offline-plugin-app-shell-fallback))([0-9a-z-_])*/*$/i"
+          }
+        }
         sort: { fields: context___sortOrder }
       ) {
         links: nodes {
@@ -99,139 +104,250 @@ const Footer = () => {
     >
       <Flex
         sx={{
+          flexDirection: [`column`, `row`],
+          justifyContent: [`center`, `space-around`],
+          alignItems: `flex-start`,
+          flexWrap: `wrap`,
+          my: 3,
+          maxWidth: `max`,
+          margin: `0 auto`,
+        }}
+      >
+        <Flex
+          sx={{
+            flexDirection: `column`,
+            maxWidth: `175px`,
+            my: 3,
+            mx: [`auto`, 0],
+            alignItems: [`center`, `flex-start`],
+          }}
+        >
+          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4 }}>Contact</h4>
+          {email && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={email.link}
+              aria-label={`Link to ${email.text}`}
+            >
+              <FaAt sx={{ mr: 2 }} />
+              By Email
+            </ExternalLink>
+          )}
+          {phone && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={phone.link}
+              aria-label={`Link to ${phone.text}`}
+            >
+              <FaPhone sx={{ mr: 2 }} />
+              By Phone
+            </ExternalLink>
+          )}
+        </Flex>
+        <Flex
+          sx={{
+            flexDirection: `column`,
+            maxWidth: `175px`,
+            my: 3,
+            mx: [`auto`, 0],
+            alignItems: [`center`, `flex-start`],
+          }}
+        >
+          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4 }}>Content</h4>
+          <Link
+            key={`Home-Link-Footer`}
+            to="/"
+            sx={{
+              color: 'text',
+              fontWeight: `bold`,
+              textDecoration: `none`,
+              fontSize: 4,
+              my: 1,
+              transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
+              '&:hover': {
+                color: 'tertiary',
+                cursor: 'pointer',
+              },
+            }}
+            aria-label={`Link to Home Page`}
+          >
+            Home
+          </Link>
+          {links.map(
+            ({ path, context: { navLink } }, idx) =>
+              navLink && (
+                <>
+                  <Link
+                    key={`footer-${path}-${idx}`}
+                    sx={{
+                      color: 'text',
+                      fontWeight: `bold`,
+                      display: `flex`,
+                      justifyContent: `flex-start`,
+                      alignItems: `center`,
+                      transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
+                      textDecoration: `none`,
+                      fontSize: 4,
+                      cursor: `pointer`,
+                      my: 1,
+                      '&:hover': {
+                        color: 'tertiary',
+                        cursor: 'pointer',
+                      },
+                    }}
+                    to={path}
+                    aria-label={`Link to ${navLink}`}
+                  >
+                    {navLink}
+                  </Link>
+                </>
+              )
+          )}
+        </Flex>
+        <Flex
+          sx={{
+            flexDirection: `column`,
+            maxWidth: `175px`,
+            my: 3,
+            mx: [`auto`, 0],
+            alignItems: [`center`, `flex-start`],
+          }}
+        >
+          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4 }}>
+            Follow me on Social
+          </h4>
+          {twitter && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={twitter}
+              aria-label={`Link to ${twitter}`}
+            >
+              <FaTwitter sx={{ mr: 2 }} />
+              Twitter
+            </ExternalLink>
+          )}
+          {facebook && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={facebook}
+              aria-label={`Link to ${facebook}`}
+            >
+              <FaFacebookF sx={{ mr: 2 }} />
+              Facebook
+            </ExternalLink>
+          )}
+          {linkedin && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={linkedin}
+              aria-label={`Link to ${linkedin}`}
+            >
+              <FaLinkedinIn sx={{ mr: 2 }} />
+              LinkedIn
+            </ExternalLink>
+          )}
+          {instagram && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={instagram}
+              aria-label={`Link to ${instagram}`}
+            >
+              <FaInstagram sx={{ mr: 2 }} />
+              Instagram
+            </ExternalLink>
+          )}
+          {youtube && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={youtube}
+              aria-label={`Link to ${youtube}`}
+            >
+              <FaYoutube sx={{ mr: 2 }} />
+              YouTube
+            </ExternalLink>
+          )}
+          {pinterest && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={pinterest}
+              aria-label={`Link to ${pinterest}`}
+            >
+              <FaPinterestP sx={{ mr: 2 }} />
+              Pinterest
+            </ExternalLink>
+          )}
+          {goodreads && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={goodreads}
+              aria-label={`Link to ${goodreads}`}
+            >
+              <FaGoodreadsG sx={{ mr: 2 }} />
+              Goodreads
+            </ExternalLink>
+          )}
+          {wordpress && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={wordpress}
+              aria-label={`Link to ${wordpress}`}
+            >
+              <FaWordpressSimple sx={{ mr: 2 }} />
+              Wordpress
+            </ExternalLink>
+          )}
+
+          {amazon && (
+            <ExternalLink
+              sx={{ my: 1 }}
+              variant="footer"
+              href={amazon}
+              aria-label={`Link to ${amazon}`}
+            >
+              <FaAmazon sx={{ mr: 2 }} />
+              Amazon
+            </ExternalLink>
+          )}
+        </Flex>
+      </Flex>
+      <Flex
+        sx={{
+          flexDirection: [`column`, `row`],
           justifyContent: `center`,
           alignItems: `center`,
           my: 3,
-          mx: `auto`,
+          color: '',
           textAlign: `center`,
         }}
       >
-        <Link
-          to="/"
-          sx={{
-            color: 'tertiary',
-            fontWeight: `bold`,
-            transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
-            '&:hover': {
-              color: 'primary',
-              cursor: 'pointer',
-            },
-          }}
+        &copy; {new Date().getFullYear()}{' '}
+        <ExternalLink
+          variant="footer"
+          href={url}
+          aria-label="Link to Home Page"
+          sx={{ mx: [0, 2] }}
         >
-          {title}
-        </Link>
-      </Flex>
-      <Flex
-        sx={{
-          justifyContent: `space-around`,
-          alignItems: `center`,
-          my: 3,
-          mx: `auto`,
-          maxWidth: 320,
-        }}
-      >
-        {links.map(
-          ({ path, context: { navLink } }, idx) =>
-            navLink && (
-              <Link
-                key={`footer-${path}-${idx}`}
-                sx={{
-                  color: 'tertiary',
-                  fontWeight: `bold`,
-                  display: `flex`,
-                  justifyContent: `center`,
-                  alignItems: `center`,
-                  transition: `color 250ms ease-in-out, background-color 250ms ease-in-out`,
-                  '&:hover': {
-                    color: 'primary',
-                    cursor: 'pointer',
-                  },
-                }}
-                to={path}
-              >
-                {navLink}
-              </Link>
-            )
-        )}
-      </Flex>
-      <Flex
-        sx={{
-          justifyContent: `space-around`,
-          alignItems: `center`,
-          flexWrap: `wrap`,
-          mx: `auto`,
-          my: 3,
-          maxWidth: 320,
-        }}
-      >
-        {twitter && (
-          <ExternalLink variant="footer" href={twitter}>
-            <FaTwitter />
-          </ExternalLink>
-        )}
-        {facebook && (
-          <ExternalLink variant="footer" href={facebook}>
-            <FaFacebookF />
-          </ExternalLink>
-        )}
-        {linkedin && (
-          <ExternalLink variant="footer" href={linkedin}>
-            <FaLinkedinIn />
-          </ExternalLink>
-        )}
-        {instagram && (
-          <ExternalLink variant="footer" href={instagram}>
-            <FaInstagram />
-          </ExternalLink>
-        )}
-        {youtube && (
-          <ExternalLink variant="footer" href={youtube}>
-            <FaYoutube />
-          </ExternalLink>
-        )}
-        {pinterest && (
-          <ExternalLink variant="footer" href={pinterest}>
-            <FaPinterestP />
-          </ExternalLink>
-        )}
-        {goodreads && (
-          <ExternalLink variant="footer" href={goodreads}>
-            <FaGoodreadsG />
-          </ExternalLink>
-        )}
-        {wordpress && (
-          <ExternalLink variant="footer" href={wordpress}>
-            <FaWordpressSimple />
-          </ExternalLink>
-        )}
-        {email && (
-          <ExternalLink variant="footer" href={email.link}>
-            <FaAt />
-          </ExternalLink>
-        )}
-        {phone && (
-          <ExternalLink variant="footer" href={phone.link}>
-            <FaPhone />
-          </ExternalLink>
-        )}
-        {amazon && (
-          <ExternalLink variant="footer" href={amazon}>
-            <FaAmazon />
-          </ExternalLink>
-        )}
-      </Flex>
-
-      <Flex sx={{ flexDirection: `row`, justifyContent: `center`, alignItems: `center`, my: 3 }}>
-        <span>
-          &copy; {new Date().getFullYear()}{' '}
-          <ExternalLink variant="footer" href={url}>
-            {name}
-          </ExternalLink>
-          , Design by{' '}
-          <ExternalLink variant="footer" href={designer.url}>
-            {designer.name}
-          </ExternalLink>
-        </span>
+          {name}
+        </ExternalLink>
+        Design by{' '}
+        <ExternalLink
+          variant="footer"
+          href={designer.url}
+          aria-label={`Link to Creativ, LLC`}
+          sx={{ ml: [0, 2] }}
+        >
+          {designer.name}
+        </ExternalLink>
       </Flex>
     </footer>
   )
