@@ -23,7 +23,7 @@ const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget }) => {
           {' '}
           <img
             sx={{ border: 0 }}
-            src="http://www.fictionfinder.com/images/fiction_finder_blog_button.png"
+            src="https://www.fictionfinder.com/images/fiction_finder_blog_button.png"
             alt="ACFW Fiction Finder"
           />{' '}
         </a>{' '}
