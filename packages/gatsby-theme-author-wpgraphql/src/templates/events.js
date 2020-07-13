@@ -59,9 +59,7 @@ const EventsPage = ({location}) => {
                 imageFile {
                   childImageSharp {
                     fluid(maxWidth: 640) {
-                      base64
-                      src
-                      srcSet
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }

@@ -45,7 +45,7 @@ const Layout = ({ children, location, hideSidebar }) => {
       bkg: file(name: { eq: "header-bg" }) {
         childImageSharp {
           fluid(maxWidth: 1920) {
-            ...GatsbyImageSharpFluid_withWebp
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

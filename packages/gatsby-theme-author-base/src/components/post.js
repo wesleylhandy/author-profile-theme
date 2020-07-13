@@ -6,7 +6,7 @@ import ConvertedDate from './converted-date'
 
 const Post = ({ title, author, content, published, link, modified, slug, featuredImage }) => {
   return (
-    <div>
+    <article sx={{maxWidth: `100%`}}>
       <h2 dangerouslySetInnerHTML={{__html: `${title} by ${author.name}`}} />
       { featuredImage && (
         <Img fluid={featuredImage.imageFile.childImageSharp.fluid} alt={featuredImage.altText}/>
@@ -27,7 +27,7 @@ const Post = ({ title, author, content, published, link, modified, slug, feature
               )
           }
       </p>
-    </div>
+    </article>
   )
 }
 

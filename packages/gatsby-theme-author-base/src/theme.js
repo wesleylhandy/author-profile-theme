@@ -233,6 +233,7 @@ export const theme = {
           listStyle: "none",
           margin: `15px 0`,
           fontSize: 2,
+          maxWidth: '100%',
         },
         a: {
           color: "tertiary",

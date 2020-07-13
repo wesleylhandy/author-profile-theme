@@ -10,14 +10,14 @@ const AffiliationsBlock = () => {
       acfw: file(name: { eq: "acfw-logo" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 60) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
       hrw: file(name: { eq: "hrw-logo" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 60) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
@@ -25,7 +25,7 @@ const AffiliationsBlock = () => {
       scbwi: file(name: { eq: "scbwi-logo" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 60) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }

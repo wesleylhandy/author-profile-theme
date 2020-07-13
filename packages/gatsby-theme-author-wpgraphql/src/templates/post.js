@@ -18,7 +18,7 @@ fragment PostFragment on WPGraphQL_Post {
     imageFile {
       childImageSharp {
         fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }

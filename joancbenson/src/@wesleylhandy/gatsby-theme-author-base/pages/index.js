@@ -25,7 +25,7 @@ const IndexPage = ({ location }) => {
       headshot: file(name: { eq: "headshot" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(width: 150) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
