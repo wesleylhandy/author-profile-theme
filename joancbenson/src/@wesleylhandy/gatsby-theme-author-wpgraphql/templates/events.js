@@ -90,7 +90,7 @@ const EventsPage = ({ location }) => {
         <Box>
           <h2>Joan Can Speak At Your Next Event</h2>
           <p>
-            Joan C. Benson speaks regularly as to women's groups, women's ministry events, single's
+            Joan C. Benson speaks regularly to women&rsquo;s groups, women's ministry events, single&rsquo;s
             events, parenting workshops, luncheons, retreats, and youth groups. She will also be
             co-hosting a podcast beginning in January 2021 (details to come). If you would like to
             request Joan to speak at your next event, please contact her at{' '}
@@ -141,7 +141,7 @@ const EventsPage = ({ location }) => {
                 <h3>Ordinary Women&mdash;Extraordinary God</h3>
                 <p>
                   This theme encourages women going through tough times to see that the outcomes
-                  aren't dependent on them. 2 Corinthians 4:7: &ldquo;My grace is sufficient for
+                  aren&rsquo;t dependent on them. 2 Corinthians 4:7: &ldquo;My grace is sufficient for
                   you, for My strength is made perfect in weakness. Therefore most gladly I will
                   rather boast in my infirmities, that the power of Christ may rest upon me.&rdquo;
                 </p>
