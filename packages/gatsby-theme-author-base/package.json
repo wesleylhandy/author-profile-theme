@@ -1,6 +1,6 @@
 {
   "name": "@wesleylhandy/gatsby-theme-author-base",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "gatsby-node.js",
   "license": "MIT",
   "scripts": {

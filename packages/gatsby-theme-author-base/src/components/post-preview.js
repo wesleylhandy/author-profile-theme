@@ -18,8 +18,7 @@ const PostPreview = ({ post, blogBase, ...props }) => (
       <div dangerouslySetInnerHTML={{__html: post.excerpt.replace(/<div class="sharedaddy.*/i, "")}}/>
       <Link 
         to={`${blogBase}/${post.slug}`} 
-        className="read-link"
-        sx={{color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }}}
+        sx={{color: "primary", wordBreak: `break-all`, '&:hover': { color: 'secondary', cursor: 'pointer' }}}
         aria-label={`Link to ${post.title}`}
     >
         Read this post &rsaquo;

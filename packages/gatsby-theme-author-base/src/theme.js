@@ -240,6 +240,7 @@ export const theme = {
           cursor: "pointer",
           fontSize: 2,
           fontWeight: "bold",
+          wordBreak: `break-all`,
           "&:hover": {
             color: "gray.4"
           }
@@ -314,6 +315,7 @@ export const theme = {
       a: {
         color: "primary",
         cursor: "pointer",
+        wordBreak: `break-all`,
         "&:hover": {
           color: "gray.4"
         }

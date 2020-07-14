@@ -10,6 +10,7 @@ import Sidebar from '../../../components/sidebar'
 import AffiliationsBlock from '../../../components/affiliations'
 import Footer from '@wesleylhandy/gatsby-theme-author-base/src/components/footer'
 import { FaSun, FaMoon } from 'react-icons/fa'
+import AboutWidget from '../../../components/about-widget'
 
 const StyledBackground = styled(BackgroundImage)`
   position: fixed;
@@ -57,10 +58,12 @@ const Layout = ({ children, location, hideSidebar }) => {
   } = data
   const { theme } = useThemeUI()
   const [colorMode, setColorMode] = useColorMode()
+  const isHomePage = location.pathname === `/`
   const hideBooksWidget = location.pathname.includes(booksBase),
     hideEventsWidget = location.pathname.includes(eventsBase),
     hidePostsWidget = location.pathname.includes(blogBase),
-    hideAboutWidget = location.pathname.includes(`/about`)
+    hideAboutWidget = location.pathname.includes(`/about`) || isHomePage
+    
   return (
     <Flex
       sx={{
@@ -89,7 +92,12 @@ const Layout = ({ children, location, hideSidebar }) => {
           },
           "[class*='wp-image']": {
             margin: `30px auto`,
+            maxWidth: `100%`,
           },
+          ".wp-block-image": {
+            maxWidth: `100%`,
+            width: `inherit`,
+          }
         })}
       />
       <Header location={location} setColorMode={setColorMode} />
@@ -109,13 +117,17 @@ const Layout = ({ children, location, hideSidebar }) => {
               sx={{
                 flex: `1 1 auto`,
                 position: `relative`,
-                my: 3,
                 mr: [0, 3],
-                alignItems: `flex-start`,
-                justifyContent: `center`,
+                mt: 3,
+                flexDirection: `column`,
+                alignItems: `center`,
+                justifyContent: `flex-start`,
               }}
             >
-              <Flex sx={{ border: `5px solid`, borderColor: `primary`, p: 3 }}>{children}</Flex>
+              <Flex sx={{ border: `5px solid`, borderColor: `primary`, p: 3, maxWidth: `100%` }}>
+                {children}
+              </Flex>
+              {isHomePage && <AboutWidget heading="About Me" hide={false} />}
             </Flex>
             {!hideSidebar && (
               <Sidebar
@@ -139,6 +151,7 @@ const Layout = ({ children, location, hideSidebar }) => {
           borderRadius: 0,
           cursor: `pointer`,
         }}
+        variant={colorMode === `dark` ? `tertiary` : `primary`}
         onClick={() => setColorMode(colorMode === `dark` ? `default` : `dark`)}
         aria-label={
           colorMode === `dark` ? `Click for Light Color Theme` : `Click for Dark Color Theme`
