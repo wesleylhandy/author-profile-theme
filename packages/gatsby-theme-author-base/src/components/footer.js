@@ -122,7 +122,7 @@ const Footer = () => {
             alignItems: [`center`, `flex-start`],
           }}
         >
-          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4 }}>Contact</h4>
+          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4, textAlign: [`center`, `left`]}}>Contact</h4>
           {email && (
             <ExternalLink
               sx={{ my: 1 }}
@@ -155,7 +155,7 @@ const Footer = () => {
             alignItems: [`center`, `flex-start`],
           }}
         >
-          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4 }}>Content</h4>
+          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4, textAlign: [`center`, `left`] }}>Content</h4>
           <Link
             key={`Home-Link-Footer`}
             to="/"
@@ -215,7 +215,7 @@ const Footer = () => {
             alignItems: [`center`, `flex-start`],
           }}
         >
-          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4 }}>
+          <h4 sx={{ textDecoration: `underline`, fontWeight: `bold`, fontSize: 4, textAlign: [`center`, `left`] }}>
             Follow me on Social
           </h4>
           {twitter && (

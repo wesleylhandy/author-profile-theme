@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import BookListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/book-list-widget'
 import PostListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/post-list-widget'
 import EventListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/event-list-widgets'
+import AboutWidget from "./about-widget"
 import { jsx, Flex } from 'theme-ui'
 
-const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget }) => {
+const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget, hideAboutWidget }) => {
   const fictionFinder = useRef(null)
   return (
     <aside
@@ -14,6 +15,7 @@ const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget }) => {
         flex: `1 0 320px`,
       }}
     >
+      <AboutWidget heading="About Me" hide={hideAboutWidget} />
       <BookListWidget heading="My Books" hide={hideBooksWidget} />
       <EventListWidget heading="Upcoming Events" limit={4} hide={hideEventsWidget} />
       <PostListWidget heading="Recent Posts" limit={4} hide={hidePostsWidget} />

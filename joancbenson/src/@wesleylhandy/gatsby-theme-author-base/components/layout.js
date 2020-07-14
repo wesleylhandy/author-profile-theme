@@ -52,10 +52,15 @@ const Layout = ({ children, location, hideSidebar }) => {
     }
   `)
   const bkg = data.bkg.childImageSharp.fluid
-  const { themeConfig: { blogBase, eventsBase, booksBase } } = data
+  const {
+    themeConfig: { blogBase, eventsBase, booksBase },
+  } = data
   const { theme } = useThemeUI()
   const [colorMode, setColorMode] = useColorMode()
-  const hideBooksWidget = location.pathname.includes(booksBase), hideEventsWidget = location.pathname.includes(eventsBase), hidePostsWidget = location.pathname.includes(blogBase);
+  const hideBooksWidget = location.pathname.includes(booksBase),
+    hideEventsWidget = location.pathname.includes(eventsBase),
+    hidePostsWidget = location.pathname.includes(blogBase),
+    hideAboutWidget = location.pathname.includes(`/about`)
   return (
     <Flex
       sx={{
@@ -115,7 +120,14 @@ const Layout = ({ children, location, hideSidebar }) => {
             >
               {children}
             </Flex>
-            { !hideSidebar && <Sidebar hideBooksWidget={hideBooksWidget} hideEventsWidget={hideEventsWidget} hidePostsWidget={hidePostsWidget} /> }
+            {!hideSidebar && (
+              <Sidebar
+                hideBooksWidget={hideBooksWidget}
+                hideEventsWidget={hideEventsWidget}
+                hidePostsWidget={hidePostsWidget}
+                hideAboutWidget={hideAboutWidget}
+              />
+            )}
           </Flex>
           <AffiliationsBlock />
         </Container>

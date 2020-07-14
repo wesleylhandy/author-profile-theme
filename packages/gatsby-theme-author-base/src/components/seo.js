@@ -19,8 +19,8 @@ import {
   FacebookType,
   TwitterType,
 } from '../utils/metadata-types'
-import schemaObject from "../utils/schema-proptypes"
-import { convertToTimeZone } from "../utils/time-helpers"
+import schemaObject from '../utils/schema-proptypes'
+import { convertToTimeZone } from '../utils/time-helpers'
 
 // https://ogp.me/?fbclid=IwAR0XVIuZzMErguCuafN9N107VY66QctP_G_YpnCvMy6u4j7Hyzz9EMGHkR8#types
 const validTypes = [
@@ -40,10 +40,10 @@ const validTypes = [
   `video.other`,
 ]
 
-const timezone = "-05:00" // eventually get this from store or from server
+const timezone = '-05:00' // eventually get this from store or from server
 
 function Seo({ description, lang, meta, keywords, image, title, type, schema, canonical }) {
-  if ( !validTypes.includes(type) ) {
+  if (!validTypes.includes(type)) {
     throw new Error('invalid seo type')
   }
   const location = useLocation()
@@ -60,7 +60,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
         } = data
         const metaDescription = description || siteMetadata.description
         const metaImage = image && image.src ? `${siteMetadata.siteUrl}${image.src}` : null
-        const metaKeywords = keywords ? [...keywords] : [...siteMetadata.keywords] 
+        const metaKeywords = keywords ? [...keywords] : [...siteMetadata.keywords]
         const metaUrl = `${siteMetadata.siteUrl}${location.pathname}`
         const siteUrl = siteMetadata.siteUrl
         const logoImg = logo && logo.childImageSharp.fixed
@@ -84,6 +84,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           `${title} | ${siteMetadata.title}`
         )
         const faceBookType = new FacebookType({
+          url: metaUrl,
           title: `${title} | ${siteMetadata.title}`,
           description: metaDescription,
           type,
@@ -104,7 +105,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
                 first_name: el.author.givenName,
                 last_name: el.author.familyName,
                 username: el.author.name,
-              }
+              },
             })
           })
           if (schema.pricepoints) {
@@ -112,36 +113,40 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
               {
                 property: `book:isbn`,
                 value: schema.pricepoints[0].isbn,
-              }
+              },
             ])
           }
-          
-          const releaseDate = convertToTimeZone({datetime: schema.dateAvailableForPurchase, timezone})
+
+          const releaseDate = convertToTimeZone({
+            datetime: schema.dateAvailableForPurchase,
+            timezone,
+          })
           bookType.setProperties([
             {
               property: `book:release_date`,
               value: releaseDate,
-            }
+            },
           ])
         }
         const articleType = new ArticleType()
         if (type === `article`) {
           articleType.addProfile({
             type: `author`,
-              profile: {
-                first_name: schema.author.firstName,
-                last_name: schema.author.lastName,
-                username: schema.author.name,
-              }
+            profile: {
+              first_name: schema.author.firstName,
+              last_name: schema.author.lastName,
+              username: schema.author.name,
+            },
           })
           articleType.setProperties([
             {
               property: `article:published_time`,
               value: schema.published,
-            }, {
+            },
+            {
               property: `article:modified_time`,
               value: schema.modified,
-            }
+            },
           ])
         }
         const metaTags = [
@@ -175,7 +180,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           .concat(ogImageType.getProperties())
           .concat(faceBookType.getProperties())
           .concat(twitterType.getNameAttributes())
-          .concat( type === `book` ? bookType.getProperties() : [])
+          .concat(type === `book` ? bookType.getProperties() : [])
           .concat(type === `article` ? articleType.getProperties() : [])
           .concat(
             metaKeywords.length > 0
@@ -187,11 +192,11 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           )
           .concat(meta)
         const htmlAttributes = {
-          lang         
+          lang,
         }
-        if ( type === `faq` ) {
+        if (type === `faq`) {
           htmlAttributes.itemscope = true
-          htmlAttributes.itemType = "https://schema.org/FAQPage"
+          htmlAttributes.itemType = 'https://schema.org/FAQPage'
         }
         return (
           <>

@@ -3,6 +3,7 @@ const propertiesByType = {
     'og:locale:alternate': null,
   },
   facebook: {
+    'og:url': null,
     'og:title': null,
     'og:description': null,
     'og:type': null,
@@ -206,6 +207,7 @@ export class ProfileType extends MetaType {
 export class FacebookType extends MetaType {
   constructor(data) {
     super(`facebook`)
+    this.properties['og:url'] = data.url
     this.properties['og:title'] = data.title
     this.properties['og:description'] = data.description
     this.properties['og:type'] = data.type
