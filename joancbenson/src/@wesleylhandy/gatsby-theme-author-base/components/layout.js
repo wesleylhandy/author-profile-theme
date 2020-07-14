@@ -109,16 +109,13 @@ const Layout = ({ children, location, hideSidebar }) => {
               sx={{
                 flex: `1 1 auto`,
                 position: `relative`,
-                border: `5px solid`,
-                borderColor: `primary`,
                 my: 3,
                 mr: [0, 3],
-                p: 3,
-                alignItems: `center`,
+                alignItems: `flex-start`,
                 justifyContent: `center`,
               }}
             >
-              {children}
+              <Flex sx={{ border: `5px solid`, borderColor: `primary`, p: 3 }}>{children}</Flex>
             </Flex>
             {!hideSidebar && (
               <Sidebar

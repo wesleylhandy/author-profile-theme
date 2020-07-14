@@ -214,6 +214,15 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
                   href: `${siteUrl}/amp${location.pathname}`,
                 },
                 {
+                  rel: 'dns-prefetch',
+                  href: `//fonts.googleapis.com`
+                },
+                {
+                  rel: 'preconnect',
+                  href: `https://fonts.gstatic.com`,
+                  crossorigin: true
+                },
+                {
                   rel: 'stylesheet',
                   href: `https://fonts.googleapis.com/css2?family=${googleFontsFamily}&display=swap`,
                 },

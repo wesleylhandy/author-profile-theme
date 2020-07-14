@@ -12,7 +12,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
         sx={{
           color: 'primary',
           fontWeight: `bold`,
-          flex: `1 1 ${small ? `44px` : `100%`}`,
+          flex: `1 1 ${small ? `44px` : `auto`}`,
           backgroundColor: location && location.pathname === '/' ? `light` : `transparent`,
           display: `flex`,
           justifyContent: `center`,
@@ -40,7 +40,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
               sx={{
                 color: 'primary',
                 fontWeight: `bold`,
-                flex: `1 1 ${small ? `44px` : `100%`}`,
+                flex: `1 1 ${small ? `44px` : `auto`}`,
                 display: `flex`,
                 justifyContent: `center`,
                 alignItems: `center`,
@@ -126,9 +126,8 @@ const Navigation = ({ location, setColorMode }) => {
                     border: `none`,
                     height: 44,
                     padding: `10px`,
-                    flex: `1 1 100%`,
+                    flex: `1 1 auto`,
                     textAlign: `center`,
-                    width: `100%`,
                     position: `relative`,
                     display: `flex`,
                     justifyContent: `flex-start`,
@@ -138,9 +137,9 @@ const Navigation = ({ location, setColorMode }) => {
                     transition: `color 250ms ease-in-out, background-color 250ms ease-in-out,
                             border-color 250ms ease-in-out`,
                     '&:hover': {
-                      color: 'primary',
+                      color: 'white',
                       cursor: 'pointer',
-                      backgroundColor: `secondary`,
+                      backgroundColor: `tertiary`,
                     },
                   }}
                   aria-label={checked ? 'Click to Hide Menu' : 'Click to Show Menu'}
