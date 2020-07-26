@@ -7,7 +7,7 @@ import Media from 'react-media'
 
 const NavLinks = ({ location, links, small, setColorMode }) => {
   return (
-    <>
+    <Fragment>
       <Link
         sx={{
           color: 'primary',
@@ -58,7 +58,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
             </Link>
           )
       )}
-    </>
+    </Fragment>
   )
 }
 

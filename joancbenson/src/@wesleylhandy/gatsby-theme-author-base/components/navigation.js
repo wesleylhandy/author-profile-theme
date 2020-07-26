@@ -100,7 +100,7 @@ const Navigation = ({ location, setColorMode }) => {
         <Media query="(max-width: 649px)">
           {(matches) =>
             matches ? (
-              <>
+              <Fragment>
                 <input
                   sx={{
                     position: `absolute !important`,
@@ -149,7 +149,7 @@ const Navigation = ({ location, setColorMode }) => {
                 <div sx={{ display: `none` }}>
                   <NavLinks location={location} links={nodes} small={true} setColorMode={setColorMode} />
                 </div>
-              </>
+              </Fragment>
             ) : (
               <div
                 sx={{

@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { Fragment } from "react"
 import { Link } from "gatsby"
 import { jsx } from 'theme-ui'
 import ConvertedDate from './converted-date'
@@ -19,7 +20,7 @@ const PostList = ({ heading = `Recent Posts`, posts, titleOnly = false, blogBase
               </b>
           </h3>
           { !titleOnly && (
-              <>
+              <Fragment>
                 <div dangerouslySetInnerHTML={{__html: post.excerpt.replace(/<div class="sharedaddy.*/i, "")}}/>
                 <p>
                   Originally Published by {post.author.name}
@@ -27,7 +28,7 @@ const PostList = ({ heading = `Recent Posts`, posts, titleOnly = false, blogBase
                   <ConvertedDate rawDate={post.published}/>
                   {`.`}
                 </p>
-              </>
+              </Fragment>
             )
           }
         </li>
