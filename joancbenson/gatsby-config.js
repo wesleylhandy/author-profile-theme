@@ -81,7 +81,7 @@ module.exports = {
           cssPlugins: [],
           htmlPlugins: [(htmlString, options) => {
             // you need to return htmlString which you modified.
-            return htmlString.replace(/<noscript><style>.*<\/style><\/noscript>/gim, '')
+            return htmlString.replace(/<noscript>"<style>.*<\/style>"<\/noscript>/gim, '').replace(/<noscript>"<picture>.*<\/picture>"<\/noscript>/gim, '')
           }],
           serviceWorker: {
             src: `${siteUrl}/sw.js`,
