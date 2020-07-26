@@ -203,7 +203,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
             <Helmet
               htmlAttributes={htmlAttributes}
               title={title}
-              titleTemplate={`%s | ${siteMetadata.title}`}
+              titleTemplate={`%s | ${siteMetadata.seoTitle}`}
               link={[
                 {
                   rel: 'canonical',
@@ -303,6 +303,7 @@ const detailsQuery = graphql`
     site {
       siteMetadata {
         title
+        seoTitle
         siteUrl
         siteVerification {
           google

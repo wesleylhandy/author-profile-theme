@@ -5,6 +5,7 @@ require('dotenv').config({
 const siteUrl = process.env.URL || process.env.DEPLOY_URL || 'https://www.joancbenson.com'
 const siteMetadata = {
   title: `Joan C. Benson, Christian Author, Speaker, & Educator`,
+  seoTitle: `Joan C. Benson`,
   description: `Joan C. Benson (Joan Benson), Christian author of Young Adult and New Adult historical & pro-life fiction, speaker, blogger, educator, educational publishing writer & editor.`,
   author: {
     name: `Joan C. Benson`,

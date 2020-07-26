@@ -7,7 +7,7 @@ import { Link } from 'gatsby'
 const AboutPage = ({ location }) => {
   return (
     <Layout location={location}>
-      <Seo type="website" title="About Page" />
+      <Seo type="website" title="About Page" description={"Joan C. Benson is a free-lance writer & blogger, published in multiple magazines, on devotional websites, by children's ministry publishers, and now with her first novel - His Gift."}/>
       <article>
         <h1 id="about">About Joan C. Benson</h1>
         <p>
