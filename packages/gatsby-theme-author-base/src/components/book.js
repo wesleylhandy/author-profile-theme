@@ -14,7 +14,7 @@ const Author = ({email, name, profileImage, shortBio, url, idx}) => (
             profileImage && <Img fixed={profileImage.imageFile.childImageSharp.fixed} sx={{ flex: `1 0 auto`, mr: [0, 3], mb: [3, 0] }}/>
         }
         {
-            shortBio && <div className="author-bio" dangerouslySetInnerHTML={{__html: shortBio}}></div>
+            shortBio && <div className="author-bio" dangerouslySetInnerHTML={{__html: shortBio}} />
         }
         </Flex>
         <Flex sx={{ flexDirection: [`column`, `row`], justifyContent: `center`, alignItems: `center`}}>
@@ -43,9 +43,10 @@ const Endorsement= ({ endorsementText, rating, reviewUrl, reviewerName, reviewer
 
 const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], excerpt, publisher }) => {
     const releaseDate = convertToTimeZone({ datetime: dateAvailableForPurchase, timezone: "-05:00"})
+    const title = bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '')
     return (
         <div>
-            <h1 dangerouslySetInnerHTML={{__html: bookTitle}} />
+            <h1>{title}</h1>
             {
                 releaseDate ? (
                     <div className="availability">Available for purchase: { getDate(new Date(releaseDate)) }</div>
@@ -54,7 +55,11 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
                 )
             }
             {
-                coverImage && <Img fluid={coverImage.imageFile.childImageSharp.fluid} />
+                coverImage && (
+                    <Box sx={{ maxWidth: 300, mx: `auto`, my: 3}}>
+                        <Img fluid={coverImage.imageFile.childImageSharp.fluid} alt={coverImage.altText || title}/>
+                    </Box>
+                )
             }
             {
                 excerpt && (

@@ -341,10 +341,11 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                       childImageSharp {
                         fixed(width: 100) {
                           base64
-                          src
-                          srcSet
+                          aspectRatio
                           width
                           height
+                          src
+                          srcSet
                         }
                       }
                     }
@@ -382,9 +383,11 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                   childImageSharp {
                     fluid(maxWidth: 320) {
                       base64
+                      aspectRatio
                       src
                       srcSet
                       sizes
+                      originalImg
                     }
                   }
                 }
@@ -400,11 +403,12 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                   imageFile {
                     childImageSharp {
                       fixed(width: 1200) {
-                        src
-                        srcSet
+                        base64
+                        aspectRatio
                         width
                         height
-                        base64
+                        src
+                        srcSet
                       }
                     }
                   }
@@ -497,8 +501,11 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
                   childImageSharp {
                     fluid(maxWidth: 640) {
                       base64
+                      aspectRatio
                       src
                       srcSet
+                      sizes
+                      originalImg
                     }
                   }
                 }

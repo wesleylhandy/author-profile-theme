@@ -21,4 +21,4 @@ const BookTemplate = ({location, pageContext: { book: { seo = {}, endorsements, 
   )
 }
   
-  export default BookTemplate
+export default BookTemplate

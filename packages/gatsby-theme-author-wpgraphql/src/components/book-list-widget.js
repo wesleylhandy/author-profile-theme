@@ -62,6 +62,10 @@ const BookListWidget = ({ heading = "My Books", hide = false }) => {
                     to={toBook}
                     dangerouslySetInnerHTML={{ __html: book.bookTitle }}
                     aria-label={`Link to ${toBook}`}
+                  />
+                  <Link
+                    to={toBook}
+                    aria-label={`Link to ${toBook}`}
                   >
                     {book.coverImage && (
                       <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />

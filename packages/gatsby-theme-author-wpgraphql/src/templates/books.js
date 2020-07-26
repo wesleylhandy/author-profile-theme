@@ -30,7 +30,13 @@ const BooksPage = ({ location, data }) => {
                     {title}
                   </Link>
                 </h2>
-                {book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />}
+                {book.coverImage && (
+                  <Box sx={{ maxWidth: 300, mx: `auto`, my: 3}}>
+                    <Link to={toBook} aria-label={`Link to ${title}`}>
+                      <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} alt={book.coverImage.altText || title}/>
+                    </Link>
+                  </Box>
+                )}
                 <div className="book-excerpt" dangerouslySetInnerHTML={{ __html: book.excerpt }} />
                 <Box my={3}>
                   <Button
@@ -65,15 +71,14 @@ export const query = graphql`
           books {
             bookTitle
             coverImage {
+              altText
               databaseId
               modified
               sourceUrl
               imageFile {
                 childImageSharp {
                   fluid(maxWidth: 320) {
-                    src
-                    srcSet
-                    base64
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                   }
                 }
               }
