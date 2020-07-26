@@ -197,6 +197,8 @@ const SchemaOrg =
               }
             ]
             break;
+            default:
+              break;
         }
         if (schema.eventAdmission) {
           if (schema.eventAdmission.length > 1) {
@@ -248,6 +250,7 @@ const SchemaOrg =
             }
           }
         ]
+        break;
       default:
         break;
     }

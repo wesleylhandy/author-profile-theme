@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import React from 'react'
-import { jsx, Flex, Box, Link as ExternalLink } from 'theme-ui'
+import { Fragment } from 'react'
+import { jsx, Flex, Link as ExternalLink } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import {
   FaTwitter,
@@ -21,7 +21,6 @@ const Footer = () => {
     query {
       meta: site {
         siteMetadata {
-          title
           organization {
             name
             url
@@ -71,7 +70,6 @@ const Footer = () => {
   const {
     meta: {
       siteMetadata: {
-        title,
         organization: { name, url },
         designer,
         socialLinks: {
@@ -178,9 +176,10 @@ const Footer = () => {
           {links.map(
             ({ path, context: { navLink } }, idx) =>
               navLink && (
-                <>
+                <Fragment
+                  key={`footer-${path}-${idx}`}
+                >
                   <Link
-                    key={`footer-${path}-${idx}`}
                     sx={{
                       color: 'text',
                       fontWeight: `bold`,
@@ -202,7 +201,7 @@ const Footer = () => {
                   >
                     {navLink}
                   </Link>
-                </>
+                </Fragment>
               )
           )}
         </Flex>

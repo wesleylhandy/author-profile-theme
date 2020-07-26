@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { Link as ExternalLink, jsx } from 'theme-ui'
 import Img from 'gatsby-image'

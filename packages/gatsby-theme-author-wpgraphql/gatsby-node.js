@@ -162,8 +162,8 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       }
       categories(first: $first, after: $after) {
         pageInfo {
-          hasNextPage
           endCursor
+          hasNextPage
         }
         nodes {
           id
@@ -173,8 +173,8 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       }
       users(where: {nicenameNotIn: "isatengir"}, first: $first) {
         pageInfo {
-          hasNextPage
           endCursor
+          hasNextPage
         }
         nodes {
           id
@@ -250,6 +250,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   })
 
   const allTags = []
+  pageNumber = 0
   const fetchCategories = async variables =>
     await graphql(GET_DATA, variables).then(({ data }) => {
       const {
@@ -265,6 +266,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         allTags.push(category)
       })
       if (hasNextPage) {
+        pageNumber++
         return fetchTags({ first: 100, after: endCursor })
       }
       return allTags
@@ -283,6 +285,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   })
 
   const allUsers = []
+  pageNumber = 0
   const fetchUsers = async variables =>
     await graphql(GET_DATA, variables).then(({ data }) => {
       const {
@@ -297,6 +300,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         allUsers.push(user)
       })
       if (hasNextPage) {
+        pageNumber++
         return fetchUsers({ first: 100, after: endCursor })
       }
       return allUsers

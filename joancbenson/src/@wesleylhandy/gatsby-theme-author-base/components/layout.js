@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { Container, useThemeUI, useColorMode, Flex, Button, jsx } from 'theme-ui'
 import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'

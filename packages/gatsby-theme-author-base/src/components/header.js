@@ -28,7 +28,7 @@ const Header = ({location}) => {
         <header id="masthead">
             <Heading>{title}</Heading>
             <Navigation />
-            { location.pathname === "/" && <Img fluid={img} alt="Be yourself, everyone else is already taken - Oscar Wilde." style={{maxWidth: 1920, margin: `0 auto`}}/> }
+            { location.pathname === "/" && <Img fluid={img} alt="Be yourself, everyone else is already taken - Oscar Wilde." sx={{maxWidth: 1920, margin: `0 auto`}}/> }
         </header>   
     )
 }

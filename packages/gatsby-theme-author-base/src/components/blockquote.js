@@ -25,13 +25,16 @@ const Blockquote = ({quote, citation}) => (
         fontFamily: `body`,
         fontWeight: 500,
         letterSpacing: `2px`,
+        marginBlockEnd: 0, 
+        marginBlockStart: 0, 
+        marginInlineEnd: 0, 
+        marginInlineStart: 0,
         '@media screen and (max-width: 640px)': {
           position: `relative`,
           bottom: `unset`,
           left: `unset`,
         },
       }}
-      style={{ marginBlockEnd: 0, marginBlockStart: 0, marginInlineEnd: 0, marginInlineStart: 0 }}
     >
       {quote}
       <footer>

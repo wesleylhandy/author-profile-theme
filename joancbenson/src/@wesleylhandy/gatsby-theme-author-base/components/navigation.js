@@ -1,8 +1,8 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { jsx } from 'theme-ui'
-import { FaHome, FaTimes, FaBars, FaSun, FaMoon } from 'react-icons/fa'
+import { FaHome, FaTimes, FaBars } from 'react-icons/fa'
 import Media from 'react-media'
 
 const NavLinks = ({ location, links, small, setColorMode }) => {

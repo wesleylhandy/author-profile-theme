@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
-import { Flex, Box, jsx, Link as ExternalLink } from 'theme-ui'
+import { jsx, Link as ExternalLink } from 'theme-ui'
 import { Link } from 'gatsby'
 
 const AboutPage = ({ location }) => {
@@ -22,7 +22,7 @@ const AboutPage = ({ location }) => {
           <Link to={`/books/his-gift`}>
             <i>His Gift</i>
           </Link>{' '}
-          through Elk Lake Publishing.
+          through <ExternalLink href="https://www.elklakepublishinginc.com/joan-benson/">Elk Lake Publishing</ExternalLink>.
         </p>
         <h2>Fiction Author Applying Biblical Principles</h2>
         <p>

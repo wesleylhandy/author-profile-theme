@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
-import { Flex, Box, jsx } from 'theme-ui'
+import { Box, jsx } from 'theme-ui'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
 

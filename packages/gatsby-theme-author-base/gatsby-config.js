@@ -58,6 +58,7 @@ module.exports = (options) => {
           dist: 'public/amp',
           serviceWorker: html2amp.serviceWorker || {},
           cssPlugins: html2amp.cssPlugins || [],
+          htmlPlugins: html2amp.htmlPlugins || [],
         },
       },
       'gatsby-plugin-offline',

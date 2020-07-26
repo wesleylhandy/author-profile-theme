@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react"
 import Img from "gatsby-image"
 import { Link, Flex, Box, jsx } from 'theme-ui'
 import { convertToTimeZone, getDate } from "../utils/time-helpers"

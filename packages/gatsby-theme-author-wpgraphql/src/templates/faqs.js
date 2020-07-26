@@ -6,7 +6,6 @@ import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
 const FaqPage = ({ location, data }) => {
   const {
-    themeConfig: { faqBase },
     wpgraphql: {
       frequentlyAskedQuestions: {
         faq: { faqs },
@@ -40,9 +39,6 @@ export default FaqPage
 
 export const query = graphql`
   query GET_FAQS {
-    themeConfig {
-      faqBase
-    }
     wpgraphql {
       frequentlyAskedQuestions {
         faq {

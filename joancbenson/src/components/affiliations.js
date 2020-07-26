@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from 'react'
 import { jsx, Flex, Link } from 'theme-ui'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
