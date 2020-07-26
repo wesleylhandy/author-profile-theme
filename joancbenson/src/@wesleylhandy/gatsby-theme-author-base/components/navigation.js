@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { jsx } from 'theme-ui'
 import { FaHome, FaTimes, FaBars } from 'react-icons/fa'
@@ -7,7 +7,7 @@ import Media from 'react-media'
 
 const NavLinks = ({ location, links, small, setColorMode }) => {
   return (
-    <>
+    <Fragment>
       <Link
         sx={{
           color: 'primary',
@@ -62,7 +62,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
             </Link>
           )
       )}
-    </>
+    </Fragment>
   )
 }
 

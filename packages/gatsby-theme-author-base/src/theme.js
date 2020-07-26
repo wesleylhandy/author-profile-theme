@@ -249,6 +249,11 @@ export const theme = {
             color: "gray.4"
           }
         },
+        'h1 > p': {
+          color: "inherit",
+          fontFamily: "inherit",
+          fontSize: "inherit",
+        },
         'h2 > a': {
           color: "inherit",
           textDecoration: "underline",

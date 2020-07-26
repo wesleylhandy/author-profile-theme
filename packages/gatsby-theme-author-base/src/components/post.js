@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { Fragment } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { Link as ExternalLink, jsx } from 'theme-ui'
 import Img from 'gatsby-image'
@@ -29,10 +30,10 @@ const Post = ({ title, author, content, published, link, modified, slug, feature
           {`. `}
           { 
               modified !== published && (
-                <>
+                <Fragment>
                   <br/>
                   <small sx={{ color: `gray.6`}}><i>Last Modified on <ConvertedDate rawDate={modified}/></i></small>
-                </>
+                </Fragment>
               )
           }
       </p>

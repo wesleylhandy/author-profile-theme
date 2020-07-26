@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { jsx } from 'theme-ui'
 import { FaHome, FaTimes, FaBars, FaSun, FaMoon } from 'react-icons/fa'
@@ -96,7 +96,7 @@ const Navigation = ({ location, setColorMode }) => {
         <Media query="(max-width: 649px)">
           {(matches) =>
             matches ? (
-              <>
+              <Fragment>
                 <input
                   sx={{
                     position: `absolute !important`,
@@ -146,7 +146,7 @@ const Navigation = ({ location, setColorMode }) => {
                 <div sx={{ display: `none` }}>
                   <NavLinks location={location} links={nodes} small={true} setColorMode={setColorMode} />
                 </div>
-              </>
+              </Fragment>
             ) : (
               <div
                 sx={{

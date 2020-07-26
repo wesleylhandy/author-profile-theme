@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import { Fragment } from "react"
 import Img from "gatsby-image"
 import { Link, Flex, Box, jsx } from 'theme-ui'
 import { convertToTimeZone, getDate } from "../utils/time-helpers"
@@ -66,20 +67,20 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
             {
                 publisher && (
-                    <>
+                    <Fragment>
                         <h2>Publisher</h2>
                         <div className="publisher">{publisher}</div>
-                    </>
+                    </Fragment>
                 )
             }
             {
                 authors.length > 0 && (
-                    <>
+                    <Fragment>
                         <h2>Author{authors.length > 1 && `s`}</h2>
                     {
                         authors.map(({ author }, idx) => <Author key={`author-${author.name.replace(/[ .']/g, "-")}-${idx}`} idx={idx} {...author} />)
                     }
-                    </>
+                    </Fragment>
                 )
             }
             </Box>
