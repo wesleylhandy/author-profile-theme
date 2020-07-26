@@ -17,9 +17,9 @@ const Event = ({ eventName, eventDescription, eventType, eventLocation, featured
       { 
         featuredImage && <Img fluid={featuredImage.imageFile.childImageSharp.fluid} />
       }
-      <h2>
+      <h1>
         {eventName}
-      </h2>
+      </h1>
       <p>
         <EventLocation type={eventType} {...eventLocation} />
       </p>

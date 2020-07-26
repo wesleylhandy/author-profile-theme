@@ -74,10 +74,9 @@ class BlogPage extends Component {
         <Seo
           type="website"
           title={`Blog Page ${pageNumber + 1}`}
-          meta={[{ name: 'robots', content: 'noindex' }]}
         />
         <section>
-          <h2>Recent Posts</h2>
+          <h1>Recent Posts</h1>
           {data &&
             data.wpgraphql &&
             data.wpgraphql.posts.nodes.map((post, idx) => (

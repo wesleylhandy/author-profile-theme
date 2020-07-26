@@ -18,18 +18,18 @@ const BooksPage = ({ location, data }) => {
     <Layout location={location}>
       <Seo type="website" title="Books Page" meta={[{ name: 'robots', content: 'noindex' }]} />
       <article>
-        <h2>My Books</h2>
+        <h1>My Books</h1>
         <ul sx={{ listStyleType: 'none', paddingInlineStart: 0 }}>
           {books.map((book, idx) => {
             const title = book.bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '')
             const toBook = `${booksBase}/${book.slug}`
             return (
               <li key={book.id}>
-                <h3>
+                <h2>
                   <Link to={toBook} aria-label={`Link to ${title}`}>
                     {title}
                   </Link>
-                </h3>
+                </h2>
                 {book.coverImage && <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />}
                 <div className="book-excerpt" dangerouslySetInnerHTML={{ __html: book.excerpt }} />
                 <Box my={3}>

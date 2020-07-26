@@ -33,7 +33,7 @@ fragment PostFragment on WPGraphQL_Post {
     email
     firstName
     lastName
-    slug
+    link: uri
     avatar {
       url
     }

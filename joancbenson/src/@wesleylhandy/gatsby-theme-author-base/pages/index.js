@@ -44,7 +44,7 @@ const IndexPage = ({ location }) => {
       <Seo type="website" title="Home Page" />
       <article>
         <Box sx={{ position: `relative`, pb: 148 }} id="welcome">
-          <h2>Welcome To My Website</h2>
+          <h1>Welcome To My Website</h1>
           <p>
             I hope you find many useful and interesting features on my website which may give you
             hope for your daily faith walk. My prayer is that the Lord will satisfy your soul in the

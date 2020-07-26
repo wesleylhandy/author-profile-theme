@@ -124,7 +124,7 @@ const Layout = ({ children, location, hideSidebar }) => {
                 justifyContent: `flex-start`,
               }}
             >
-              <Flex sx={{ border: `5px solid`, borderColor: `primary`, p: 3, maxWidth: `100%` }}>
+              <Flex sx={{ border: `5px solid`, borderColor: `primary`, p: 3, maxWidth: `100%`, width: `100%` }}>
                 {children}
               </Flex>
               {isHomePage && <AboutWidget heading="About Me" hide={false} />}

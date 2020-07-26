@@ -9,7 +9,7 @@ const AboutPage = ({ location }) => {
     <Layout location={location}>
       <Seo type="website" title="About Page" />
       <article>
-        <h2 id="about">About Joan C. Benson</h2>
+        <h1 id="about">About Joan C. Benson</h1>
         <p>
           Joan C. Benson is a free-lance writer published in multiple magazines including
           LifeWay&rsquo;s &ldquo;ParentLife,&rdquo; Regent University&rsquo;s &ldquo;The Christian
@@ -24,7 +24,7 @@ const AboutPage = ({ location }) => {
           </Link>{' '}
           through Elk Lake Publishing.
         </p>
-        <h3>Fiction Author Applying Biblical Principles</h3>
+        <h2>Fiction Author Applying Biblical Principles</h2>
         <p>
           Combining her passion for people and her faith in God, she has a desire to write stories
           for young adults and adults alike. While teaching young adult fiction in the schools, she
@@ -34,7 +34,7 @@ const AboutPage = ({ location }) => {
           disappointed, and the hopeless. She points those who have had their dreams dashed to the
           One who offers wisdom beyond the world&rsquo;s.
         </p>
-        <h3>Debut Historical Fiction</h3>
+        <h2>Debut Historical Fiction</h2>
         <p>
           Watch for Joan&rsquo;s novel called{' '}
           <Link to={`/books/his-gift`}>
@@ -49,7 +49,7 @@ const AboutPage = ({ location }) => {
           eyes. Where is God in her story? You will enjoy seeing how Molly navigates through very
           unsettling times and how even through doubts and fears, she finds victory.
         </p>
-        <h3>Educator</h3>
+        <h2>Educator</h2>
         <p>
           Joan lives in Chesapeake, VA, with her husband and their two Bichon Frisé dogs. She is the
           mother of four married adult children, and a very proud grandmother of eight amazing
@@ -57,7 +57,7 @@ const AboutPage = ({ location }) => {
           from primary through middle school. She served as a reading specialist, teacher trainer,
           and has been writing for educational publishing companies for over twenty-five years.
         </p>
-        <h3>Speaker</h3>
+        <h2>Speaker</h2>
         <p>
           Joan is a part of a small group of women from Chesapeake, VA, called{' '}
           <ExternalLink href="https://www.facebook.com/groups/womenvictorious">

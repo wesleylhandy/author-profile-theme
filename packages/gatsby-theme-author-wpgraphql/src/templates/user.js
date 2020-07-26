@@ -1,4 +1,5 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout"
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 import PostPreview from '@wesleylhandy/gatsby-theme-author-base/src/components/post-preview';
@@ -8,7 +9,7 @@ const User = props => {
   const {
     location,
     data: {
-     themeConfig: { blogBase },
+      themeConfig: { blogBase },
       wpgraphql: { user: { name, posts: { nodes } } },
     },
   } = props
@@ -18,12 +19,14 @@ const User = props => {
         type="website" 
         title={`${name} | Posts By User Page`}
       />
-        <h2>Posts by {name}</h2>
-        {nodes.map(post => (
-            <div key={post.id}>
+      <section>
+        <h1>Posts by {name}</h1>
+        {nodes.map((post, idx) => (
+            <div key={post.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 3 }}>
                 <PostPreview post={post} blogBase={blogBase}/>
             </div>
         ))}
+      </section>
     </Layout>
   )
 }

@@ -9,12 +9,12 @@ const PostPreview = ({ post, blogBase, ...props }) => (
     </Link> */
     }
     <div className="preview-text">
-        <h3>
+        <h2>
             <Link 
               to={`${blogBase}/${post.slug}`} 
               dangerouslySetInnerHTML={{__html:post.title}} 
             />
-        </h3>
+        </h2>
       <div dangerouslySetInnerHTML={{__html: post.excerpt.replace(/<div class="sharedaddy.*/i, "")}}/>
       <Link 
         to={`${blogBase}/${post.slug}`} 

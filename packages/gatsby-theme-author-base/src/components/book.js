@@ -7,7 +7,7 @@ import { convertToTimeZone, getDate } from "../utils/time-helpers"
 const Author = ({email, name, profileImage, shortBio, url, idx}) => (
     <Box sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, my: 3, p: 3 }}>
         {
-            name && <h4 className="author-name">{name}</h4>
+            name && <h3 className="author-name">{name}</h3>
         }
         <Flex sx={{ flexDirection: [`column`, `row`], }}>
         {
@@ -31,11 +31,11 @@ const Author = ({email, name, profileImage, shortBio, url, idx}) => (
 
 const Endorsement= ({ endorsementText, rating, reviewUrl, reviewerName, reviewerOrganization, idx }) => (
     <Box sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, my: 3, p: 3 }}>
-        <h4>{reviewerName}</h4>
+        <h3>{reviewerName}</h3>
         { 
-            reviewerOrganization && <h5><i>{
+            reviewerOrganization && <h4><i>{
                 reviewUrl ? <Link href={reviewUrl}>{reviewerOrganization}</Link> : reviewerOrganization
-                }</i></h5>
+                }</i></h4>
         }
         <div className="endorsement-text" dangerouslySetInnerHTML={{__html: endorsementText}} />
     </Box>
@@ -45,7 +45,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
     const releaseDate = convertToTimeZone({ datetime: dateAvailableForPurchase, timezone: "-05:00"})
     return (
         <div>
-            <h2 dangerouslySetInnerHTML={{__html: bookTitle}} />
+            <h1 dangerouslySetInnerHTML={{__html: bookTitle}} />
             {
                 releaseDate ? (
                     <div className="availability">Available for purchase: { getDate(new Date(releaseDate)) }</div>
@@ -59,7 +59,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             {
                 excerpt && (
                     <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
-                        <h3>Synopsis</h3>
+                        <h2>Synopsis</h2>
                         <div className="book-excerpt" dangerouslySetInnerHTML={{__html: excerpt }} />
                     </Box>
                 )
@@ -68,7 +68,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             {
                 publisher && (
                     <>
-                        <h3>Publisher</h3>
+                        <h2>Publisher</h2>
                         <div className="publisher">{publisher}</div>
                     </>
                 )
@@ -76,7 +76,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             {
                 authors.length > 0 && (
                     <>
-                        <h3>Author{authors.length > 1 && `s`}</h3>
+                        <h2>Author{authors.length > 1 && `s`}</h2>
                     {
                         authors.map(({ author }, idx) => <Author key={`author-${author.name.replace(/[ .']/g, "-")}-${idx}`} idx={idx} {...author} />)
                     }
@@ -86,7 +86,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             </Box>
             {   endorsements.length > 0 && (
                 <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
-                    <h3>Endorsements</h3>
+                    <h2>Endorsements</h2>
                     {
                         endorsements.map(({ endorsement}, idx) => <Endorsement key={`endorsement-${idx}`} idx={idx} {...endorsement}/>)
                     }

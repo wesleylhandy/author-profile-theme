@@ -131,6 +131,7 @@ export const theme = {
       backgroundColor: "transparent",
       fontWeight: "bold",
       transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+      cursor: "pointer",
       '&:hover': {
         color: "white",
       },
@@ -141,6 +142,7 @@ export const theme = {
         borderColor: "primary",
         fontWeight: "bold",
         transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+        cursor: "pointer",
         '&:hover': {
           backgroundColor: "white",
           color: "primary",
@@ -153,6 +155,7 @@ export const theme = {
         borderColor: "secondary",
         fontWeight: "bold",
         transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+        cursor: "pointer",
         '&:hover': {
           backgroundColor: "white",
           color: "secondary",
@@ -165,6 +168,7 @@ export const theme = {
         borderColor: "tertiary",
         fontWeight: "bold",
         transition: "color 250ms ease-in-out, background-color 250ms ease-in-out",
+        cursor: "pointer",
         '&:hover': {
           backgroundColor: "white",
           color: "tertiary",
@@ -243,6 +247,14 @@ export const theme = {
           wordBreak: `break-all`,
           "&:hover": {
             color: "gray.4"
+          }
+        },
+        'h2 > a': {
+          color: "inherit",
+          textDecoration: "underline",
+          fontSize: "inherit",
+          "&:hover": {
+            color: "tertiary"
           }
         },
         'h3 > a': {

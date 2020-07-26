@@ -88,7 +88,7 @@ const EventsPage = ({ location }) => {
       <Seo type="website" title="Events Page" />
       <section>
         <Box>
-          <h2>Joan Can Speak At Your Next Event</h2>
+          <h1>Joan Can Speak At Your Next Event</h1>
           <p>
             Joan C. Benson speaks regularly to women&rsquo;s groups, women's ministry events, single&rsquo;s
             events, parenting workshops, luncheons, retreats, and youth groups. She will also be

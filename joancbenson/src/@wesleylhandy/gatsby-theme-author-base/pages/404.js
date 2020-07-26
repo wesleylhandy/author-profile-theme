@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
 import { navigate } from "gatsby"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
+import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
 const FourOhFour = ({location}) => (
     <Layout heading="404 Not Found" location={location} hideSidebar={true}>

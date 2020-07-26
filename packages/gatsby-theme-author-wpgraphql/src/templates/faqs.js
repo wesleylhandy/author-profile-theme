@@ -17,14 +17,14 @@ const FaqPage = ({ location, data }) => {
     <Layout location={location}>
       <Seo type="faq" title="Frequently Asked Questions" />
       <section>
-        <h2>Frequently Asked Questions</h2>
+        <h1>Frequently Asked Questions</h1>
         {faqs.map((faq, idx) => (
           <div
             key={faq.id}
             sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 3 }}
           >
             <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
-              <h3 itemProp="name" dangerouslySetInnerHTML={{ __html: faq.question }} />
+              <h2 itemProp="name" dangerouslySetInnerHTML={{ __html: faq.question }} />
               <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
                 <div itemProp="text" dangerouslySetInnerHTML={{ __html: faq.answer }} />
               </div>
