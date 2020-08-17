@@ -1,5 +1,6 @@
-import React from "react"
-import { graphql } from "gatsby"
+/** @jsx jsx */
+import { jsx, Button, Grid } from 'theme-ui'
+import { graphql, navigate } from "gatsby"
 import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout"
 import Post from "@wesleylhandy/gatsby-theme-author-base/src/components/post"
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
@@ -62,7 +63,7 @@ query GET_POST($id: ID!) {
 
 const PostTemplate = ({location, data: { wpgraphql: { post }}}) => {
   const title = post.title
-  const description = post.excerpt && post.excerpt.slice(0, 159)
+  const description = post.content && post.content.replace(/<div class="sharedaddy.*/i, "").replace(/<[^>]*>/g, "").slice(0, 156) + "..."
   const image = post.featuredImage ? post.featuredImage.imageFile.childImageSharp.fluid : null
   return (
     <Layout location={location}>
@@ -74,7 +75,22 @@ const PostTemplate = ({location, data: { wpgraphql: { post }}}) => {
         schema={post}
         canonical={post.link}
       />
-      <Post {...post} />
+      <section>
+        <Post {...post} />
+        <Grid my={3} gap={2} columns={[2, '1fr 1fr']}>
+          <Button
+            onClick={() => navigate(`/blog`)}
+            variant="tertiary"
+            sx={{
+              gridColumnStart: 1,
+              gridColumnEnd: 2,
+            }}
+            aria-label={`Link to Blog Page`}
+          >
+            Back to Blog
+          </Button>
+        </Grid>
+      </section>
     </Layout>
   )
 }

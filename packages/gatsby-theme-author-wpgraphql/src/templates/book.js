@@ -3,7 +3,7 @@ import Layout from "@wesleylhandy/gatsby-theme-author-base/src/components/layout
 import Book from "@wesleylhandy/gatsby-theme-author-base/src/components/book"
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
 
-const BookTemplate = ({location, pageContext: { book: { seo = {}, endorsements, excerpt, ...book }}}) => {
+const BookTemplate = ({location, pageContext: { book: { seo = {}, ...book }}}) => {
     const title = seo.seoTitle
     const description = seo.seoDescription
     const image = seo.socialSharingImage ? seo.socialSharingImage.imageFile.childImageSharp.fixed : null
@@ -16,7 +16,7 @@ const BookTemplate = ({location, pageContext: { book: { seo = {}, endorsements, 
         image={image}
         schema={book}
       />
-      <Book endorsements={endorsements} excerpt={excerpt} {...book} />
+      <Book {...book} />
     </Layout>
   )
 }

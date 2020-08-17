@@ -111,6 +111,7 @@ module.exports = {
         booksBase: `/books`,
         eventsBase: `/events`,
         faqBase: `/faq`,
+        newsBase: `/news`,
       },
     },
   ],

@@ -41,35 +41,44 @@ const Endorsement= ({ endorsementText, rating, reviewUrl, reviewerName, reviewer
     </Box>
 )
 
-const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], excerpt, publisher }) => {
+const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], synopsis, previewSnippet, publisher }) => {
     const releaseDate = convertToTimeZone({ datetime: dateAvailableForPurchase, timezone: "-05:00"})
     const title = bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '')
     return (
         <div>
             <h1>{title}</h1>
+
             {
-                releaseDate ? (
-                    <div className="availability">Available for purchase: { getDate(new Date(releaseDate)) }</div>
-                ) : (
-                    <div className="availability">Release Date: COMING SOON!</div>
+                previewSnippet && (
+                    <Box sx={{ mx: `auto`, my: 3}} dangerouslySetInnerHTML={{ __html: previewSnippet }}/>
                 )
             }
             {
-                coverImage && (
-                    <Box sx={{ maxWidth: 300, mx: `auto`, my: 3}}>
+                coverImage && !previewSnippet && (
+                    <Box sx={{ maxWidth: 300, my: 3}}>
                         <Img fluid={coverImage.imageFile.childImageSharp.fluid} alt={coverImage.altText || title}/>
                     </Box>
                 )
             }
             {
-                excerpt && (
-                    <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
+                releaseDate && !previewSnippet && (
+                    <div className="availability">Available for purchase: { getDate(new Date(releaseDate)) }</div>
+                )
+            }
+            {
+                !releaseDate && !previewSnippet && (
+                    <div className="availability">Release Date: COMING SOON!</div>
+                )
+            }
+            {
+                synopsis && (
+                    <Box sx={{ flex: `1 1 100%`, mx: `auto`, my: 3}}>
                         <h2>Synopsis</h2>
-                        <div className="book-excerpt" dangerouslySetInnerHTML={{__html: excerpt }} />
+                        <div className="book-excerpt" dangerouslySetInnerHTML={{__html: synopsis }} />
                     </Box>
                 )
             }
-            <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
+            <Box sx={{ flex: `1 1 100%`, mx: `auto`, my: 3}}>
             {
                 publisher && (
                     <Fragment>
@@ -90,7 +99,7 @@ const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, e
             }
             </Box>
             {   endorsements.length > 0 && (
-                <Box sx={{border: `5px solid`, borderColor: `primary`, flex: `1 1 100%`, mx: `auto`, my: 3, p:3}}>
+                <Box sx={{ flex: `1 1 100%`, mx: `auto`, my: 3 }}>
                     <h2>Endorsements</h2>
                     {
                         endorsements.map(({ endorsement}, idx) => <Endorsement key={`endorsement-${idx}`} idx={idx} {...endorsement}/>)

@@ -101,6 +101,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       eventsBase: String,
       faqBase: String,
       booksBase: String,
+      newsBase: String,
     }
   `
   createTypes(typeDefs)
@@ -140,6 +141,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
   const eventsBase = options.eventsBase || `/events`
   const faqBase = options.faqBase || `/faq`
   const booksBase = options.booksBase || `/books`
+  const newsBase = options.newsBase || `/news`
   const GET_DATA = `
   query GET_DATA($first:Int $after:String){
     wpgraphql {
@@ -216,7 +218,7 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
       }
       if (pageNumber === 0) {
         blogPages[0].context.navLink = `Blog`
-        blogPages[0].context.sortOrder = 10
+        blogPages[0].context.sortOrder = 11
       }
       nodes.map(post => {
         allPosts.push(post)
@@ -356,6 +358,8 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
               bookTitle
               dateAvailableForPurchase
               excerpt
+              synopsis
+              previewSnippet
               isCanonical
               publisher
               pricepoints {
@@ -612,6 +616,15 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
     //     },
     //   })
     // })
+  })
+  const newsPageTemplate = require.resolve(`./src/templates/news.js`)
+  createPage({
+    path: newsBase,
+    component: newsPageTemplate,
+    context: {
+      navLink: `News`,
+      sortOrder: 10
+    }
   })
 }
 

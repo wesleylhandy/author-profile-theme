@@ -92,10 +92,15 @@ const Layout = ({ children, location, hideSidebar }) => {
           "[class*='wp-image']": {
             margin: `30px auto`,
             maxWidth: `100%`,
+            height: `auto`,
           },
           ".wp-block-image": {
             maxWidth: `100%`,
             width: `inherit`,
+          },
+          ".wp-block-image > img": {
+            display: `block`,
+            width: `100%`,
           }
         })}
       />

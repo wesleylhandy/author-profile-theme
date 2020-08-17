@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from "gatsby"
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout';
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
-import EventList from "@wesleylhandy/gatsby-theme-author-base/src/components/event-date"
+import EventList from "@wesleylhandy/gatsby-theme-author-base/src/components/event-list"
 
 const EventsPage = ({location}) => {
   const data = useStaticQuery(graphql`
