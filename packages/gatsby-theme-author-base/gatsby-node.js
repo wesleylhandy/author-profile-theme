@@ -27,6 +27,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       imagesName: String,
       imagesContentPath: String,
       gaTackingId: String,
+      facebookPixelId: String,
       googleFontsFamily: String,
       manifest: ManifestSettings,
       html2amp: Html2ampSettings,

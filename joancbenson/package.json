@@ -9,7 +9,7 @@
         "clean": "gatsby clean"
     },
     "dependencies": {
-        "@wesleylhandy/gatsby-theme-author-base": "^1.1.0",
+        "@wesleylhandy/gatsby-theme-author-base": "^1.1.1",
         "@wesleylhandy/gatsby-theme-author-wpgraphql": "^1.1.0",
         "dotenv": "^8.2.0",
         "gatsby": "^2.23.1",

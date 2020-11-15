@@ -8,6 +8,7 @@ module.exports = (options) => {
     siteMetadata = {},
     html2amp = {},
     robotsTxt = {},
+    facebookPixelId = "",
   } = options
   return {
     siteMetadata,
@@ -18,6 +19,12 @@ module.exports = (options) => {
         resolve: `gatsby-source-filesystem`,
         options: {
           path: contentPath,
+        },
+      },
+      {
+        resolve: `gatsby-plugin-facebook-pixel`,
+        options: {
+          pixelId: facebookPixelId,
         },
       },
       {
