@@ -19,7 +19,7 @@ const Post = ({ title, author, content, published, link, modified, slug, feature
       <h1 dangerouslySetInnerHTML={{__html: title}} />
       <h2><Link to={`${blogBase}${author.link}`}>{author.name}</Link></h2>
       { featuredImage && (
-        <Img fluid={featuredImage.imageFile.childImageSharp.fluid} alt={featuredImage.altText}/>
+        <Img fluid={featuredImage.node.imageFile.childImageSharp.fluid} alt={featuredImage.node.altText}/>
       )}
       <div dangerouslySetInnerHTML={{__html: content.replace(/<div class="sharedaddy.*/i, "")}} />
       <p>

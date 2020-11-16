@@ -41,7 +41,7 @@ const Endorsement= ({ endorsementText, rating, reviewUrl, reviewerName, reviewer
     </Box>
 )
 
-const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], synopsis, previewSnippet, publisher }) => {
+const Book = ({ bookTitle, authors = [], coverImage, dateAvailableForPurchase, endorsements = [], synopsis, previewSnippet, publisher, pricepoints = [] }) => {
     const releaseDate = convertToTimeZone({ datetime: dateAvailableForPurchase, timezone: "-05:00"})
     const title = bookTitle.replace(/<[^>]+>/gm, '').replace(/([\r\n]+ +)+/gm, '')
     return (

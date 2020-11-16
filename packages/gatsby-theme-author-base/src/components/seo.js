@@ -58,6 +58,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           og,
           baseSettings: { googleFontsFamily },
         } = data
+        console.log({siteMetadata, logo, og, description, lang, meta, keywords, image, title, type, schema, canonical })
         const metaDescription = description || siteMetadata.description
         const metaImage = image && image.src ? `${siteMetadata.siteUrl}${image.src}` : null
         const metaKeywords = keywords ? [...keywords] : [...siteMetadata.keywords]
@@ -133,9 +134,9 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           articleType.addProfile({
             type: `author`,
             profile: {
-              first_name: schema.author.firstName,
-              last_name: schema.author.lastName,
-              username: schema.author.name,
+              first_name: schema.author.node.firstName,
+              last_name: schema.author.node.lastName,
+              username: schema.author.node.name,
             },
           })
           articleType.setProperties([
@@ -283,20 +284,22 @@ const detailsQuery = graphql`
     og: file(name: { eq: "og" }, extension: { eq: "jpg" }) {
       childImageSharp {
         fixed(width: 1200) {
-          ...GatsbyImageSharpFixed
-          height
+          base64
           width
+          height
           src
+          srcSet
         }
       }
     }
     logo: file(name: { eq: "organization-logo" }, extension: { eq: "png" }) {
       childImageSharp {
         fixed(width: 500) {
-          ...GatsbyImageSharpFixed
-          height
+          base64
           width
+          height
           src
+          srcSet
         }
       }
     }

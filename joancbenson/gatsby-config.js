@@ -1,6 +1,6 @@
 const path = require('path')
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.${process.env.NODE_ENV || 'development'}`
 })
 const siteUrl = process.env.URL || process.env.DEPLOY_URL || 'https://www.joancbenson.com'
 const siteMetadata = {

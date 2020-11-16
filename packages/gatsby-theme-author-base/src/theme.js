@@ -350,7 +350,7 @@ export const theme = {
       },
       cite: {
         fontFamily: "body",
-      }
+      },
     },
   }
   

@@ -144,7 +144,7 @@ class MetaType {
         if (typeof this.properties[property][0] == `string`) {
             return [...properties, { property, content: this.properties[property].join(",")}]
         }
-        const nestedProperties = this.properties[property].map((el) => el.getProperties()).flat()
+        const nestedProperties = this.properties[property].map((el) => el && el.getProperties && el.getProperties()).flat()
         return [...properties, ...nestedProperties]
       }
       if (typeof this.properties[property] === MetaType) {

@@ -1,5 +1,0 @@
-
-    const cmd = require("/Users/wehand/gatsby-theme-author-profile/node_modules/gatsby/dist/commands/develop-process.js");
-    const args = {"_":["develop"],"verbose":false,"no-color":false,"no-colors":false,"noColors":false,"noColor":false,"json":false,"H":"localhost","host":"localhost","p":"8000","port":58488,"c":"","cert-file":"","certFile":"","k":"","key-file":"","keyFile":"","ca-file":"","caFile":"","graphql-tracing":false,"graphqlTracing":false,"$0":"gatsby","directory":"/Users/wehand/gatsby-theme-author-profile/gatsby-theme-author-profile-and-blog","browserslist":[">0.25%","not dead"],"sitePackageJson":{"name":"gatsby-theme-author-profile-and-blog","version":"1.0.0","main":"index.js","license":"MIT","scripts":{"build":"gatsby build","clean":"gatsby clean","develop":"gatsby develop"},"peerDependencies":{"gatsby":"^2.23.1","react":"^16.13.1","react-dom":"^16.13.1"},"devDependencies":{"gatsby":"^2.23.1","react":"^16.13.1","react-dom":"^16.13.1"},"dependencies":{"gatsby-source-filesystem":"^2.3.10","gatsby-theme-netlify-identity":"^0.0.2"}},"report":{},"useYarn":false,"proxyPort":"8000"};
-    cmd(args);
-  

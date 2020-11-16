@@ -24,9 +24,7 @@ const BookListWidget = ({ heading = "My Books", hide = false }) => {
                 imageFile {
                   childImageSharp {
                     fluid(maxWidth: 320) {
-                      base64
-                      src
-                      srcSet
+                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
                     }
                   }
                 }
@@ -68,7 +66,7 @@ const BookListWidget = ({ heading = "My Books", hide = false }) => {
                     aria-label={`Link to ${toBook}`}
                   >
                     {book.coverImage && (
-                      <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} />
+                      <Img fluid={book.coverImage.imageFile.childImageSharp.fluid} alt={book.coverImage.altText}/>
                     )}
                   </Link>
                 </b>

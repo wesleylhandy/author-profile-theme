@@ -12,14 +12,16 @@ fragment PostFragment on WPGraphQL_Post {
   content
   excerpt
   featuredImage {
-    altText
-    databaseId
-    modified
-    sourceUrl
-    imageFile {
-      childImageSharp {
-        fluid(maxWidth: 1200) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+    node {
+      altText
+      databaseId
+      modified
+      sourceUrl
+      imageFile {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
         }
       }
     }
@@ -30,13 +32,15 @@ fragment PostFragment on WPGraphQL_Post {
   published: date
   modified
   author {
-    name
-    email
-    firstName
-    lastName
-    link: uri
-    avatar {
-      url
+    node {
+      name
+      email
+      firstName
+      lastName
+      link: uri
+      avatar {
+        url
+      }
     }
   }
   tags {
@@ -64,7 +68,7 @@ query GET_POST($id: ID!) {
 const PostTemplate = ({location, data: { wpgraphql: { post }}}) => {
   const title = post.title
   const description = post.content && post.content.replace(/<div class="sharedaddy.*/i, "").replace(/<[^>]*>/g, "").slice(0, 156) + "..."
-  const image = post.featuredImage ? post.featuredImage.imageFile.childImageSharp.fluid : null
+  const image = post.featuredImage && post.featuredImage.node ? post.featuredImage.node.imageFile.childImageSharp.fluid : null
   return (
     <Layout location={location}>
       <Seo 

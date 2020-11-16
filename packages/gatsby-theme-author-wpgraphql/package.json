@@ -1,6 +1,6 @@
 {
   "name": "@wesleylhandy/gatsby-theme-author-wpgraphql",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "main": "gatsby-node.js",
   "license": "MIT",
   "scripts": {
@@ -29,7 +29,7 @@
     "gatsby-plugin-sharp": "^2.6.10",
     "gatsby-plugin-sitemap": "^2.4.4",
     "gatsby-plugin-theme-ui": "^0.3.0",
-    "gatsby-source-graphql": "^2.6.1",
+    "gatsby-source-graphql": "^2.8.0",
     "gatsby-transformer-sharp": "^2.5.4",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
