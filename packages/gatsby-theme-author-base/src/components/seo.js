@@ -58,7 +58,6 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
           og,
           baseSettings: { googleFontsFamily },
         } = data
-        console.log({siteMetadata, logo, og, description, lang, meta, keywords, image, title, type, schema, canonical })
         const metaDescription = description || siteMetadata.description
         const metaImage = image && image.src ? `${siteMetadata.siteUrl}${image.src}` : null
         const metaKeywords = keywords ? [...keywords] : [...siteMetadata.keywords]
