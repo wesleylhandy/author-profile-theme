@@ -7,7 +7,6 @@ module.exports = (options) => {
     mailChimpOptions = {},
     manifest = {},
     siteMetadata = {},
-    html2amp = {},
     robotsTxt = {},
     facebookPixelId = "",
   } = options
@@ -63,18 +62,6 @@ module.exports = (options) => {
           host: robotsTxt.host,
           sitemap: robotsTxt.sitemap,
           policy: robotsTxt.policy,
-        },
-      },
-      {
-        resolve: 'gatsby-plugin-html2amp',
-        options: {
-          files: html2amp.files || [],
-          gaConfigPath: html2amp.gaConfigPath,
-          dist: 'public/amp',
-          optimize: html2amp.optimize || true,
-          serviceWorker: html2amp.serviceWorker || {},
-          cssPlugins: html2amp.cssPlugins || [],
-          htmlPlugins: html2amp.htmlPlugins || [],
         },
       },
       'gatsby-plugin-offline',
