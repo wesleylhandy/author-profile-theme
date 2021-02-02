@@ -79,7 +79,7 @@ const PostTemplate = ({location, data: { wpgraphql: { post }}}) => {
         schema={post}
         canonical={post.link}
       />
-      <section>
+      <section sx={{ width: "100%" }}>
         <Post {...post} />
         <Grid my={3} gap={2} columns={[2, '1fr 1fr']}>
           <Button

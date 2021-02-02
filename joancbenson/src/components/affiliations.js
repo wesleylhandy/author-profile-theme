@@ -20,8 +20,14 @@ const AffiliationsBlock = () => {
           }
         }
       }
-
       scbwi: file(name: { eq: "scbwi-logo" }, extension: { eq: "png" }) {
+        childImageSharp {
+          fixed(height: 60) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
+        }
+      }
+      awsa: file(name: { eq: "awsa-logo" }, extension: { eq: "jpg" }) {
         childImageSharp {
           fixed(height: 60) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
@@ -30,7 +36,7 @@ const AffiliationsBlock = () => {
       }
     }
   `)
-  const { acfw, hrw, scbwi } = data
+  const { acfw, hrw, scbwi, awsa } = data
   return (
     <section sx={{ backgroundColor: 'affiliations'}}>
       <Flex
@@ -121,6 +127,25 @@ const AffiliationsBlock = () => {
           <Img
             fixed={hrw.childImageSharp.fixed}
             alt="Hampton Roads Writers"
+            sx={{
+              maxHeight: 60,
+            }}
+          />
+        </Link>
+        <Link
+          href="https://awsa.com/?page_id=6118"
+          aria-label="Link to Advanced Writers and Speakers Association"
+          sx={{
+            maxHeight: 60,
+            my: 3,
+            mx: 2,
+            flex: `0 0 auto`,
+            order: 0,
+          }}
+        >
+          <Img
+            fixed={awsa.childImageSharp.fixed}
+            alt="Advanced Writers and Speakers Association"
             sx={{
               maxHeight: 60,
             }}

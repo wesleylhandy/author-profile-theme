@@ -4,6 +4,7 @@ module.exports = (options) => {
     contentPath = 'data',
     imagesName = 'images',
     imagesContentPath = path.join(__dirname, 'src', 'images'),
+    mailChimpOptions = {},
     manifest = {},
     siteMetadata = {},
     html2amp = {},
@@ -37,6 +38,13 @@ module.exports = (options) => {
       `gatsby-plugin-react-helmet`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-sharp`,
+      {
+        resolve: 'gatsby-plugin-mailchimp',
+        options: {
+          endpoint: mailChimpOptions.endpoint || "",
+          timeout: mailChimpOptions.timeout || 3500,
+        },
+      },
       {
         resolve: `gatsby-plugin-manifest`,
         options: {

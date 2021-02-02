@@ -67,6 +67,9 @@ module.exports = {
         imagesContentPath: path.join(__dirname, `images`),
         facebookPixelId: process.env.FACEBOOK_PIXEL_ID,
         googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700&family=Rubik:wght@500`,
+        mailChimpOptions: {
+          endpoint: process.env.MAILCHIMP_ENDPOINT,
+        },
         manifest: {
           name: siteMetadata.title,
           short_name: siteMetadata.organization.name,
