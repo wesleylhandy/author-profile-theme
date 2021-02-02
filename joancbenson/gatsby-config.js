@@ -87,6 +87,7 @@ module.exports = {
             // you need to return htmlString which you modified.
             return htmlString.replace(/<noscript><style>.*<\/style><\/noscript>/gis, '').replace(/<noscript><picture><source((?!<div).)*\/><\/picture><\/noscript>/gis, '')
           }],
+          optimize: true,
           serviceWorker: {
             src: `${siteUrl}/sw.js`,
             'data-iframe-src': `${siteUrl}/amp-install-serviceworker.html`,

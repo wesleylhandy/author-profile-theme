@@ -71,6 +71,7 @@ module.exports = (options) => {
           files: html2amp.files || [],
           gaConfigPath: html2amp.gaConfigPath,
           dist: 'public/amp',
+          optimize: html2amp.optimize || true,
           serviceWorker: html2amp.serviceWorker || {},
           cssPlugins: html2amp.cssPlugins || [],
           htmlPlugins: html2amp.htmlPlugins || [],
