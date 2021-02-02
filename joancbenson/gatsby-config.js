@@ -83,10 +83,7 @@ module.exports = {
           files: ['*.html', 'about/*.html', 'blog/*.html', 'blog/**/*.html', 'blog/page/**/*.html', 'index.html', 'faq/*.html', 'books/*.html', 'books/**/*.html', 'events/*.html', 'events/**/*.html'],
           gaConfigPath: 'gaConfig.json',
           cssPlugins: [],
-          htmlPlugins: [(htmlString, options) => {
-            // you need to return htmlString which you modified.
-            return htmlString.replace(/<noscript><style>.*<\/style><\/noscript>/gis, '').replace(/<noscript><picture><source((?!<div).)*\/><\/picture><\/noscript>/gis, '')
-          }],
+          htmlPlugins: [],
           optimize: true,
           serviceWorker: {
             src: `${siteUrl}/sw.js`,
