@@ -1,6 +1,6 @@
 {
   "name": "@wesleylhandy/gatsby-theme-author-wpgraphql",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "gatsby-node.js",
   "license": "MIT",
   "scripts": {
