@@ -5,7 +5,7 @@ import { jsx, Button, Input } from 'theme-ui'
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 
 
-const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false}) => {
+const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false, showBorders = true}) => {
     const [ isFetching, setFetching ] = useState(false);
     const [ hasFetched, setHasFetched ] = useState(false);
     const badger = useRef();
@@ -24,7 +24,7 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false})
     return !hide ? (
             <article
             className="mailchimp-widget"
-            sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3, width: "100%", boxSizing: "border-box" }}
+            sx={{ padding: 3, border: `5px solid`, borderColor: `${showBorders ? "primary" : "transparent"}`, mx: `auto`, my: 3, width: "100%", boxSizing: "border-box" }}
             >
                 { heading && ( <h2>{heading}</h2> ) }
                 { hasFetched ? (
