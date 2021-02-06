@@ -62,7 +62,8 @@ const Layout = ({ children, location, hideSidebar }) => {
   const hideBooksWidget = location.pathname.includes(booksBase),
     hideEventsWidget = location.pathname.includes(eventsBase),
     hidePostsWidget = location.pathname.includes(blogBase),
-    hideAboutWidget = location.pathname.includes(`/about`) || isHomePage
+    hideAboutWidget = location.pathname.includes(`/about`) || isHomePage,
+    hideMailchimpWidget = location.pathname.includes(`/newsletter`) || isHomePage,
     
   return (
     <Flex
@@ -209,6 +210,7 @@ const Layout = ({ children, location, hideSidebar }) => {
                 {children}
               </Flex>
               {isHomePage && <AboutWidget heading="About Me" hide={false} />}
+              {isHomePage && <MailchimpWidget hide={false} />}
             </Flex>
             {!hideSidebar && (
               <Sidebar
@@ -219,7 +221,7 @@ const Layout = ({ children, location, hideSidebar }) => {
               />
             )}
           </Flex>
-          <MailchimpWidget />
+          <MailchimpWidget hide={hideMailchimpWidget} />
           <AffiliationsBlock />
         </Container>
       </StyledBackground>

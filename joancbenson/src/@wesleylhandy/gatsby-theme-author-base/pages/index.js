@@ -76,9 +76,9 @@ const IndexPage = ({ location }) => {
             marginBlockEnd: 0,
           }}
         />
-        <p>
+        <p sx={{textAlign: "center"}}>
           If you would like to request Joan to speak at your next event, please contact her at{' '}
-          <a href={email.link}>{email.text}</a> or by phone <a href={phone.link}>{phone.text}</a>.
+          <a sx={{ whiteSpace: "nowrap"}} href={email.link}>{email.text}</a> or by phone <a sx={{ whiteSpace: "nowrap"}} href={phone.link}>{phone.text}</a>.
         </p>
       </article>
     </Layout>
