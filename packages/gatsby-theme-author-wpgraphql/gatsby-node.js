@@ -646,7 +646,7 @@ exports.onCreatePage = ({ page, actions }) => {
     context: {
       ...page.context,
       navLink: convertPathToTitle(page.path),
-      sortOrder: 0
+      sortOrder: page.context?.sortOrder || 0
     }
   })
 }
