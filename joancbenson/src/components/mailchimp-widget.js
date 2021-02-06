@@ -6,18 +6,18 @@ import addToMailchimp from 'gatsby-plugin-mailchimp'
 
 
 const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false}) => {
-    const { isFetching, setFetching } = useState(false);
-    const { hasFetched, setHasFetched } = useState(false);
+    const [ isFetching, setFetching ] = useState(false);
+    const [ hasFetched, setHasFetched ] = useState(false);
     const badger = useRef();
     const emailAddress = useRef();
     const handleSubmit = async e => {
         e.preventDefault();
+        setFetching(true);
         if (badger.current.value) {
             console.info("bot bot bot");
             alert("There was an issue submitting your form. Please try again");
         }
         const result = await addToMailchimp(emailAddress.current.value);
-        console.log(result);
         setFetching(false);
         setHasFetched(true);
     }
@@ -29,8 +29,8 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false})
                 <h2>{heading}</h2>
                 { hasFetched ? (
                     <Fragment>
-                        <h3 sx={{margin: '30px auto'}}>THank you!</h3>
-                        <p>You should start receiving emails from me whenever I publish new blog posts or compose a new newsletter. Please check your spam filters if you don't receive something for over a week.</p>
+                        <h3 sx={{margin: '30px auto'}}>Thank you for subscribing!</h3>
+                        <p sx={{margin: '30px auto'}}>You should start receiving emails from me whenever I publish new blog posts or compose a new newsletter. Please check your spam filters if you don't receive something for over a week.</p>
                     </Fragment>
                 ) : (
                     <form onSubmit={handleSubmit} autoComplete>
