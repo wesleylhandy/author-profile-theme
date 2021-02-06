@@ -1,20 +1,12 @@
-const convertPathToTitle = (path) => {
-  let str = path.replace(/\//g, "")
-  str = str.slice(0,1).toUpperCase() + str.slice(1)
-  return str
-}
-  
-exports.onCreatePage = ({ page, actions }) => {
-  if (page.path.match(/(subscribe)/)) {
-    const { createPage, deletePage } = actions
-    deletePage(page)
+exports.createPages = async ({ actions, graphql, reporter }, options) => {
+    const { createPage } = actions
+    const subscriptionTemplate = require.resolve("./src/templates/subscribe.js");
     createPage({
-      ...page,
-      context: {
-        ...page.context,
-        navLink: convertPathToTitle(page.path),
-        sortOrder: 11
-      }
+        path: `/subscribe`,
+        component: subscriptionTemplate,
+        context: {
+          navLink: `Subscribe`,
+          sortOrder: 11,
+        }
     })
-  }
 }
