@@ -24,7 +24,7 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false})
     return !hide ? (
             <article
             className="mailchimp-widget"
-            sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3 }}
+            sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3, width: "100%", boxSizing: "border-box" }}
             >
                 <h2>{heading}</h2>
                 { hasFetched ? (
