@@ -10,6 +10,7 @@ import AffiliationsBlock from '../../../components/affiliations'
 import Footer from '@wesleylhandy/gatsby-theme-author-base/src/components/footer'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import AboutWidget from '../../../components/about-widget'
+import MailchimpWidget from "../../../components/mailchimp-widget"
 
 const StyledBackground = styled(BackgroundImage)`
   position: fixed;
@@ -101,7 +102,79 @@ const Layout = ({ children, location, hideSidebar }) => {
           ".wp-block-image > img": {
             display: `block`,
             width: `100%`,
-          }
+          },
+          "tiled-gallery": {
+            clear: "both",
+            margin: "0 0 20px",
+            overflow: "hidden",
+          },
+          "[data-carousel-extra]": {
+            cursor: "pointer",
+          },
+          ".tiled-gallery .gallery-row": {
+            overflow: "hidden",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+          ".tiled-gallery .gallery-group": {
+            flex: "1 1 auto",
+            position: "relative",
+          },
+          ".tiled-gallery .tiled-gallery-item": {
+            float: "left",
+            margin: "0",
+            position: "relative",
+            width: "100%",
+          },
+          ".tiled-gallery .tiled-gallery-item a": {
+            background: "0 0",
+            border: "none",
+            color: "inherit",
+            margin: "0",
+            padding: "0",
+            textDecoration: "none",
+            width: "auto",
+          },
+          ".tiled-gallery.type-square .tiled-gallery-item img": {
+            objectFit: "cover",
+          },
+          ".tiled-gallery .tiled-gallery-item img, .tiled-gallery .tiled-gallery-item img:hover": {
+            background: "0 0",
+            border: "none",
+            boxShadow: "none",
+            maxWidth: "100%",
+            padding: "0",
+            verticalAlign: "middle",
+          },
+          ".tiled-gallery img": {
+              margin: "2px!important",
+          },
+          ".tiled-gallery-caption": {
+            background: "#eee",
+            background: "rgba(255,255,255,.8)",
+            color: "#333",
+            fontSize: "13px",
+            fontWeight: "400",
+            overflow: "hidden",
+            padding: "10px 0",
+            position: "absolute",
+            bottom: "0",
+            textIndent: "10px",
+            textOverflow: "ellipsis",
+            width: "100%",
+            whiteSpace: "nowrap",
+            display: "none",
+            opacity: "0",
+            maxHeight: "0",
+            transition: "opacity 600ms ease-in-out, maxHeight 250ms ease-in-out",
+          },
+          ".tiled-gallery .tiled-gallery-item img, .tiled-gallery .tiled-gallery-item:hover .tiled-gallery-caption": {
+            display: "block",
+            opacity: 1,
+            maxHeight: "50px"
+          },
         })}
       />
       <Header location={location} setColorMode={setColorMode} />
@@ -142,6 +215,7 @@ const Layout = ({ children, location, hideSidebar }) => {
               />
             )}
           </Flex>
+          <MailchimpWidget />
           <AffiliationsBlock />
         </Container>
       </StyledBackground>
