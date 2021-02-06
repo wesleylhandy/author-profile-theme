@@ -63,7 +63,7 @@ const Layout = ({ children, location, hideSidebar }) => {
     hideEventsWidget = location.pathname.includes(eventsBase),
     hidePostsWidget = location.pathname.includes(blogBase),
     hideAboutWidget = location.pathname.includes(`/about`) || isHomePage,
-    hideMailchimpWidget = location.pathname.includes(`/newsletter`) || isHomePage;
+    hideMailchimpWidget = location.pathname.includes(`/subscribe`) || isHomePage;
     
   return (
     <Flex

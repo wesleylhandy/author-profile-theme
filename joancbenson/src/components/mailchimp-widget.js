@@ -26,7 +26,7 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false})
             className="mailchimp-widget"
             sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3, width: "100%", boxSizing: "border-box" }}
             >
-                <h2>{heading}</h2>
+                { heading && ( <h2>{heading}</h2> ) }
                 { hasFetched ? (
                     <Fragment>
                         <h3 sx={{margin: '30px auto'}}>Thank you for subscribing!</h3>
