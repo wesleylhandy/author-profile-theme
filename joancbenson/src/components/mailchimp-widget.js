@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Fragment, useState } from "react";
+import { Fragment, useState, useRef } from "react";
 import PropTypes from "prop-types"
 import { jsx, Button, Input } from 'theme-ui'
 import addToMailchimp from 'gatsby-plugin-mailchimp'
@@ -8,15 +8,15 @@ import addToMailchimp from 'gatsby-plugin-mailchimp'
 const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false}) => {
     const { isFetching, setFetching } = useState(false);
     const { hasFetched, setHasFetched } = useState(false);
+    const badger = useRef();
+    const emailAddress = useRef();
     const handleSubmit = async e => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const badger = e.target.badger.value;
-        if (badger) {
+        if (badger.current.value) {
             console.info("bot bot bot");
             alert("There was an issue submitting your form. Please try again");
         }
-        const result = await addToMailchimp(email);
+        const result = await addToMailchimp(emailAddress.current.value);
         console.log(result);
         setFetching(false);
         setHasFetched(true);
@@ -34,20 +34,22 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false})
                     </Fragment>
                 ) : (
                     <form onSubmit={handleSubmit} autoComplete>
-                        <label htmlFor="email">Your Email</label>
+                        <label htmlFor="emailAddress">Your Email</label>
                         <Input
                             disabled={isFetching}
                             type="email"
-                            name="email"
+                            name="emailAddress"
+                            id="emailAddress"
                             placeholder="you@example.com"
+                            ref={emailAddress}
                             required={true}
                             title="Please provide a valid email address"
                         />
-                        <input name="mailchimp-badger" type="text" sx={{ display: "none" }} />
+                        <input name="mailchimp-badger" type="text" sx={{ display: "none" }} ref={badger} />
                         <Button 
                             disabled={isFetching}
                             variant="buttons.tertiary"
-                            sx={{ display: `block`, mx: `auto`, maxWidth: 300, width: `100%` }}
+                            sx={{ display: `block`, mx: `auto`, maxWidth: 300, width: `100%`, my: 3 }}
                             type="submit">
                                 Subscribe
                         </Button>

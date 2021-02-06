@@ -114,16 +114,18 @@ const Layout = ({ children, location, hideSidebar }) => {
           ".tiled-gallery .gallery-row": {
             overflow: "hidden",
             display: "flex",
-            flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
+            width: "100% !important",
           },
           ".tiled-gallery .gallery-group": {
             flex: "1 1 auto",
             position: "relative",
+            width: "100% !important",
+            height: "auto !important",
+            border: `1px solid ${theme.colors.primary}`
           },
           ".tiled-gallery .tiled-gallery-item": {
-            float: "left",
             margin: "0",
             position: "relative",
             width: "100%",
@@ -139,6 +141,8 @@ const Layout = ({ children, location, hideSidebar }) => {
           },
           ".tiled-gallery.type-square .tiled-gallery-item img": {
             objectFit: "cover",
+            width: "100% !important",
+            height: "auto !important"
           },
           ".tiled-gallery .tiled-gallery-item img, .tiled-gallery .tiled-gallery-item img:hover": {
             background: "0 0",
@@ -170,7 +174,7 @@ const Layout = ({ children, location, hideSidebar }) => {
             maxHeight: "0",
             transition: "opacity 600ms ease-in-out, maxHeight 250ms ease-in-out",
           },
-          ".tiled-gallery .tiled-gallery-item img, .tiled-gallery .tiled-gallery-item:hover .tiled-gallery-caption": {
+          ".tiled-gallery .tiled-gallery-item:hover .tiled-gallery-caption": {
             display: "block",
             opacity: 1,
             maxHeight: "50px"
