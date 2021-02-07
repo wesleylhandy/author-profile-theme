@@ -46,7 +46,7 @@ const BookListWidget = ({ heading = "My Books", hide = false }) => {
   return !hide ? (
     <article
       className="booklist-widget"
-      sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3 }}
+      sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3, backgroundColor: "affiliations" }}
     >
       <h2>{heading}</h2>
       <ul sx={{ listStyleType: 'none', paddingInlineStart: 0 }}>

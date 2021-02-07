@@ -19,7 +19,7 @@ const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget, hideAbout
       <BookListWidget heading="My Books" hide={hideBooksWidget} />
       <EventListWidget heading="Upcoming Events" limit={4} hide={hideEventsWidget} />
       <PostListWidget heading="Recent Posts" limit={4} hide={hidePostsWidget} />
-      <Flex sx={{ justifyContent: `center`, alignItems: `center` }} ref={fictionFinder}>
+      <Flex sx={{ justifyContent: `center`, alignItems: `center`, backgroundColor: "affiliations", p: 3, border: `5px solid`, borderColor: `primary` }} ref={fictionFinder}>
         {' '}
         <a
           href="http://www.fictionfinder.com"

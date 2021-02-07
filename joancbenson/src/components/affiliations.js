@@ -38,7 +38,7 @@ const AffiliationsBlock = () => {
   `)
   const { acfw, hrw, scbwi, awsa } = data
   return (
-    <section sx={{ backgroundColor: 'affiliations'}}>
+    <section sx={{ backgroundColor: "transparent", }}>
       <Flex
         sx={{
           position: `relative`,
@@ -48,6 +48,7 @@ const AffiliationsBlock = () => {
           alignItems: `center`,
           justifyContent: `space-around`,
           flexWrap: `wrap`,
+          backgroundColor: 'affiliations'
         }}
       >
         <Link

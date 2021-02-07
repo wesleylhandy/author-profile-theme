@@ -26,7 +26,7 @@ const EventListWidget = ({heading = "Recent Events", limit = 4, hide = false}) =
     }`)
     const { themeConfig: { eventsBase }, wpgraphql: { eventsAndSpeakingEngagements: { eventList: { events } } } } = data
     return !hide ? (
-      <div sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3}}>
+      <div sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3, backgroundColor: "affiliations"}}>
         <EventList heading={heading} events={events}  eventsBase={eventsBase} limit={limit}/>
       </div>
     ) : null

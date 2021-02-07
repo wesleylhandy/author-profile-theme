@@ -24,8 +24,16 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false, 
     return !hide ? (
             <article
             className="mailchimp-widget"
-            sx={{ padding: 3, border: `5px solid`, borderColor: `${showBorders ? "primary" : "transparent"}`, mx: `auto`, my: 3, width: "100%", boxSizing: "border-box" }}
-            >
+            sx={{ 
+                padding: 3, 
+                border: `5px solid`, 
+                borderColor: `${showBorders ? "primary" : "transparent"}`, 
+                mx: `auto`, 
+                my: 3, 
+                width: "100%", 
+                boxSizing: "border-box", 
+                backgroundColor: "affiliations" 
+            }}>
                 { heading && ( <h2>{heading}</h2> ) }
                 { hasFetched ? (
                     <Fragment>

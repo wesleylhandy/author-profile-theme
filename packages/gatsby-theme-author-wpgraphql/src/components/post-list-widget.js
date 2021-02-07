@@ -20,7 +20,7 @@ const PostListWidget = ({heading = "Recent Posts", hide = false}) => {
     }`)
     const { themeConfig: { blogBase }, wpgraphql: { postList: { posts } } } = data
     return !hide ? (
-      <div sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3}}>
+      <div sx={{ padding: 3, border: `5px solid`, borderColor: `primary`, mx: `auto`, my: 3, backgroundColor: "affiliations"}}>
         <PostList heading={heading} posts={posts} titleOnly={true} blogBase={blogBase} />
       </div>
     ) : null
