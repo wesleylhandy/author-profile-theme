@@ -21,7 +21,7 @@ const Post = ({ title, author, content, published, link, modified, slug, feature
       { featuredImage && (
         <Img fluid={featuredImage.node.imageFile.childImageSharp.fluid} alt={featuredImage.node.altText}/>
       )}
-      <div dangerouslySetInnerHTML={{__html: content.replace(/<div class="sharedaddy.*/i, "")}} />
+      <div dangerouslySetInnerHTML={{__html: content.replace(/<div class="sharedaddy.*/i, "").replace(/http:\/\//g, "https://")}} />
       <p>
           Originally Published at <ExternalLink href={link} aria-label={`Link to ${link}`}>{link}</ExternalLink>
           {` on `}

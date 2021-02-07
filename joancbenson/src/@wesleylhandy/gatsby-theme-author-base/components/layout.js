@@ -179,7 +179,7 @@ const Layout = ({ children, location, hideSidebar }) => {
           ".tiled-gallery .tiled-gallery-item:hover .tiled-gallery-caption": {
             display: "block",
             opacity: 1,
-            maxHeight: "50px"
+            maxHeight: "100px"
           },
         })}
       />
