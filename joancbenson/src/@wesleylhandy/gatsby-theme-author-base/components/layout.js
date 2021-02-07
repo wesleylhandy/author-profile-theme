@@ -59,11 +59,12 @@ const Layout = ({ children, location, hideSidebar }) => {
   const { theme } = useThemeUI()
   const [colorMode, setColorMode] = useColorMode()
   const isHomePage = location.pathname === `/`
+  const isSubscribePage = location.pathname === `/subscribe`
   const hideBooksWidget = location.pathname.includes(booksBase),
     hideEventsWidget = location.pathname.includes(eventsBase),
     hidePostsWidget = location.pathname.includes(blogBase),
     hideAboutWidget = location.pathname.includes(`/about`) || isHomePage,
-    hideMailchimpWidget = location.pathname.includes(`/subscribe`) || isHomePage;
+    hideMailchimpWidget = isSubscribePage || isHomePage;
     
   return (
     <Flex
@@ -199,14 +200,14 @@ const Layout = ({ children, location, hideSidebar }) => {
               sx={{
                 flex: `1 1 auto`,
                 position: `relative`,
-                mr: [0, 3],
+                mr: isSubscribePage ? 0 : [0, 3],
                 mt: 3,
                 flexDirection: `column`,
                 alignItems: `center`,
                 justifyContent: `flex-start`,
               }}
             >
-              <Flex sx={{ border: `5px solid`, borderColor: `primary`, backgroundColor: "affiliations", maxWidth: `100%`, width: `100%` }}>
+              <Flex sx={{ border: `5px solid`, borderColor: `primary`, backgroundColor: "affiliations", maxWidth: `100%`, width: `100%`, p:3 }}>
                 {children}
               </Flex>
               {isHomePage && <AboutWidget heading="About Me" hide={false} />}
