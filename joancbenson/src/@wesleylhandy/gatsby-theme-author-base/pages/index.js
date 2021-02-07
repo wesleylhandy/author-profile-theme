@@ -42,7 +42,7 @@ const IndexPage = ({ location }) => {
   return (
     <Layout location={location}>
       <Seo type="website" title="Home Page" />
-      <article>
+      <article sx={{ backgroundColor: "affiliations" }}>
         <Box sx={{ position: `relative`, pb: 148 }} id="welcome">
           <h1>Welcome To My Website</h1>
           <p>
