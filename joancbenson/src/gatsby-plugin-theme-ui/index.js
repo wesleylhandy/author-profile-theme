@@ -41,8 +41,100 @@ const theme = {
     },
     layout: {
       container: {
-        background: "transparent",
-      }
+        backgroundColor: "opaqueBackground",
+        margin: "0 auto",
+        maxWidth: ["full", "full", "full", "max"],
+        width: ["full", "full", "full", "default"],
+        flex: 1,
+        padding: 3,
+        color: "text",
+        fontFamily: "body",
+        fontSize: 2,
+        lineHeight: "body",
+        position: "relative",
+        h2: {
+          color: "primary",
+          fontSize: 6,
+          fontWeight: "bold",
+          fontFamily: "heading",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
+        h3: {
+          color: "text",
+          fontSize: 5,
+          fontWeight: "bold",
+          fontFamily: "heading",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
+        p: {
+          marginBottom: 3,
+          fontSize: 2,
+        },
+        'h2 > p': {
+          display: "inline-block",
+          fontSize: "inherit",
+          color: "inherit",
+          fontWeight: "inherit",
+          fontFamily: "inherit",
+        },
+        h4: {
+          color: "text",
+          fontSize: 3,
+          fontWeight: "bold",
+          fontFamily: "heading",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
+        h5: {
+          color: "text",
+          fontSize: 2,
+          fontStyle: "italic",
+          fontFamily: "heading",
+          lineHeight: "heading",
+          margin: "1rem 0",
+        },
+        dl: {
+          borderTop: "1px solid",
+          borderColor: "gray.1",
+          listStyle: "none",
+          margin: `15px 0`,
+          fontSize: 2,
+          maxWidth: '100%',
+        },
+        a: {
+          color: "tertiary",
+          cursor: "pointer",
+          fontSize: 2,
+          fontWeight: "bold",
+          wordBreak: `break-all`,
+          "&:hover": {
+            color: "gray.4"
+          }
+        },
+        'h1 > p': {
+          color: "inherit",
+          fontFamily: "inherit",
+          fontSize: "inherit",
+        },
+        'h2 > a': {
+          color: "inherit",
+          textDecoration: "underline",
+          fontSize: "inherit",
+          "&:hover": {
+            color: "tertiary"
+          }
+        },
+        'h3 > a': {
+          color: "inherit",
+          textDecoration: "underline",
+          fontSize: "inherit",
+          "&:hover": {
+            color: "tertiary"
+          }
+        }
+      },
     }
   }
   
