@@ -31,7 +31,7 @@
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-graphql": "^2.8.0",
     "gatsby-transformer-sharp": "^2.5.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
     "react-icons": "^3.10.0",
     "react-social-sharing": "^3.0.1",
