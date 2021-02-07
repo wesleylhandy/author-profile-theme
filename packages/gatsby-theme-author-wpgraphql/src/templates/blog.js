@@ -82,7 +82,7 @@ class BlogPage extends Component {
             data.wpgraphql.posts.nodes.map((post, idx) => (
               <div
                 key={post.id}
-                sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 3 }}
+                sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, padding: 3 }}
               >
                 <PostPreview post={post} blogBase={data.themeConfig.blogBase} />
               </div>

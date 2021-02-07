@@ -22,7 +22,7 @@ const User = props => {
       <section>
         <h1>Posts by {name}</h1>
         {nodes.map((post, idx) => (
-            <div key={post.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 3 }}>
+            <div key={post.id} sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, padding: 3 }}>
                 <PostPreview post={post} blogBase={blogBase}/>
             </div>
         ))}

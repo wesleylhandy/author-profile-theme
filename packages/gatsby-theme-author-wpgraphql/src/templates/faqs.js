@@ -20,7 +20,7 @@ const FaqPage = ({ location, data }) => {
         {faqs.map((faq, idx) => (
           <div
             key={faq.id}
-            sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, padding: 3 }}
+            sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, padding: 3 }}
           >
             <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
               <h2 itemProp="name" dangerouslySetInnerHTML={{ __html: faq.question }} />

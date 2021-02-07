@@ -13,7 +13,7 @@ const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4,
           const timezone = "-05:00"
           const start = convertToTimeZone({datetime: event.startDatetime, timezone})
           const end = convertToTimeZone({datetime: event.endDatetime, timezone})
-          const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3 } : {}
+          const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, p: 3 } : {}
           const linkStyle = type === `widget` ? {color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }} : {}
           const toEvent = `${eventsBase}/${event.slug}`
           return (

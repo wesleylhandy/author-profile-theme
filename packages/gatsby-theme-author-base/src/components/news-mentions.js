@@ -7,7 +7,7 @@ const NewsMentionsList = ({ mentions, heading = "In The News", limit = 4, type =
     <ul sx={{listStyleType: "none", paddingInlineStart: 0}} >
       {
         mentions.length > 0 ? mentions.slice(0, limit).map(({description, link, title}, idx) => {
-          const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, p: 3 } : {}
+          const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, p: 3 } : {}
           const linkStyle = type === `widget` ? {color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }} : {}
           return (
             <li key={`news-mention-${idx}`} sx={liStyle}>

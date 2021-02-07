@@ -15,6 +15,7 @@ const theme = {
       secondary: "#e7dbba",
       tertiary: "#bd263c",
       light: "#dee4ea",
+      ultralight: "#f7faff",
       affiliations: "rgba(255,255,255, .95)",
       modes: {
         dark: {
@@ -25,6 +26,7 @@ const theme = {
           secondary: "#575246",
           tertiary: "#cc4b4b",
           light: "#343a40",
+          ultralight: "#181511",
           affiliations: "rgba(0,0,0,.95)",
         }
       }
