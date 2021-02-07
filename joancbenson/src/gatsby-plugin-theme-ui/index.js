@@ -41,7 +41,7 @@ const theme = {
     },
     layout: {
       container: {
-        backgroundColor: "opaqueBackground",
+        backgroundColor: "transparent",
         margin: "0 auto",
         maxWidth: ["full", "full", "full", "max"],
         width: ["full", "full", "full", "default"],
