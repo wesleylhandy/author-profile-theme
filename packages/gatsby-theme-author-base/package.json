@@ -45,7 +45,7 @@
     "gatsby-remark-responsive-iframe": "^2.4.5",
     "gatsby-source-filesystem": "^2.3.10",
     "gatsby-source-sanity": "^5.0.6",
-    "gatsby-source-wordpress": "^3.3.10",
+    "gatsby-source-wordpress": "^4.0.8",
     "gatsby-theme-netlify-identity": "^0.0.2",
     "gatsby-tinacms-git": "^0.5.3",
     "gatsby-tinacms-remark": "^0.8.2",
