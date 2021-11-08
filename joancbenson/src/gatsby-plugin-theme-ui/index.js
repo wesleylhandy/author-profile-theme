@@ -2,6 +2,10 @@ import baseTheme from '@wesleylhandy/gatsby-theme-author-base/src/gatsby-plugin-
 
 const theme = {
     ...baseTheme,
+    buttons: {
+      ...baseTheme.buttons,
+
+    },
     fonts: {
       ...baseTheme.fonts,
       body: "Montserrat, Georgia, serif",

@@ -24,6 +24,7 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false, 
     return !hide ? (
             <article
             className="mailchimp-widget"
+            id="subscribe-widget"
             sx={{ 
                 padding: 3, 
                 border: `5px solid`, 
