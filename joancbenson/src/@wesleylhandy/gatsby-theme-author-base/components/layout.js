@@ -60,6 +60,7 @@ const Layout = ({ children, location, hideSidebar }) => {
   const [colorMode, setColorMode] = useColorMode()
   const isHomePage = location.pathname === `/`
   const isSubscribePage = location.pathname === `/subscribe`
+  const isDownloadPage = location.pathname === `/downloads`
   const hideBooksWidget = location.pathname.includes(booksBase),
     hideEventsWidget = location.pathname.includes(eventsBase),
     hidePostsWidget = location.pathname.includes(blogBase),
@@ -203,7 +204,7 @@ const Layout = ({ children, location, hideSidebar }) => {
               sx={{
                 flex: `1 1 auto`,
                 position: `relative`,
-                mr: isSubscribePage ? 0 : [0, 3],
+                mr: isSubscribePage || isDownloadPage ? 0 : [0, 3],
                 mt: 3,
                 flexDirection: `column`,
                 alignItems: `center`,

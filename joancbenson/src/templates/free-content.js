@@ -1,16 +1,19 @@
 /** @jsx jsx */
 import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
 import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
-import { jsx, Link as ExternalLink } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
 import { Markdown } from '../components/markdown'
+import { BlobDownload } from '../components/blob-download'
+
+// allContentfulFreeContent(filter: {isCurrentlyFeatured: {eq: true}, title: {ne: "Example Free Content"}}) {
 
 const FreeContentPage = ({ location }) => {
     const data = useStaticQuery(graphql`
     {
-      allContentfulFreeContent(filter: {isCurrentlyFeatured: {eq: true}, title: {ne: "Example Free Content"}}) {
+      allContentfulFreeContent {
         content: nodes {
           id
           isCurrentlyFeatured
@@ -79,7 +82,7 @@ const FreeContentPage = ({ location }) => {
                         <ul>
                         {node.downloadableContent.map(download => (
                             <li key={download.id}>
-                                <ExternalLink href={download.file.url} rel="noreferrer" download>{download.title}</ExternalLink>
+                                <BlobDownload download={download} />
                             </li>
                         ))}
                         </ul>
