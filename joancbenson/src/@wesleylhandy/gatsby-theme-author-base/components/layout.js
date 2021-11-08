@@ -76,6 +76,9 @@ const Layout = ({ children, location, hideSidebar }) => {
     >
       <Global
         styles={(theme) => ({
+          body: {
+            scrollBehavior: 'smooth',
+          },
           '.embed-youtube': {
             paddingBottom: `56.25%`,
             width: `100%`,
