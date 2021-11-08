@@ -8,12 +8,10 @@ import React from 'react'
 import { Markdown } from '../components/markdown'
 import { BlobDownload } from '../components/blob-download'
 
-// allContentfulFreeContent(filter: {isCurrentlyFeatured: {eq: true}, title: {ne: "Example Free Content"}}) {
-
 const FreeContentPage = ({ location }) => {
     const data = useStaticQuery(graphql`
     {
-      allContentfulFreeContent {
+      allContentfulFreeContent(filter: {isCurrentlyFeatured: {eq: true}, title: {ne: "Example Free Content"}}) {
         content: nodes {
           id
           isCurrentlyFeatured
