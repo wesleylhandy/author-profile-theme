@@ -64,7 +64,7 @@ module.exports = (options) => {
           policy: robotsTxt.policy,
         },
       },
-      'gatsby-plugin-offline',
+      'gatsby-plugin-remove-serviceworker',
       'gatsby-plugin-meta-redirect',
     ],
   }

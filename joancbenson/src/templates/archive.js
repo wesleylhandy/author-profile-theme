@@ -5,10 +5,10 @@ import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { FreeContentBody } from '../components/free-content-body'
 
-const FreeContentPage = ({ location }) => {
+const ArchiveContentPage = ({ location }) => {
     const data = useStaticQuery(graphql`
     {
-      allContentfulFreeContent(filter: {isCurrentlyFeatured: {eq: true}, title: {ne: "Example Free Content"}}) {
+      allContentfulFreeContent(filter: {addToArchive: {eq: true}, title: {ne: "Example Free Content"}}) {
         content: nodes {
           id
           title
@@ -52,14 +52,13 @@ const FreeContentPage = ({ location }) => {
 
   return (
     <Layout location={location} hideSidebar={true}>
-      <Seo type="website" title="Download Free Content Page" description={"Joan C. Benson is a free-lance writer & blogger, published in multiple magazines, on devotional websites, by children's ministry publishers, and now with her first novel - His Gift."}/>
+      <Seo type="website" title="Download Free Content Archive Page" description={"Joan C. Benson is a free-lance writer & blogger, published in multiple magazines, on devotional websites, by children's ministry publishers, and now with her first novel - His Gift."}/>
       <article sx={{ backgroundColor: "affiliations", px: 3 }} style={{ height: '100%'}}>
-          <h1>Free Content from Joan C. Benson</h1>
-          <p>Please check here regularly for new downloads and other free resources created and curated by Joan C. Benson herself.</p>
+          <h1>Previous Free Content from Joan C. Benson</h1>
           <hr />
           <FreeContentBody
             content={content}
-            emptyMessage={<span>I&rsquo;m sorry, this is currently no free content available at this time, but there will be soon!</span>}
+            emptyMessage={<span>I&rsquo;m sorry, this is currently no free content available at this time. Have you checked the <Link to="/downloads">downloads page?</Link></span>}
           />
           <hr />
           <p>Be sure to <Link to="/subscribe">subscribe to my newsletter</Link> to be informed when new content will be ready for download.</p>
@@ -68,4 +67,4 @@ const FreeContentPage = ({ location }) => {
   )
 }
 
-export default FreeContentPage;
+export default ArchiveContentPage;
