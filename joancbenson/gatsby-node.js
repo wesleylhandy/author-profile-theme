@@ -18,4 +18,12 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
           sortOrder: 12,
         }
     }) ;
+    const archiveContentTemplate = require.resolve("./src/templates/archive.js");
+    createPage({
+        path: `/archive`,
+        component: archiveContentTemplate,
+        context: {
+          navLink: 'exclude',
+        }
+    }) ;
 }

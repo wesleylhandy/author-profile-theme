@@ -6,6 +6,7 @@ import { FaHome, FaTimes, FaBars } from 'react-icons/fa'
 import Media from 'react-media'
 
 const NavLinks = ({ location, links, small, setColorMode }) => {
+  const excludedPaths = ['', 'Archive'];
   return (
     <Fragment>
       <Link
@@ -34,7 +35,7 @@ const NavLinks = ({ location, links, small, setColorMode }) => {
       </Link>
       {links.map(
         ({ path, context: { navLink } }, idx) =>
-          navLink && (
+          !excludedPaths.includes(navLink) && (
             <Link
               key={`${path}-${idx}`}
               sx={{
