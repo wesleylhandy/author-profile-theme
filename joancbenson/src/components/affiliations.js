@@ -115,25 +115,6 @@ const AffiliationsBlock = () => {
           </p>
         </Link>
         <Link
-          href="https://www.hamptonroadswriters.org/joanbenson.php"
-          aria-label="Link to Hampton Roads Writers"
-          sx={{
-            maxHeight: 60,
-            my: 3,
-            mx: 2,
-            flex: `0 0 auto`,
-            order: 0,
-          }}
-        >
-          <Img
-            fixed={hrw.childImageSharp.fixed}
-            alt="Hampton Roads Writers"
-            sx={{
-              maxHeight: 60,
-            }}
-          />
-        </Link>
-        <Link
           href="https://awsa.com/?page_id=6118"
           aria-label="Link to Advanced Writers and Speakers Association"
           sx={{
