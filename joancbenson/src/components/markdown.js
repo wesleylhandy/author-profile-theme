@@ -7,7 +7,7 @@ export function Markdown(props) {
         <div
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-                __html: markdown ? marked(markdown, {
+                __html: typeof markdown === 'string' ? marked(markdown, {
                     breaks: true,
                     gfm: true,
                     silent: true,
