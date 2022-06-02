@@ -11,8 +11,13 @@ const {
 } = require('./gatsby-utils/wp-graphql-queries')
 
 exports.onPreBootstrap = ({ reporter }, options) => {
+  const blogContentPath = "blog"
   const contentPath = "data"
   const imagesContentPath = "images"
+  if (!fs.existsSync(blogContentPath)) {
+    reporter.info(`creating the ${blogContentPath} directory`)
+    fs.mkdirSync(blogContentPath)
+  }
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`)
     fs.mkdirSync(contentPath)
