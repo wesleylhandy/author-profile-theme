@@ -42,7 +42,7 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false, 
                         <p sx={{margin: '30px auto'}}>You should start receiving emails from me whenever I publish new blog posts or compose a new newsletter. Please check your spam filters if you don't receive something for over a week.</p>
                     </Fragment>
                 ) : (
-                    <form onSubmit={handleSubmit} autoComplete>
+                    <form onSubmit={handleSubmit} autoComplete="on">
                         <label htmlFor="emailAddress">Your Email</label>
                         <Input
                             disabled={isFetching}

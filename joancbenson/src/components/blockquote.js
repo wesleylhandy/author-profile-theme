@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import {jsx} from "theme-ui"
 
-const Blockquote = ({quote, author}) => (
+const Blockquote = ({quote, citation}) => (
     <div
     className="quote-container-outer"
     sx={{
@@ -19,13 +19,16 @@ const Blockquote = ({quote, author}) => (
     >
     <blockquote
       sx={{
-        width: `100%`,
+        display: `block`,
         padding: 2,
-        color: `black`,
-        marginBlockStart: 0,
-        marginBlockEnd: 0,
+        color: `text`,
+        fontFamily: `body`,
+        fontWeight: 500,
+        letterSpacing: `2px`,
+        marginBlockEnd: 0, 
+        marginBlockStart: 0, 
+        marginInlineEnd: 0, 
         marginInlineStart: 0,
-        marginInlineEnd: 0,
         '@media screen and (max-width: 640px)': {
           position: `relative`,
           bottom: `unset`,
@@ -33,9 +36,9 @@ const Blockquote = ({quote, author}) => (
         },
       }}
     >
-      &ldquo;Therefore encourage one another and build each other up&hellip;&rdquo;
+      {quote}
       <footer>
-        <cite>1 Thessalonians 5:11</cite>
+        <cite sx={{ fontFamily: `body`, fontSize: 1 }}>{citation}</cite>
       </footer>
     </blockquote>
   </div>

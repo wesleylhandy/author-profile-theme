@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
-import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
 import { jsx, Link as ExternalLink } from 'theme-ui'
 import { Link } from 'gatsby'
 

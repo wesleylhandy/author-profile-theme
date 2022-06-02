@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import Layout from '@wesleylhandy/gatsby-theme-author-base/src/components/layout'
-import Seo from '@wesleylhandy/gatsby-theme-author-base/src/components/seo'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
 import MailchimpWidget from "../components/mailchimp-widget"
 
 const SubscribePage = ({ location }) => {
