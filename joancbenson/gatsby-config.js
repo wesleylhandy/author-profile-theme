@@ -51,7 +51,14 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
+    `gatsby-plugin-dark-mode`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-theme-ui`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    'gatsby-plugin-remove-serviceworker',
+    'gatsby-plugin-meta-redirect',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -59,49 +66,52 @@ module.exports = {
       },
     },
     {
-      resolve: `@wesleylhandy/gatsby-theme-author-base`,
+      resolve: `gatsby-plugin-facebook-pixel`,
       options: {
-        contentPath: `blog`,
-        basePath: `/blog`,
-        headerMaxWidth: 980,
-        imagesContentPath: path.join(__dirname, `images`),
-        facebookPixelId: process.env.FACEBOOK_PIXEL_ID,
-        googleFontsFamily: `Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Oswald:wght@400;500;600;700&family=Rubik:wght@500`,
-        mailChimpOptions: {
-          endpoint: process.env.MAILCHIMP_ENDPOINT,
-        },
-        manifest: {
-          name: siteMetadata.title,
-          short_name: siteMetadata.organization.name,
-          start_url: `/`,
-          background_color: `#fff`,
-          theme_color: `#77aec2`,
-          display: `minimal-ui`,
-          icon: `images/favicon.png`
-        },
-        robotsTxt: {
-          host: siteMetadata.siteUrl,
-          sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
-          policy: [
-            { userAgent: "*", allow: "/" },
-            { userAgent: "*", disallow: ["/blog/tag/*", "/blog/category/*", "/blog/author/*", "/blog/page/*"] }
-          ]
-        }
+        pixelId: process.env.FACEBOOK_PIXEL_ID,
       },
     },
     {
-      resolve: `@wesleylhandy/gatsby-theme-author-wpgraphql`,
+      resolve: 'gatsby-plugin-mailchimp',
       options: {
-        wpGqlSettings: {
-          url: process.env.WP_BASE_URL,
-          fieldName: `wpgraphql`,
-          typeName: `WPGraphQL`,
-        },
-        blogBase: `/blog`,
-        booksBase: `/books`,
-        eventsBase: `/events`,
-        faqBase: `/faq`,
-        newsBase: `/news`,
+        endpoint: process.env.MAILCHIMP_ENDPOINT || "",
+        timeout: 3500,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: siteMetadata.title,
+        short_name: siteMetadata.organization.name,
+        start_url: `/`,
+        background_color: `#fff`,
+        theme_color: `#77aec2`,
+        display: `minimal-ui`,
+        icon: `images/favicon.png`
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: siteMetadata.siteUrl,
+        sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
+        policy: [
+          { userAgent: "*", allow: "/" },
+          { userAgent: "*", disallow: ["/blog/tag/*", "/blog/category/*", "/blog/author/*", "/blog/page/*"] }
+        ]
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `images`),
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `blog`,
       },
     },
     {
@@ -114,6 +124,14 @@ module.exports = {
           localeFilter: (locale) => locale.code === 'en-US',
           downloadLocal: false,
       },
-  },
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        url: process.env.WP_BASE_URL,
+        fieldName: `wpgraphql`,
+        typeName: `WPGraphQL`,
+      },
+    },
   ],
 }

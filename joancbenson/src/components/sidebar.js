@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import BookListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/book-list-widget'
-import PostListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/post-list-widget'
-import EventListWidget from '@wesleylhandy/gatsby-theme-author-wpgraphql/src/components/event-list-widgets'
+import BookListWidget from './book-list-widget'
+import PostListWidget from './post-list-widget'
+import EventListWidget from './event-list-widgets'
 import AboutWidget from "./about-widget"
 import { jsx, Flex } from 'theme-ui'
 
