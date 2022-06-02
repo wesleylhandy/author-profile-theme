@@ -1,4 +1,6 @@
-export const convertToTimeZone = (dateTime, timezone ="-05:00") => dateTime?.replace(/([+-]([0-9]){2}:([0-9]){2})$/, timezone) ?? ''
+import { utcToZonedTime } from 'date-fns-tz'
+
+export const convertToTimeZone = (dateTime = new Date(), timeZone ="America/New_York") => utcToZonedTime(new Date(dateTime), timeZone)
 
 export const getDate = (date = new Date(), { day = true, month = true, year = true } = {}) =>
   Intl.DateTimeFormat('en-US', {

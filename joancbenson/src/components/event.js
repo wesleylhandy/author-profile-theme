@@ -9,9 +9,9 @@ const EventLocation = ({ type, venue, address, url }) => {
 }
 
 const Event = ({ eventName, eventDescription, eventType, eventLocation, featuredImage, startDatetime, endDatetime }) => {
-  const timezone = "-05:00"
-  const start = convertToTimeZone({datetime: startDatetime, timezone})
-  const end = convertToTimeZone({datetime: endDatetime, timezone})
+  const timezone = "America/New_York"
+  const start = convertToTimeZone(startDatetime, timezone)
+  const end = convertToTimeZone(endDatetime, timezone)
   return (
     <div>
       { 

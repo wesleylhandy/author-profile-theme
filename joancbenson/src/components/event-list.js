@@ -10,7 +10,7 @@ const EventList = ({ events, heading = "Upcoming Events", eventsBase, limit = 4,
     <ul sx={{listStyleType: "none", paddingInlineStart: 0}} >
       {
         events.length > 0 ? events.sort((a, b) => a.startDatetime - b.startDatetime).slice(0, limit).map((event, idx) => {
-          const timezone = "-05:00"
+          const timezone = "America/New_York"
           const start = convertToTimeZone(event.startDatetime, timezone)
           const end = convertToTimeZone(event.endDatetime, timezone)
           const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, p: 3 } : {}

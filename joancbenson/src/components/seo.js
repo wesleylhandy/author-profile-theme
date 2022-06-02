@@ -220,7 +220,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
                 {
                   rel: 'preconnect',
                   href: `https://fonts.gstatic.com`,
-                  crossorigin: true
+                  crossOrigin: true
                 },
                 {
                   rel: 'stylesheet',

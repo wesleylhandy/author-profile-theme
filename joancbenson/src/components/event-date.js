@@ -1,29 +1,33 @@
 import React from 'react'
+import PropTypes from "prop-types"
 import { getDate, getTime } from "../utils/time-helpers"
 
 const EventDate = ({ startDate, endDate }) => {
-    const start = new Date(startDate)
-    const end = new Date(endDate)
-    const isOneDay = start.toDateString() === end.toDateString()
+    const isOneDay = startDate.toDateString() === endDate.toDateString()
     return (
       <>
-        <time dateTime={start.toISOString()} key="time-oneday">
-          {getDate(start, { year: isOneDay })}
+        <time dateTime={startDate.toISOString()} key="time-oneday">
+          {getDate(startDate, { year: isOneDay })}
           {`, `}
-          {getTime(start) + ( isOneDay ? (` - ` + getTime(end)) : ``)}
+          {getTime(startDate) + ( isOneDay ? (` - ` + getTime(endDate)) : ``)}
         </time>
         {!isOneDay && (
           <>
             –
-            <time dateTime={end.toISOString()} key="time-multiday">
-              {getDate(end, { month: start.getMonth() !== end.getMonth() })}
+            <time dateTime={endDate.toISOString()} key="time-multiday">
+              {getDate(endDate, { month: startDate.getMonth() !== endDate.getMonth() })}
               {`, `}
-              {getTime(end)}
+              {getTime(endDate)}
             </time>
           </>
         )}
       </>
     )
+}
+
+EventDate.propTypes = {
+  startDate: PropTypes.instanceOf(Date),
+  endDate: PropTypes.instanceOf(Date)
 }
 
 export default EventDate
