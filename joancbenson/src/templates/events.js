@@ -91,8 +91,7 @@ const EventsPage = ({ location }) => {
           <h1>Joan Can Speak At Your Next Event</h1>
           <p>
             Joan C. Benson speaks regularly to women&rsquo;s groups, women's ministry events, single&rsquo;s
-            events, parenting workshops, luncheons, retreats, and youth groups. She will also be
-            co-hosting a podcast beginning in January 2021 (details to come). If you would like to
+            events, parenting workshops, luncheons, retreats, and youth groups. If you would like to
             request Joan to speak at your next event, please contact her at{' '}
             <a href={email.link}>{email.text}</a> or by phone <a href={phone.link}>{phone.text}</a>.
           </p>

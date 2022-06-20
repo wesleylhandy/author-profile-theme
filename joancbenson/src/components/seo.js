@@ -21,6 +21,7 @@ import {
 } from '../utils/metadata-types'
 import schemaObject from '../utils/schema-proptypes'
 import { convertToTimeZone } from '../utils/time-helpers'
+import { APP_TIMEZONE } from '../constants/timezone'
 
 // https://ogp.me/?fbclid=IwAR0XVIuZzMErguCuafN9N107VY66QctP_G_YpnCvMy6u4j7Hyzz9EMGHkR8#types
 const validTypes = [
@@ -39,8 +40,6 @@ const validTypes = [
   `video.tv_show`,
   `video.other`,
 ]
-
-const timezone = '-05:00' // eventually get this from store or from server
 
 function Seo({ description, lang, meta, keywords, image, title, type, schema, canonical }) {
   if (!validTypes.includes(type)) {
@@ -119,7 +118,7 @@ function Seo({ description, lang, meta, keywords, image, title, type, schema, ca
 
           const releaseDate = convertToTimeZone({
             datetime: schema.dateAvailableForPurchase,
-            timezone,
+            APP_TIMEZONE,
           })
           bookType.setProperties([
             {

@@ -2,27 +2,59 @@
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { jsx, Link as ExternalLink } from 'theme-ui'
-import { Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 
 const AboutPage = ({ location }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      headshot: file(name: { eq: "headshot-media" }, extension: { eq: "jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 640) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      powerCert: file(name: { eq: "power-speaker-cert" }, extension: { eq: "png" }) {
+        childImageSharp {
+          fluid(maxWidth: 640) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+  `)
+  const headshot = data.headshot.childImageSharp.fluid
+  const powerCert = data.powerCert.childImageSharp.fuild
   return (
     <Layout location={location}>
       <Seo type="website" title="About Page" description={"Joan C. Benson is a free-lance writer & blogger, published in multiple magazines, on devotional websites, by children's ministry publishers, and now with her first novel - His Gift."}/>
       <article sx={{ backgroundColor: "affiliations", px: 3 }}>
         <h1 id="about">About Joan C. Benson</h1>
+        <Img
+          fluid={headshot}
+          alt="Joan C. Benson, Media-Kit Headshot"
+        />
         <p>
           Joan C. Benson is a free-lance writer published in multiple magazines including
           LifeWay&rsquo;s &ldquo;ParentLife,&rdquo; Regent University&rsquo;s &ldquo;The Christian
-          Leader,&rdquo; Royal Rangers &ldquo;High Adventure,&rdquo; and multiple others. Several of
-          her devotional writings have been published on{' '}
+          Leader,&rdquo; Royal Rangers &ldquo;High Adventure,&rdquo; Focus on the Family
+          online, and others. Some of her devotionals are published on{' '}
           <ExternalLink href="https://www1.cbn.com/profiles/benson-joan">CBN.com</ExternalLink>.
-          Joan also has many years of experience writing children&rsquo;s ministry publications for
-          LifeWay Publishing for use in both Sunday School and home settings. She is a blogger, and
-          is recently publishing her first historical fiction novel,{' '}
+          Benson also has many years of experience writing children&rsquo;s ministry publications for LifeWay Publishing.
+          She maintains an ongoing blog, which can be found on the website. Her first historical fiction novel,{' '}
           <Link to={`/books/his-gift`}>
             <i>His Gift</i>
-          </Link>{' '}
-          through <ExternalLink href="https://www.elklakepublishinginc.com/joan-benson/">Elk Lake Publishing</ExternalLink>.
+          </Link>
+          {' '}was published through{' '}
+          <ExternalLink href="https://www.elklakepublishinginc.com/joan-benson/">Elk Lake Publishing, Inc.</ExternalLink>, in 2020.
+        </p>
+        <p>
+          Benson has co-authored a series of four children&rsquo;s picture books which are under contract. 
+          Another current project is a contemporary fiction novel, expected to be finished in 2022.
+        </p>
+        <p>
+          Be in the know by subscribing to the <Link to={`/books/his-gift`}><i>newsletter</i></Link>.
         </p>
         <h2>Fiction Author Applying Biblical Principles</h2>
         <p>
@@ -60,8 +92,8 @@ const AboutPage = ({ location }) => {
         <h2>Speaker</h2>
         <p>
           Joan is a part of a small group of women from Chesapeake, VA, called{' '}
-          <ExternalLink href="https://www.facebook.com/groups/womenvictorious">
-            &ldquo;Women Victorious—Ordinary Women, Extraordinary God.&rdquo;
+          <ExternalLink href="https://www.facebook.com/groups/womenvictorious" sx={{ wordBreak: 'unset !important' }}>
+            &ldquo;Women Victorious&mdash;Ordinary Women, Extraordinary God.&rdquo;
           </ExternalLink>{' '}
           The women formed the group to encourage, empower, and inspire women to find victory and
           hope through Jesus Christ during trials. They pray to help women through their testimonies
@@ -69,6 +101,19 @@ const AboutPage = ({ location }) => {
           biblical perspective. Joan also speaks independently, and has spoken at women&rsquo;s
           ministry events, retreats, and youth groups.
         </p>
+        <ExternalLink
+          href="https://awsa.com/?p=6886"
+          aria-label="Link to The P.O.W.E.R Speaker Certification"
+          sx={{
+            maxHeight: 60,
+            my: 3,
+          }}
+        >
+          <Img
+            fluid={powerCert}
+            alt="Joan C. Benson is an AWSA P.O.W.E.R Certified Speaker"
+          />
+        </ExternalLink>
       </article>
     </Layout>
   )

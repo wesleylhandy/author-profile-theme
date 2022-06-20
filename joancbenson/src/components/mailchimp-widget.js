@@ -17,7 +17,7 @@ const MailchimpWidget = ({heading = "Subscribe To My Newsletter", hide = false, 
             console.info("bot bot bot");
             alert("There was an issue submitting your form. Please try again");
         }
-        const result = await addToMailchimp(emailAddress.current.value);
+        await addToMailchimp(emailAddress.current.value);
         setFetching(false);
         setHasFetched(true);
     }
