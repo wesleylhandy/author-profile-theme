@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import Layout from "../components/layout"
-import PostPreview from '../components/post-preview';
-import Seo from '../components/seo'
+import Layout from "../components/layout/layout"
+import PostPreview from '../components/post/post-preview';
+import Seo from '../components/head/seo'
 import { graphql } from "gatsby"
 
 const CategoryTemplate = props => {

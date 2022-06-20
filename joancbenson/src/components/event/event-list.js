@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Link, navigate } from "gatsby"
 import { jsx, Box, Button } from 'theme-ui'
-import { convertToTimeZone, isFutureStartDate } from "../utils/time-helpers"
+import { convertToTimeZone, isFutureStartDate } from "../../utils/time-helpers"
 import EventDate from "./event-date"
 
 const EventList = ({ events = [], heading = "Upcoming Events", eventsBase, limit = 4, type = "widget" }) => {

@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from "prop-types"
-import schemaObject from "../utils/schema-proptypes"
-import { convertToTimeZone } from "../utils/time-helpers"
-import { APP_TIMEZONE } from '../constants/timezone';
+import schemaObject from "../../utils/schema-proptypes"
+import { convertToTimeZone } from "../../utils/time-helpers"
+import { APP_TIMEZONE } from '../../constants/timezone';
 
 const SchemaOrg = 
   ({

@@ -2,8 +2,8 @@
 import { graphql, Link, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import { jsx, Box, Button } from 'theme-ui'
-import Layout from '../components/layout'
-import Seo from '../components/seo'
+import Layout from '../components/layout/layout'
+import Seo from '../components/head/seo'
 
 const BooksPage = ({ location, data }) => {
   const {

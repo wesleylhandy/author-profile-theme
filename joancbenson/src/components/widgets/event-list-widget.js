@@ -2,7 +2,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import { jsx } from 'theme-ui'
-import EventList from "./event-list"
+import EventList from "./event/event-list"
 
 const EventListWidget = ({heading = "Recent Events", limit = 4, hide = false}) => {
     const data = useStaticQuery(graphql`

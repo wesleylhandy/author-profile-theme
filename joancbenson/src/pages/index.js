@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import Layout from '../components/layout'
-import Seo from '../components/seo'
+import Layout from '../components/layout/layout'
+import Seo from '../components/head/seo'
 import { Box, jsx, Link as ExternalLink } from 'theme-ui'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql, Link } from 'gatsby'

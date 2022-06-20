@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from "gatsby"
-import Layout from "../components/layout"
-import Seo from '../components/seo'
+import Layout from "../components/layout/layout"
+import Seo from '../components/head/seo'
 import NewsMentionsList from "../components/news-mentions"
 
 const NewsPage = ({location}) => {

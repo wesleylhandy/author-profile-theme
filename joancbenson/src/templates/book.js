@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import Book from "../components/book"
-import Seo from '../components/seo'
+import Seo from '../components/head/seo'
 
 const BookTemplate = ({location, pageContext: { book: { seo = {}, ...book }}}) => {
     const title = seo.seoTitle

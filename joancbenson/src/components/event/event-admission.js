@@ -1,9 +1,9 @@
 import React from "react"
 import { Link } from 'theme-ui'
-import { isFutureStartDate } from "../utils/time-helpers";
-import { convertToCurrency } from "../utils/currency";
-import { convertToTimeZone, getDate } from "../utils/time-helpers";
-import { APP_TIMEZONE } from "../constants/timezone";
+import { isFutureStartDate } from "../../utils/time-helpers";
+import { convertToCurrency } from "../../utils/currency";
+import { convertToTimeZone, getDate } from "../../utils/time-helpers";
+import { APP_TIMEZONE } from "../../constants/timezone";
 
 const EventAdmission = ({ admissionPrice, onSaleDate, ticketAvailability, ticketPurchaseUrl, startDate }) => {
     if (!isFutureStartDate(startDate)) {

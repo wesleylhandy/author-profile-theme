@@ -2,7 +2,7 @@
 import { Fragment } from "react"
 import Img from "gatsby-image"
 import { Link, Flex, Box, jsx } from 'theme-ui'
-import { convertToTimeZone, getDate } from "../utils/time-helpers"
+import { convertToTimeZone, getDate } from "../../utils/time-helpers"
 
 const Author = ({email, name, profileImage, shortBio, url, idx}) => (
     <Box sx={{ backgroundColor: idx % 2 === 1 ? 'light' : `transparent`, my: 3, p: 3 }}>

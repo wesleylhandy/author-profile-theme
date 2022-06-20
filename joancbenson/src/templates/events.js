@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx, Flex, Box } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import Layout from '../components/layout'
-import Seo from '../components/seo'
-import EventList from '../components/event-list'
+import Layout from '../components/layout/layout'
+import Seo from '../components/head/seo'
+import EventList from '../components/event/event-list'
 
 const EventsPage = ({ location }) => {
   const data = useStaticQuery(graphql`

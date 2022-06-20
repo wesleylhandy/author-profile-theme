@@ -18,10 +18,10 @@ import {
   OGImageType,
   FacebookType,
   TwitterType,
-} from '../utils/metadata-types'
-import schemaObject from '../utils/schema-proptypes'
-import { convertToTimeZone } from '../utils/time-helpers'
-import { APP_TIMEZONE } from '../constants/timezone'
+} from '../../utils/metadata-types'
+import schemaObject from '../../utils/schema-proptypes'
+import { convertToTimeZone } from '../../utils/time-helpers'
+import { APP_TIMEZONE } from '../../constants/timezone'
 
 // https://ogp.me/?fbclid=IwAR0XVIuZzMErguCuafN9N107VY66QctP_G_YpnCvMy6u4j7Hyzz9EMGHkR8#types
 const validTypes = [

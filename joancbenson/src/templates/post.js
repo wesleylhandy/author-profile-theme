@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx, Button, Grid } from 'theme-ui'
 import { graphql, navigate } from "gatsby"
-import Layout from "../components/layout"
-import Post from "../components/post"
-import Seo from '../components/seo'
+import Layout from "../components/layout/layout"
+import Post from "../components/post/post"
+import Seo from '../components/head/seo'
 
 export const query = graphql`
 fragment PostFragment on WPGraphQL_Post {
