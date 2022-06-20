@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import Layout from '../components/layout'
-import Seo from '../components/seo'
+import Layout from '../components/layout/layout'
+import Seo from '../components/head/seo'
 import { jsx } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { FreeContentBody } from '../components/free-content-body'

@@ -2,7 +2,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import { jsx } from 'theme-ui'
-import PostList from "./post-list"
+import PostList from "../post/post-list"
 
 const PostListWidget = ({heading = "Recent Posts", hide = false}) => {
     const data = useStaticQuery(graphql`

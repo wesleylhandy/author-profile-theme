@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import BookListWidget from './book-list-widget'
-import PostListWidget from './post-list-widget'
-import EventListWidget from './event-list-widgets'
-import AboutWidget from "./about-widget"
+import BookListWidget from '../widgets/book-list-widget'
+import PostListWidget from '../widgets/post-list-widget'
+import EventListWidget from '../widgets/event-list-widget'
+import AboutWidget from "../widgets/about-widget"
 import { jsx, Flex } from 'theme-ui'
 
 const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget, hideAboutWidget }) => {

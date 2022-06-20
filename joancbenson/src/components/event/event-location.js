@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from 'theme-ui'
-import { navigationUrl } from "../utils/location-helpers"
+import { navigationUrl } from "../../utils/location-helpers"
 
 const EventLocation = ({ type, venue, address, url }) => {
     if (type === 'online') {

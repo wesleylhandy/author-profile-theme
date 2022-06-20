@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import Layout from "../components/layout"
-import PostList from "../components/post-list"
+import Layout from "../components/layout/layout"
+import PostList from "../components/post/post-list"
 
 const PostsTemplate = ({location}) => {
   const data = useStaticQuery(graphql`

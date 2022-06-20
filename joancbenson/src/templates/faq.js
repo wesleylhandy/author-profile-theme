@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import Faq from "../components/faq"
-import Seo from '../components/seo'
+import Seo from '../components/head/seo'
 
 const FaqTemplate = ({location, pageContext: {
     faq

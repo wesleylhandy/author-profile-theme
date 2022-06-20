@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from "prop-types"
-import { getDate, getTime } from "../utils/time-helpers"
+import { getDate, getTime } from "../../utils/time-helpers"
 
 const EventDate = ({ startDate, endDate }) => {
     const isOneDay = startDate.toDateString() === endDate.toDateString()

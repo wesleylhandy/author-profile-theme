@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import Layout from "../components/layout"
-import Seo from '../components/seo'
-import PostPreview from '../components/post-preview';
+import Layout from "../components/layout/layout"
+import Seo from '../components/head/seo'
+import PostPreview from '../components/post/post-preview';
 import { graphql } from "gatsby"
 
 const User = props => {

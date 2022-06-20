@@ -1,10 +1,10 @@
 import React from "react"
 import Img from "gatsby-image"
-import { convertToTimeZone } from "../utils/time-helpers"
+import { convertToTimeZone } from "../../utils/time-helpers"
 import EventDate from "./event-date"
 import EventLocation from './event-location'
 import EventAdmission from './event-admission'
-import { APP_TIMEZONE } from "../constants/timezone"
+import { APP_TIMEZONE } from "../../constants/timezone"
 
 const Event = ({
   eventName,

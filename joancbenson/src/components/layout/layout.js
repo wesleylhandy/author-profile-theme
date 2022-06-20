@@ -9,8 +9,8 @@ import Sidebar from './sidebar'
 import AffiliationsBlock from './affiliations'
 import Footer from './footer'
 import { FaSun, FaMoon } from 'react-icons/fa'
-import AboutWidget from './about-widget'
-import MailchimpWidget from "./mailchimp-widget"
+import AboutWidget from '../widgets/about-widget'
+import MailchimpWidget from "../widgets/mailchimp-widget"
 
 const StyledBackground = styled(BackgroundImage)`
   position: fixed;
