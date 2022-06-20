@@ -93,7 +93,7 @@ const EventsPage = ({ location }) => {
             Joan C. Benson speaks regularly to women&rsquo;s groups, women's ministry events, single&rsquo;s
             events, parenting workshops, luncheons, retreats, and youth groups. If you would like to
             request Joan to speak at your next event, please contact her at{' '}
-            <a href={email.link}>{email.text}</a> or by phone <a href={phone.link}>{phone.text}</a>.
+            <a href={email.link} sx={{ wordBreak: 'unset important!'}}>{email.text}</a> or by phone <a href={phone.link}>{phone.text}</a>.
           </p>
         </Box>
         <Flex sx={{ flexDirection: [`column`, `row`] }}>
