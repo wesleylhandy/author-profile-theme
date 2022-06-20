@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import Layout from '../components/layout'
 import Seo from '../components/seo'
-import { Box, jsx } from 'theme-ui'
+import { Box, jsx, Link as ExternalLink } from 'theme-ui'
 import Img from 'gatsby-image'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 const IndexPage = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -43,17 +43,21 @@ const IndexPage = ({ location }) => {
     <Layout location={location}>
       <Seo type="website" title="Home Page" />
       <article sx={{ backgroundColor: "affiliations" }}>
-        <Box sx={{ position: `relative`, pb: 148 }} id="welcome">
-          <h1>Welcome To My Website</h1>
+        <Box sx={{ position: `relative`, pb: 200 }} id="welcome">
+          <h1>Welcome</h1>
           <p>
-            I hope you find many useful and interesting features on my website which may give you
-            hope for your daily faith walk. My prayer is that the Lord will satisfy your soul in the
-            dry times, and you will flourish like a spring of water, as Isaiah says in Chapter
-            58:11. I pray you will find spiritual refreshment within these pages, on my Blog, in my
-            book, and through my personal experiences. We can journey together and be stronger for
-            doing so. Please contact me, ask questions, comment, invite me to speak, and listen to
-            my podcast as it begins in 2021. I want to join you as we seek God&rsquo;s peace and
-            wisdom for living in this season. May we each grow as we do so together.
+            Thank you for stopping by. My goal is for this to be a place of spiritual refreshing where you find encouragement for your walk with Christ.
+            I invite you to check out my:
+            <ul>
+              <li><Link to="/books">Books</Link></li>
+              <li><Link to="/blog">Blogposts</Link></li>
+              <li><Link to="/subscribe">Join me by signing up for my monthly newsletter</Link></li>
+              <li><Link to="/events">Sign up for a speaker</Link></li>
+              <li><Link to="/downloads">Download free resources</Link></li>
+              <li><ExternalLink href="https://youtube.com/shorts/v1QcahOuA3g?feature=share">Watch the video trailer for <i>His Gift</i></ExternalLink></li>
+            </ul>
+            Feel free to contact me and I promise to answer your emails directly. I do hope you&rsquo;ll check
+            out my book with more-to-come, which are currently under a publishing contract.
           </p>
           <Img
             fixed={headshot}

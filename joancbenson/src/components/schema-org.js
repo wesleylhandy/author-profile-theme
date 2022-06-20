@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import PropTypes from "prop-types"
 import schemaObject from "../utils/schema-proptypes"
 import { convertToTimeZone } from "../utils/time-helpers"
+import { APP_TIMEZONE } from '../constants/timezone';
 
 const SchemaOrg = 
   ({
@@ -150,9 +151,8 @@ const SchemaOrg =
         ]
         break;
       case `event`: 
-        const timezone = "-05:00"
-        const startDate = convertToTimeZone({datetime: schema.startDatetime, timezone})
-        const endDate = convertToTimeZone({datetime: schema.endDatetime, timezone})
+        const startDate = convertToTimeZone({datetime: schema.startDatetime, APP_TIMEZONE})
+        const endDate = convertToTimeZone({datetime: schema.endDatetime, APP_TIMEZONE})
         let eventAttendanceMode = null, location = null, offers = null
         switch (schema.eventType) {
           case "standard":
@@ -204,7 +204,7 @@ const SchemaOrg =
           if (schema.eventAdmission.length > 1) {
             offers = []
             schema.eventAdmission.forEach(admission => {
-              const validFrom = convertToTimeZone({ datetime: admission.onSaleDate, timezone })
+              const validFrom = convertToTimeZone({ datetime: admission.onSaleDate, APP_TIMEZONE })
               const offer = {
                 "@type": "Offer",
                 "url": admission.ticketPurchaseUrl,
@@ -216,7 +216,7 @@ const SchemaOrg =
               offers.push(offer)
             })
           } else {
-            const validFrom = convertToTimeZone({ datetime: schema.eventAdmission[0].onSaleDate, timezone })
+            const validFrom = convertToTimeZone({ datetime: schema.eventAdmission[0].onSaleDate, APP_TIMEZONE })
             offers = {
               "@type": "Offer",
               "url": schema.eventAdmission[0].ticketPurchaseUrl,

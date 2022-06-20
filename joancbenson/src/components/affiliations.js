@@ -13,13 +13,6 @@ const AffiliationsBlock = () => {
           }
         }
       }
-      hrw: file(name: { eq: "hrw-logo" }, extension: { eq: "png" }) {
-        childImageSharp {
-          fixed(height: 60) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
-      }
       scbwi: file(name: { eq: "scbwi-logo" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 60) {
@@ -27,16 +20,16 @@ const AffiliationsBlock = () => {
           }
         }
       }
-      awsa: file(name: { eq: "awsa-logo" }, extension: { eq: "jpg" }) {
+      awsa: file(name: { eq: "awsa-power" }, extension: { eq: "png" }) {
         childImageSharp {
-          fixed(height: 60) {
+          fixed(height: 85) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
     }
   `)
-  const { acfw, hrw, scbwi, awsa } = data
+  const { acfw, scbwi, awsa } = data
   return (
     <section sx={{ backgroundColor: "transparent", }}>
       <Flex
@@ -115,10 +108,10 @@ const AffiliationsBlock = () => {
           </p>
         </Link>
         <Link
-          href="https://awsa.com/?page_id=6118"
+          href="https://awsa.com/"
           aria-label="Link to Advanced Writers and Speakers Association"
           sx={{
-            maxHeight: 60,
+            maxHeight: 85,
             my: 3,
             mx: 2,
             flex: `0 0 auto`,
@@ -129,7 +122,7 @@ const AffiliationsBlock = () => {
             fixed={awsa.childImageSharp.fixed}
             alt="Advanced Writers and Speakers Association"
             sx={{
-              maxHeight: 60,
+              maxHeight: 85,
             }}
           />
         </Link>
