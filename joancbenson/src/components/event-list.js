@@ -6,7 +6,7 @@ import EventDate from "./event-date"
 
 const EventList = ({ events = [], heading = "Upcoming Events", eventsBase, limit = 4, type = "widget" }) => {
   const eventsList = (type === 'widget'
-    ? events.filter(isFutureStartDate)
+    ? events.filter(event => isFutureStartDate(event.startDatetime))
     : events
   )
     .sort((a, b) => a.startDatetime - b.startDatetime)
