@@ -13,13 +13,6 @@ const AffiliationsBlock = () => {
           }
         }
       }
-      hrw: file(name: { eq: "hrw-logo" }, extension: { eq: "png" }) {
-        childImageSharp {
-          fixed(height: 60) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
-      }
       scbwi: file(name: { eq: "scbwi-logo" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 60) {
@@ -36,7 +29,7 @@ const AffiliationsBlock = () => {
       }
     }
   `)
-  const { acfw, hrw, scbwi, awsa } = data
+  const { acfw, scbwi, awsa } = data
   return (
     <section sx={{ backgroundColor: "transparent", }}>
       <Flex

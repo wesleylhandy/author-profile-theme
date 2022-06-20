@@ -1,5 +1,5 @@
 import { utcToZonedTime } from 'date-fns-tz'
-import { addHours, getMonth, getWeekOfMonth } from 'date-fns'
+import { addHours, getMonth, getWeekOfMonth, isFuture } from 'date-fns'
 
 export const convertToTimeZone = (dateTime = new Date(), timeZone ="America/New_York") => utcToZonedTime(new Date(dateTime), timeZone)
 
@@ -19,12 +19,22 @@ export const getTime = (date = new Date(), { hour = true, minute = true, second 
   }).format(convertUtcToEastern(date))
 }
 
-const isStandardTime = (date = new Date()) => isBeforeSecondSundayInMarch(date) || isAfterFirstWeekOfNovember(date);
+export const isFutureStartDate = (startDate = new Date()) => isFuture(startDate)
 
-const isBeforeSecondSundayInMarch = (date = new Date()) => getMonth(date) < 2 
-  || (getMonth(date) === 2 && getWeekOfMonth(date) < 2)
+function isStandardTime(date = new Date()) {
+  return isBeforeSecondSundayInMarch(date) || isAfterFirstWeekOfNovember(date);
+}
 
-const isAfterFirstWeekOfNovember = (date = new Date()) => getMonth(date) > 10
-  || (getMonth(date) === 10 && getWeekOfMonth(date) > 1)
+function isBeforeSecondSundayInMarch(date = new Date()) {
+  return getMonth(date) < 2 
+    || (getMonth(date) === 2 && getWeekOfMonth(date) < 2)
+}
 
-const convertUtcToEastern = (date = new Date()) => addHours(date, isStandardTime(date) ? 5 : 4)
+function isAfterFirstWeekOfNovember(date = new Date()) {
+  return getMonth(date) > 10
+    || (getMonth(date) === 10 && getWeekOfMonth(date) > 1)
+}
+
+function convertUtcToEastern(date = new Date()) {
+  return addHours(date, isStandardTime(date) ? 5 : 4)
+}
