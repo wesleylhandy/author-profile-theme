@@ -19,7 +19,7 @@ export const getTime = (date = new Date(), { hour = true, minute = true, second 
   }).format(convertUtcToEastern(date))
 }
 
-export const isFutureStartDate = (startDate = new Date()) => isFuture(startDate)
+export const isFutureStartDate = (startDate = new Date()) => isFuture(new Date(startDate))
 
 function isStandardTime(date = new Date()) {
   return isBeforeSecondSundayInMarch(date) || isAfterFirstWeekOfNovember(date);

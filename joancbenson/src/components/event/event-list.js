@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { Link, navigate } from "gatsby"
 import { jsx, Box, Button } from 'theme-ui'
+import { APP_TIMEZONE } from "../../constants/timezone"
 import { convertToTimeZone, isFutureStartDate } from "../../utils/time-helpers"
 import EventDate from "./event-date"
 
 const EventList = ({ events = [], heading = "Upcoming Events", eventsBase, limit = 4, type = "widget" }) => {
   const eventsList = (type === 'widget'
-    ? events.filter(event => isFutureStartDate(event.startDatetime))
+    ? events.filter(event => isFutureStartDate(convertToTimeZone(event.startDatetime, APP_TIMEZONE)))
     : events
   )
     .sort((a, b) => a.startDatetime - b.startDatetime)
@@ -17,9 +18,8 @@ const EventList = ({ events = [], heading = "Upcoming Events", eventsBase, limit
       <ul sx={{listStyleType: "none", paddingInlineStart: 0}} >
         {
           eventsList.length > 0 ? eventsList.map((event, idx) => {
-            const timezone = "America/New_York"
-            const start = convertToTimeZone(event.startDatetime, timezone)
-            const end = convertToTimeZone(event.endDatetime, timezone)
+            const start = convertToTimeZone(event.startDatetime, APP_TIMEZONE)
+            const end = convertToTimeZone(event.endDatetime, APP_TIMEZONE)
             const liStyle = type !== `widget` ? { backgroundColor: idx % 2 === 1 ? 'light' : `ultralight`, p: 3 } : {}
             const linkStyle = type === `widget` ? {color: "primary", '&:hover': { color: 'secondary', cursor: 'pointer' }} : {}
             const toEvent = `${eventsBase}/${event.slug}`
