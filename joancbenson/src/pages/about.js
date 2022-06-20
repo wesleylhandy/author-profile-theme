@@ -54,7 +54,7 @@ const AboutPage = ({ location }) => {
           Another current project is a contemporary fiction novel, expected to be finished in 2022.
         </p>
         <p>
-          Be in the know by subscribing to the <Link to={`/books/his-gift`}><i>newsletter</i></Link>.
+          Be in the know by subscribing to the <Link to={`/subscribe`}><i>newsletter</i></Link>.
         </p>
         <h2>Fiction Author Applying Biblical Principles</h2>
         <p>
