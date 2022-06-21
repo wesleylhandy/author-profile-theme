@@ -13,6 +13,13 @@ const AffiliationsBlock = () => {
           }
         }
       }
+      can: file(name: { eq: "can-logo" }, extension: { eq: "png" }) {
+        childImageSharp {
+          fixed(height: 60) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
+        }
+      }
       scbwi: file(name: { eq: "scbwi-logo" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 60) {
@@ -20,7 +27,14 @@ const AffiliationsBlock = () => {
           }
         }
       }
-      awsa: file(name: { eq: "awsa-power" }, extension: { eq: "png" }) {
+      awsa: file(name: { eq: "awsa-logo" }, extension: { eq: "jpg" }) {
+        childImageSharp {
+          fixed(height: 60) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
+        }
+      }
+      powerCert: file(name: { eq: "awsa-power" }, extension: { eq: "png" }) {
         childImageSharp {
           fixed(height: 85) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
@@ -29,7 +43,7 @@ const AffiliationsBlock = () => {
       }
     }
   `)
-  const { acfw, scbwi, awsa } = data
+  const { acfw, scbwi, awsa, can, powerCert } = data
   return (
     <section sx={{ backgroundColor: "transparent", }}>
       <Flex
@@ -44,6 +58,25 @@ const AffiliationsBlock = () => {
           backgroundColor: 'affiliations'
         }}
       >
+        <Link
+          href="https://christianauthorsnetwork.com/"
+          aria-label="Link to Christian Authors Network"
+          sx={{
+            maxHeight: 60,
+            my: 3,
+            mx: 2,
+            flex: `0 0 auto`,
+            order: 0,
+          }}
+        >
+          <Img
+            fixed={can.childImageSharp.fixed}
+            alt="Christian Authors Network"
+            sx={{
+              maxHeight: 60,
+            }}
+          />
+        </Link>
         <Link
           href="https://www.acfw.com/"
           aria-label="Link to American Christian Fiction Writers"
@@ -108,10 +141,29 @@ const AffiliationsBlock = () => {
           </p>
         </Link>
         <Link
+          href="https://awsa.com/?p=6886"
+          aria-label="Link to AWSA P.O.W.E.R. Certification"
+          sx={{
+            maxHeight: 85,
+            my: 3,
+            mx: 2,
+            flex: `0 0 auto`,
+            order: 0,
+          }}
+        >
+          <Img
+            fixed={powerCert.childImageSharp.fixed}
+            alt="AWSA P.O.W.E.R. Certification"
+            sx={{
+              maxHeight: 85,
+            }}
+          />
+        </Link>
+        <Link
           href="https://awsa.com/"
           aria-label="Link to Advanced Writers and Speakers Association"
           sx={{
-            maxHeight: 85,
+            maxHeight: 60,
             my: 3,
             mx: 2,
             flex: `0 0 auto`,
@@ -122,7 +174,7 @@ const AffiliationsBlock = () => {
             fixed={awsa.childImageSharp.fixed}
             alt="Advanced Writers and Speakers Association"
             sx={{
-              maxHeight: 85,
+              maxHeight: 60,
             }}
           />
         </Link>
