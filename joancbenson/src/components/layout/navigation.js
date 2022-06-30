@@ -6,7 +6,7 @@ import { FaHome, FaTimes, FaBars } from 'react-icons/fa'
 import Media from 'react-media'
 
 const NavLinks = ({ location, links, small, setColorMode }) => {
-  const excludedPaths = ['', 'Archive'];
+  const excludedPaths = ['', 'Archive', 'Media'];
   return (
     <Fragment>
       <Link

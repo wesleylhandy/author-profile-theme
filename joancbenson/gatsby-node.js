@@ -447,6 +447,14 @@ exports.createPages = async ({ actions, graphql, reporter }, options) => {
         navLink: 'Archive',
       }
   }) ;
+  const mediaContentTemplate = require.resolve("./src/templates/media.js");
+  createPage({
+      path: `/media`,
+      component: mediaContentTemplate,
+      context: {
+        navLink: 'Media',
+      }
+  }) ;
 }
 
 const isTopLevel = (path) => /^\/(?!(404)|(.*404.*))([0-9a-z-_])*\/*$/i.test(path)

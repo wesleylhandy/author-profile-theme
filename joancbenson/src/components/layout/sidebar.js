@@ -6,8 +6,9 @@ import PostListWidget from '../widgets/post-list-widget'
 import EventListWidget from '../widgets/event-list-widget'
 import AboutWidget from "../widgets/about-widget"
 import { jsx, Flex } from 'theme-ui'
+import MediaKitWidget from '../widgets/media-kit-widget'
 
-const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget, hideAboutWidget }) => {
+const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget, hideAboutWidget, hideMediaKitWidget }) => {
   const fictionFinder = useRef(null)
   return (
     <aside
@@ -16,6 +17,7 @@ const Sidebar = ({ hideBooksWidget, hideEventsWidget, hidePostsWidget, hideAbout
       }}
     >
       <AboutWidget heading="About Me" hide={hideAboutWidget} />
+      <MediaKitWidget heading="Media Kits" hide={hideMediaKitWidget} />
       <BookListWidget heading="My Books" hide={hideBooksWidget} />
       <EventListWidget heading="Upcoming Events" limit={4} hide={hideEventsWidget} />
       <PostListWidget heading="Recent Posts" limit={4} hide={hidePostsWidget} />
@@ -44,6 +46,7 @@ Sidebar.propTypes = {
   hideBooksWidget: PropTypes.bool,
   hideEventsWidget: PropTypes.bool,
   hidePostsWidget: PropTypes.bool,
+  hideMediaKitWidget: PropTypes.bool,
 }
 
 export default Sidebar

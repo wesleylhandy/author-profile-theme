@@ -65,7 +65,8 @@ const Layout = ({ children, location, hideSidebar }) => {
     hideEventsWidget = location.pathname.includes(eventsBase),
     hidePostsWidget = location.pathname.includes(blogBase),
     hideAboutWidget = location.pathname.includes(`/about`) || isHomePage,
-    hideMailchimpWidget = isSubscribePage || isHomePage;
+    hideMailchimpWidget = isSubscribePage || isHomePage,
+    hideMediaKitWidget = location.pathname.includes('/media') || isHomePage;
     
   return (
     <Flex
@@ -223,6 +224,7 @@ const Layout = ({ children, location, hideSidebar }) => {
                 hideEventsWidget={hideEventsWidget}
                 hidePostsWidget={hidePostsWidget}
                 hideAboutWidget={hideAboutWidget}
+                hideMediaKitWidget={hideMediaKitWidget}
               />
             )}
           </Flex>

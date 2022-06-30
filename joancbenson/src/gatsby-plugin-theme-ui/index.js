@@ -114,7 +114,6 @@ const theme = {
           cursor: "pointer",
           fontSize: 2,
           fontWeight: "bold",
-          wordBreak: `break-all`,
           "&:hover": {
             color: "gray.4"
           }

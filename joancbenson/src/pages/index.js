@@ -55,6 +55,7 @@ const IndexPage = ({ location }) => {
               <li><Link to="/events">Sign up for a speaker</Link></li>
               <li><Link to="/downloads">Download free resources</Link></li>
               <li><ExternalLink href="https://youtube.com/shorts/v1QcahOuA3g?feature=share">Watch the video trailer for <i>His Gift</i></ExternalLink></li>
+              <li><ExternalLink href="https://drive.google.com/drive/folders/1p5AuMywMRp6nXR4g7AetnTLX4EsquliL?usp=sharing">READ LOCAL CHALLENGE - Fall 2022 - MEDIA KIT</ExternalLink></li>
             </ul>
             Feel free to contact me and I promise to answer your emails directly. I do hope you&rsquo;ll check
             out my book with more-to-come, which are currently under a publishing contract.
