@@ -34,7 +34,7 @@ const MediaPage = ({ location }) => {
     <Layout location={location}>
       <Seo type="website" title="Media Page" />
       <article sx={{ backgroundColor: "affiliations" }}>
-        <Box sx={{ position: `relative`, pb: 200 }} id="media">
+        <Box sx={{ position: `relative`, pb: 60}} id="media">
           <h1>Media Kits</h1>
           <ul>
               <li><ExternalLink href="https://drive.google.com/drive/folders/1p5AuMywMRp6nXR4g7AetnTLX4EsquliL?usp=sharing">READ LOCAL CHALLENGE - Fall 2022 - MEDIA KIT</ExternalLink></li>
